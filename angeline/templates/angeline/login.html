@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'angeline/style_form.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Login</h2>
+    <form method="post" action="{% url 'angeline:login' %}">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <button type="submit">Entrar</button>
+    </form>
+</div>
+
+</body>
+</html>
