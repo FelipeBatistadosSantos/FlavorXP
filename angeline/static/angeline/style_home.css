@@ -1,0 +1,332 @@
+main,
+nav,
+body,
+footer,
+nav,
+header,
+section {
+    margin: 0;
+}
+
+
+/* --NAVBAR--*/
+
+.section_nav {
+    width: 1440px;
+    height: 899px;
+    left: 0px;
+    top: 125px;
+    position: absolute;
+    background: #F1C400;
+}
+
+.retangulo_nav {
+    width: 1440px;
+    height: 125px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: #4E008E;
+}
+
+.logo {
+    left: 188px;
+    top: 22px;
+    position: absolute;
+    color: #E5E5E5;
+    font-size: 64px;
+    font-family: Outfit;
+    font-weight: 900;
+    word-wrap: break-word
+}
+
+li {
+    list-style: none;
+
+}
+
+a {
+    text-decoration: none;
+
+}
+
+.nav-link,
+a {
+    position: absolute;
+    font-family: Outfit;
+    font-weight: 200;
+    font-size: 24px;
+    color: white;
+    word-wrap: break-word;
+}
+
+.nav-link-signup {
+    left: 983px;
+    top: 56px;
+    white-space: nowrap;
+}
+
+.nav-link-about {
+    left: 855px;
+    top: 56px;
+}
+
+.nav-link-guide {
+    left: 740px;
+    top: 56px;
+}
+
+.nav-link-login {
+    left: 1182px;
+    top: 56px;
+}
+
+/*Home*/
+
+.imagem_frango_home {
+    width: 540px;
+    height: 495px;
+    left: 188px;
+    top: 325px;
+    position: absolute;
+    border-radius: 5px;
+}
+
+.texto1 {
+    width: 519px;
+    height: 207px;
+    left: 765px;
+    top: 387px;
+    position: absolute;
+    color: #4E008E;
+    font-size: 56px;
+    font-family: Outfit;
+    font-weight: 500;
+    word-wrap: break-word"
+
+}
+
+/*Efeitos da home*/
+
+
+.palito {
+    position: absolute;
+    border: 5px #4E008E solid;
+}
+
+.palito_roxo1 {
+    width: 270px;
+    height: 0px;
+    left: 188px;
+    top: 315px;
+}
+
+.palito_roxo2 {
+    width: 144px;
+    height: 0px;
+    left: 278px;
+    top: 305px;
+}
+
+.palito_roxo3 {
+    width: 144px;
+    height: 0px;
+    left: 659px;
+    top: 846px;
+}
+
+.palito_roxo4 {
+    width: 270px;
+    height: 0px;
+    left: 458px;
+    top: 836px;
+}
+
+.palito_roxo5 {
+    width: 143px;
+    height: 38px;
+    left: 765px;
+    top: 725px;
+    background: #4E008E;
+    border-radius: 3px;
+}
+
+
+/*Footer*/
+
+#direitos_reservados {
+    left: 187px;
+    top: 169px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 13px;
+    font-family: Roboto;
+    font-weight: 100;
+    word-wrap: break-word"
+
+}
+
+#sobre_footer {
+    left: 506px;
+    top: 179px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 14px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word"
+
+}
+
+#guia_footer {
+    left: 642px;
+    top: 179px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 14px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word"
+
+}
+
+#cadastro_footer {
+    left: 746px;
+    top: 179px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 14px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+#entrar_footer {
+    left: 899px;
+    top: 179px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 14px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+#instagram_footer {
+    width: 39.03px;
+    height: 35.43px;
+    left: 700.74px;
+    top: 44.02px;
+    position: absolute;
+    transform: rotate(1.14deg);
+    transform-origin: 0 0;
+    background: #E5E5E5
+}
+
+#background_footer {
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: #4E008E;
+}
+
+#div_footer {
+    width: 100%;
+    height: 100%;
+    background: #4E008E
+}
+
+#div2_footer {
+    width: 1440px;
+    height: 242px;
+    left: 0px;
+    top: 3066px;
+    position: absolute
+}
+
+#logo_footer {
+    left: 187px;
+    top: 98px;
+    position: absolute;
+    text-align: right;
+    color: #F1C400;
+    font-size: 64px;
+    font-family: Outfit;
+    font-weight: 900;
+    word-wrap: break-word
+}
+
+#divisor_footer {
+    width: 1065px;
+    height: 0px;
+    left: 187px;
+    top: 89px;
+    position: absolute;
+    border: 3px white solid
+}
+
+#instagram_footer {
+    width: 39.03px;
+    height: 35.43px;
+    left: 700.74px;
+    top: 44.02px;
+    position: absolute;
+    transform: rotate(1.14deg);
+    transform-origin: 0 0;
+    background: #E5E5E5
+}
+
+#slogan_footer {
+    width: 274px;
+    left: 975px;
+    top: 109px;
+    position: absolute;
+    text-align: right;
+    color: #F1C400;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 700;
+    word-wrap: break-word
+}
+
+.botao-customizado {
+    width: 143px;
+    height: 38px;
+    background: #4E008E;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    position: absolute;
+    left: 548px;
+    top: 2849px;
+    white-space: nowrap;
+}
+
+.botao-customizado span {
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.botao-customizado:hover {
+    background-color: #9900ff;
+}
+
+
+
+
+
+@media screen and (max-width: 768px) {}

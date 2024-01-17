@@ -8,6 +8,7 @@ class CadastroForm(forms.Form):
     nome = forms.CharField(label='Nome', max_length=100)
     email = forms.EmailField(label='Email', max_length=100)
     telefone = forms.CharField(label='Telefone', max_length=15)
+    cidade = forms.CharField(label='Cidade', max_length=30)
     senha = forms.CharField(label='Senha', widget=forms.PasswordInput)
     confirmar_senha = forms.CharField(label='Confirmar Senha', widget=forms.PasswordInput)
 
