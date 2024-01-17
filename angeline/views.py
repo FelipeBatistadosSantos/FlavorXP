@@ -9,8 +9,9 @@ def cadastro(request):
         nome = request.POST['nome']
         senha = request.POST['senha']
         telefone = request.POST['telefone']
+        cidade = request.POST['cidade']
 
-        usuario = CustomUser.objects.create_user(email=email, password=senha, nome=nome, telefone=telefone)
+        usuario = CustomUser.objects.create_user(email=email, password=senha, nome=nome, telefone=telefone, cidade=cidade)
         usuario.save()
         return redirect('angeline:login')  # Redireciona para a página de login após o cadastro
     else:
@@ -28,7 +29,7 @@ def login(request):
             usuario = CustomUser.objects.get(email=email)
             if usuario.check_password(senha):
                
-                return HttpResponse('Entrou')  # Redireciona para a página inicial após o login bem-sucedido
+                return redirect('angeline:home')  # Redireciona para a página inicial após o login bem-sucedido
             else:
                
                 return render(request, 'angeline/login.html', {'form': form,})
@@ -41,3 +42,5 @@ def login(request):
     
     return render(request, 'angeline/login.html', {'form':form})
 
+def home(request):
+    return render(request, 'angeline/home.html')
