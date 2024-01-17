@@ -142,15 +142,291 @@ a {
     top: 836px;
 }
 
-.palito_roxo5 {
+.botao_cadastro1_home {
     width: 143px;
     height: 38px;
     left: 765px;
     top: 725px;
     background: #4E008E;
     border-radius: 3px;
+    white-space: nowrap;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    position: absolute;
 }
 
+.botao-customizado {
+    width: 143px;
+    height: 38px;
+    background: #4E008E;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    position: absolute;
+    left: 548px;
+    top: 2849px;
+    white-space: nowrap;
+}
+
+.botao-customizado span {
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.botao-customizado:hover {
+    background-color: #9900ff;
+}
+
+
+
+.background_roxo_home {
+    width: 1440px;
+    height: 1017px;
+    left: 0px;
+    top: 1024px;
+    position: absolute;
+    background: #4E008E;
+}
+
+.quadrado_amarelo_sob_imagem_home {
+    width: 688px;
+    height: 426px;
+    left: 618.50px;
+    top: 1316px;
+    position: absolute;
+    background: #F1C400;
+}
+
+#imagem_pessoas_mesa_home {
+    width: 660px;
+    height: 421px;
+    left: 599px;
+    top: 1278px;
+    position: absolute;
+    border-radius: 5px;
+}
+
+.frase_bem_vindo_home {
+    width: 378px;
+    height: 394px;
+    left: 194px;
+    top: 1305px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.frase_chamativa_home {
+    width: 1071px;
+    left: 188px;
+    top: 1812px;
+    position: absolute;
+    text-align: center;
+}
+
+.palito_amarelo_home {
+    width: 345px;
+    height: 0px;
+    left: 914px;
+    top: 1263px;
+    position: absolute;
+    border: 5px #F1C400 solid;
+}
+
+.palito_amarelo2_home {
+    width: 255px;
+    height: 0px;
+    left: 1004px;
+    top: 1242px;
+    position: absolute;
+    border: 5px #E9C300 solid;
+}
+
+.sobre_o_myfood_home {
+    left: 522px;
+    top: 1124px;
+    position: absolute;
+    text-align: right;
+}
+
+.backgrond_amarelo2_home {
+    width: 1440px;
+    height: 1025px;
+    left: 0px;
+    top: 2041px;
+    position: absolute;
+    background: #F1C400;
+}
+
+.como_funciona_home {
+    left: 359px;
+    top: 2141px;
+    position: absolute;
+    text-align: right;
+}
+
+.entrar_home {
+    width: 143px;
+    height: 38px;
+    left: 749px;
+    top: 2849px;
+    position: absolute;
+    background: black;
+    border-radius: 3px;
+    
+}
+
+
+.explicacao_myfood_home {
+    width: 885px;
+    left: 278px;
+    top: 2222px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 16px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.retangulo_sob_imagem1_home {
+    width: 345px;
+    height: 208px;
+    left: 188px;
+    top: 2422px;
+    position: absolute;
+    background: #D9D9D9;
+}
+
+.retangulo_sob_imagem2_home {
+    width: 345px;
+    height: 208px;
+    left: 548px;
+    top: 2422px;
+    position: absolute;
+    background: #D9D9D9;
+}
+
+.retangulo_sob_imagem3_home {
+    width: 345px;
+    height: 208px;
+    left: 908px;
+    top: 2422px;
+    position: absolute;
+    background: #D9D9D9;
+}
+
+.torne-se_um_anfitriao_home {
+    left: 224px;
+    top: 2635px;
+    position: absolute;
+    text-align: right;
+    color: black;
+    font-size: 28px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.seja_um_convidado_home {
+    left: 603px;
+    top: 2635px;
+    position: absolute;
+    text-align: right;
+    color: black;
+    font-size: 28px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.agende_sua_refeicao_home {
+    left: 943px;
+    top: 2635px;
+    position: absolute;
+    text-align: right;
+    color: black;
+    font-size: 28px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.texto_img1_home {
+    width: 345px;
+    left: 188px;
+    top: 2675px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+}
+
+.texo_img2_home {
+    width: 345px;
+    left: 549px;
+    top: 2675px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+}
+
+.texto_img3_home {
+    width: 345px;
+    left: 904px;
+    top: 2675px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+}
+
+#imagem_churrasco_home {
+    width: 345px;
+    height: 208px;
+    left: 188px;
+    top: 2422px;
+    position: absolute;
+}
+
+#imagem_seja_um_convidado_home {
+    width: 345px;
+    height: 208px;
+    left: 549px;
+    top: 2422px;
+    position: absolute;
+}
+
+#imagem_reserva_home {
+    width: 345px;
+    height: 208px;
+    left: 908px;
+    top: 2422px;
+    position: absolute;
+}
 
 /*Footer*/
 
@@ -295,35 +571,7 @@ a {
     font-weight: 700;
     word-wrap: break-word
 }
-
-.botao-customizado {
-    width: 143px;
-    height: 38px;
-    background: #4E008E;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    position: absolute;
-    left: 548px;
-    top: 2849px;
-    white-space: nowrap;
-}
-
-.botao-customizado span {
-    color: white;
-    font-size: 20px;
-    font-family: Outfit;
-    font-weight: 400;
-    word-wrap: break-word;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.botao-customizado:hover {
-    background-color: #9900ff;
-}
+/********HOME**********/
 
 
 
