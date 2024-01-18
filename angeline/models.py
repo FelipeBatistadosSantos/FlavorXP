@@ -21,14 +21,16 @@ class CustomUser(AbstractBaseUser):
     nome = models.CharField(max_length=255, default=False)
     endereco = models.CharField(max_length=255, default=False)
     telefone = models.CharField(max_length=15, default=False)
+    cpf = models.IntegerField(max_length=11, default=False)
     cidade = models.CharField(max_length=30, default=False)
+    estado = models.CharField(max_length=30, default=False)
     email = models.EmailField(verbose_name='email address', max_length=255, unique=True, default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['nome', 'endereco', 'telefone', 'cidade', 'senha']
+    REQUIRED_FIELDS = ['nome', 'endereco', 'telefone', 'cidade', 'senha', 'cpf', 'estado']
 
     objects = CustomUserManager()
 

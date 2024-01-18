@@ -5,19 +5,14 @@ footer,
 nav,
 header,
 section {
-    margin: auto;
-    
+    margin: 0;
 }
 
 
 /* --NAVBAR--*/
 
-.nav{
-    position: absolute;
-}
-
 .section_nav {
-    width: 100vw;
+    width: 1440px;
     height: 899px;
     left: 0px;
     top: 125px;
@@ -26,19 +21,12 @@ section {
 }
 
 .retangulo_nav {
-    width: 100vw;
+    width: 1440px;
     height: 125px;
     left: 0px;
     top: 0px;
     position: absolute;
     background: #4E008E;
-    color: white;
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
 }
 
 .logo {
@@ -70,19 +58,16 @@ a {
     font-size: 24px;
     color: white;
     word-wrap: break-word;
-    list-style: none;
-    display: flex;
-    margin-left: 20px;
-    padding: solid 5px;
-    margin: solid 1px;
 }
 
-nav ul li a{
-
+.background_roxo_home {
+    width: 1440px;
+    height: 1017px;
+    left: 0px;
+    top: 1024px;
+    position: absolute;
+    background: #4E008E;
 }
-
-
-
 
 
 
@@ -127,30 +112,6 @@ nav ul li a{
 
 }
 
-#cadastro_footer {
-    left: 746px;
-    top: 179px;
-    position: absolute;
-    text-align: right;
-    color: white;
-    font-size: 14px;
-    font-family: Outfit;
-    font-weight: 400;
-    word-wrap: break-word;
-}
-
-#entrar_footer {
-    left: 899px;
-    top: 179px;
-    position: absolute;
-    text-align: right;
-    color: white;
-    font-size: 14px;
-    font-family: Outfit;
-    font-weight: 400;
-    word-wrap: break-word
-}
-
 #instagram_footer {
     width: 39.03px;
     height: 35.43px;
@@ -163,7 +124,7 @@ nav ul li a{
 }
 
 #background_footer {
-    width: 100vw;
+    width: 100%;
     height: 100%;
     left: 0px;
     top: 0px;
@@ -230,34 +191,10 @@ nav ul li a{
     word-wrap: break-word
 }
 
-.botao-customizado {
-    width: 143px;
-    height: 38px;
-    background: #4E008E;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    position: absolute;
-    left: 548px;
-    top: 2849px;
-    white-space: nowrap;
-}
+/********HOME**********/
 
-.botao-customizado span {
-    color: white;
-    font-size: 20px;
-    font-family: Outfit;
-    font-weight: 400;
-    word-wrap: break-word;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
 
-.botao-customizado:hover {
-    background-color: #9900ff;
-}
+
 
 
 @media screen and (max-width: 768px) {}
