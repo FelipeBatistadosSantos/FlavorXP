@@ -11,6 +11,10 @@ section {
 
 /* --NAVBAR--*/
 
+.nav{
+    position: relative;
+}
+
 .section_nav {
     width: 1440px;
     height: 899px;
@@ -58,27 +62,28 @@ a {
     font-size: 24px;
     color: white;
     word-wrap: break-word;
+    list-style: none;
+    display: inline-block;
+    margin-left: 20px;
 }
 
-.nav-link-signup {
-    left: 983px;
-    top: 56px;
-    white-space: nowrap;
+
+.nav-link-host,
+.nav-link-perfil {
+    position: absolute;
+    top: 0;
 }
 
-.nav-link-about {
-    left: 855px;
-    top: 56px;
+.nav-link-host {
+    right: 100px;
 }
 
-.nav-link-guide {
-    left: 740px;
-    top: 56px;
+.nav-link-perfil {
+    right: 20px;
 }
 
-.nav-link-login {
-    left: 1182px;
-    top: 56px;
+.nav-link-perfil a{
+    color: #000;
 }
 
 /*Home*/
