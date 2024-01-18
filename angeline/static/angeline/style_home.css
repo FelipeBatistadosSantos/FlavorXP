@@ -77,14 +77,6 @@ a {
     margin: solid 1px;
 }
 
-nav ul li a{
-
-}
-
-
-
-
-
 
 /*Footer*/
 
@@ -97,7 +89,7 @@ nav ul li a{
     font-size: 13px;
     font-family: Roboto;
     font-weight: 100;
-    word-wrap: break-word"
+    word-wrap: break-word;
 
 }
 
@@ -110,7 +102,7 @@ nav ul li a{
     font-size: 14px;
     font-family: Outfit;
     font-weight: 400;
-    word-wrap: break-word"
+    word-wrap: break-word;
 
 }
 
@@ -123,7 +115,7 @@ nav ul li a{
     font-size: 14px;
     font-family: Outfit;
     font-weight: 400;
-    word-wrap: break-word"
+    word-wrap: break-word;
 
 }
 
