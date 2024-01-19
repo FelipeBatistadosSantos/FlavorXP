@@ -166,6 +166,7 @@ a {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1000;
 }
 
 .botao_cadastro1_home:hover {
@@ -613,36 +614,10 @@ a {
     word-wrap: break-word
 }
 
+
 /********HOME**********/
 
 /* Estilos padrão para telas maiores */
-.container1_home {
-    width: 1440px;
-}
-
-/* Estilos para telas menores que 600px */
-@media only screen and (max-width: 600px) {
-    .container1_home {
-        width: 100%;
-        left: 0;
-        text-align: center;
-        display: block;
-    }
-
-    .containder2_home {
-        width: 100%;
-        left: 0;
-        text-align: center;
-        display: block;
-    }
-
-    .botao_cadastro1_home {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    /* Adicione mais ajustes conforme necessário */
-}
 
 
 
