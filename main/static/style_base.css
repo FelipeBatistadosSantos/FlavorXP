@@ -278,7 +278,7 @@ a {
     border: 5px #E9C300 solid;
 }
 
-.sobre_o_myfood_home {
+#sobre_o_myfood_home {
     left: 522px;
     top: 1124px;
     position: absolute;
@@ -615,8 +615,35 @@ a {
 
 /********HOME**********/
 
+/* Estilos padrão para telas maiores */
+.container1_home {
+    width: 1440px;
+}
+
+/* Estilos para telas menores que 600px */
+@media only screen and (max-width: 600px) {
+    .container1_home {
+        width: 100%;
+        left: 0;
+        text-align: center;
+        display: block;
+    }
+
+    .containder2_home {
+        width: 100%;
+        left: 0;
+        text-align: center;
+        display: block;
+    }
+
+    .botao_cadastro1_home {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Adicione mais ajustes conforme necessário */
+}
 
 
 
 
-@media screen and (max-width: 768px) {}
