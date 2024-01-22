@@ -51,7 +51,7 @@ a {
 }
 
 .nav-link,
-a {
+.anav {
     position: absolute;
     font-family: Outfit;
     font-weight: 200;

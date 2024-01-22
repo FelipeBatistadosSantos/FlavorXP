@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
     <link rel="stylesheet" href="main/static/style_base.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>MyFood</title>
 </head>
 
@@ -15,10 +16,10 @@
         <div class="retangulo_nav"></div>
         <div class="logo">MyFood</div>
         <ul>
-            <li class="nav-link nav-link-signup"><a id="acad" href="{% url 'angeline:cadastro' %}">Cadastre-se</a></li>
-            <li class="nav-link nav-link-about"><a href="#sobre_o_myfood_home" onclick="scrollToSection('sobre_o_myfood_home')">Sobre</a></li>
-            <li class="nav-link nav-link-guide"><a href="#">Guia</a></li>
-            <li class="nav-link nav-link-login"><a href="{% url 'angeline:login' %}">Entrar</a></li>
+            <li class="nav-link nav-link-signup"><a class="anav" href="{% url 'angeline:cadastro' %}">Cadastre-se</a></li>
+            <li class="nav-link nav-link-about"><a class="anav" href="#sobre_o_myfood_home">Sobre</a></li>
+            <li class="nav-link nav-link-guide"><a class="anav" href="#">Guia</a></li>
+            <li class="nav-link nav-link-login"><a class="anav" href="{% url 'angeline:login' %}">Entrar</a></li>
 
         </ul>
     </nav>
@@ -93,18 +94,27 @@
         </div>
     </footer>
 
-</body>
-
-<script>
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-
-    if (section) {
-        section.scrollIntoView({
-            behavior: 'smooth'
+    <script>
+        $(document).ready(function() {
+            // Adiciona a animação de rolar suavemente ao clicar nos links da navegação
+            $(".anav").on('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+    
+                    var hash = this.hash;
+    
+                    // Animação de rolar suavemente
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function(){
+                        // Adiciona o hash (#) à URL ao finalizar a animação de rolar
+                        window.location.hash = hash;
+                    });
+                }
+            });
         });
-    }
-}
-</script>
+    </script>    
+
+</body>
 
 </html>
