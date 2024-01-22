@@ -1,0 +1,619 @@
+main,
+nav,
+body,
+footer,
+nav,
+header,
+section {
+    margin: auto;
+}
+
+
+/* --NAVBAR--*/
+
+.section_nav {
+    width: 100vw;
+    height: 899px;
+    left: 0px;
+    top: 125px;
+    position: absolute;
+    background: #F1C400;
+}
+
+.retangulo_nav {
+    width: 100vw;
+    height: 125px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: #4E008E;
+}
+
+.logo {
+    left: 188px;
+    top: 22px;
+    position: absolute;
+    color: #E5E5E5;
+    font-size: 64px;
+    font-family: Outfit;
+    font-weight: 900;
+    word-wrap: break-word
+}
+
+li {
+    list-style: none;
+
+}
+
+a {
+    text-decoration: none;
+
+}
+
+.nav-link,
+.anav {
+    position: absolute;
+    font-family: Outfit;
+    font-weight: 200;
+    font-size: 24px;
+    color: white;
+    word-wrap: break-word;
+}
+
+.nav-link-signup {
+    left: 983px;
+    top: 56px;
+    white-space: nowrap;
+}
+
+.nav-link-about {
+    left: 855px;
+    top: 56px;
+}
+
+.nav-link-guide {
+    left: 740px;
+    top: 56px;
+}
+
+.nav-link-login {
+    left: 1182px;
+    top: 56px;
+}
+
+/*Home*/
+
+.imagem_frango_home {
+    width: 540px;
+    height: 495px;
+    left: 188px;
+    top: 325px;
+    position: absolute;
+    border-radius: 5px;
+}
+
+.texto1 {
+    width: 519px;
+    height: 207px;
+    left: 765px;
+    top: 387px;
+    position: absolute;
+    color: #4E008E;
+    font-size: 56px;
+    font-family: Outfit;
+    font-weight: 500;
+    word-wrap: break-word"
+
+}
+
+/*Efeitos da home*/
+
+
+.palito {
+    position: absolute;
+    border: 5px #4E008E solid;
+}
+
+.palito_roxo1 {
+    width: 270px;
+    height: 0px;
+    left: 188px;
+    top: 315px; 
+}
+
+.palito_roxo2 {
+    width: 144px;
+    height: 0px;
+    left: 278px;
+    top: 305px;
+}
+
+.palito_roxo3 {
+    width: 144px;
+    height: 0px;
+    left: 659px;
+    top: 846px;
+}
+
+.palito_roxo4 {
+    width: 270px;
+    height: 0px;
+    left: 458px;
+    top: 836px;
+}
+
+.botao_cadastro1_home {
+    width: 143px;
+    height: 38px;
+    left: 765px;
+    top: 720px;
+    background: #4E008E;
+    border-radius: 3px;
+    white-space: nowrap;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    position: absolute;
+}
+
+.spancad {
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.botao_cadastro1_home:hover {
+    background-color: #9900ff;
+}
+
+.botao-customizado {
+    width: 143px;
+    height: 38px;
+    background: #4E008E;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    position: absolute;
+    left: 548px;
+    top: 2849px;
+    white-space: nowrap;
+}
+
+.botao-customizado span {
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.botao-customizado:hover {
+    background-color: #9900ff;
+}
+
+
+
+.background_roxo_home {
+    width: 1440px;
+    height: 1017px;
+    left: 0px;
+    top: 1024px;
+    position: absolute;
+    background: #4E008E;
+}
+
+.quadrado_amarelo_sob_imagem_home {
+    width: 688px;
+    height: 426px;
+    left: 618.50px;
+    top: 1316px;
+    position: absolute;
+    background: #F1C400;
+}
+
+#imagem_pessoas_mesa_home {
+    width: 660px;
+    height: 421px;
+    left: 599px;
+    top: 1278px;
+    position: absolute;
+    border-radius: 5px;
+}
+
+.frase_bem_vindo_home {
+    width: 378px;
+    height: 394px;
+    left: 194px;
+    top: 1305px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.frase_chamativa_home {
+    width: 1071px;
+    left: 188px;
+    top: 1812px;
+    position: absolute;
+    text-align: center;
+}
+
+.texto_em_branco_home {
+    color: white;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 600;
+    word-wrap: break-word
+}
+
+.palito_amarelo_home {
+    width: 345px;
+    height: 0px;
+    left: 914px;
+    top: 1263px;
+    position: absolute;
+    border: 5px #F1C400 solid;
+}
+
+.palito_amarelo2_home {
+    width: 255px;
+    height: 0px;
+    left: 1004px;
+    top: 1242px;
+    position: absolute;
+    border: 5px #E9C300 solid;
+}
+
+#sobre_o_myfood_home {
+    left: 522px;
+    top: 1124px;
+    position: absolute;
+    text-align: right;
+}
+
+.backgrond_amarelo2_home {
+    width: 1440px;
+    height: 1025px;
+    left: 0px;
+    top: 2041px;
+    position: absolute;
+    background: #F1C400;
+}
+
+.como_funciona_home {
+    left: 359px;
+    top: 2141px;
+    position: absolute;
+    text-align: right;
+}
+
+.entrar_home {
+    width: 143px;
+    height: 38px;
+    left: 749px;
+    top: 2849px;
+    position: absolute;
+    background: black;
+    border-radius: 3px;
+    border:none;
+    cursor:pointer
+}
+
+.spanent{
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.entrar_home:hover{
+    background-color: #494949;
+}
+
+
+.explicacao_myfood_home {
+    width: 885px;
+    left: 278px;
+    top: 2222px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 16px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.retangulo_sob_imagem1_home {
+    width: 345px;
+    height: 208px;
+    left: 188px;
+    top: 2422px;
+    position: absolute;
+    background: #D9D9D9;
+}
+
+.retangulo_sob_imagem2_home {
+    width: 345px;
+    height: 208px;
+    left: 548px;
+    top: 2422px;
+    position: absolute;
+    background: #D9D9D9;
+}
+
+.retangulo_sob_imagem3_home {
+    width: 345px;
+    height: 208px;
+    left: 908px;
+    top: 2422px;
+    position: absolute;
+    background: #D9D9D9;
+}
+
+.torne-se_um_anfitriao_home {
+    left: 224px;
+    top: 2635px;
+    position: absolute;
+    text-align: right;
+    color: black;
+    font-size: 28px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.seja_um_convidado_home {
+    left: 603px;
+    top: 2635px;
+    position: absolute;
+    text-align: right;
+    color: black;
+    font-size: 28px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.agende_sua_refeicao_home {
+    left: 943px;
+    top: 2635px;
+    position: absolute;
+    text-align: right;
+    color: black;
+    font-size: 28px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.texto_img1_home {
+    width: 345px;
+    left: 188px;
+    top: 2675px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+}
+
+.texo_img2_home {
+    width: 345px;
+    left: 549px;
+    top: 2675px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+}
+
+.texto_img3_home {
+    width: 345px;
+    left: 904px;
+    top: 2675px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+}
+
+#imagem_churrasco_home {
+    width: 345px;
+    height: 208px;
+    left: 188px;
+    top: 2422px;
+    position: absolute;
+}
+
+#imagem_seja_um_convidado_home {
+    width: 345px;
+    height: 208px;
+    left: 549px;
+    top: 2422px;
+    position: absolute;
+}
+
+#imagem_reserva_home {
+    width: 345px;
+    height: 208px;
+    left: 908px;
+    top: 2422px;
+    position: absolute;
+}
+
+/*Footer*/
+
+#direitos_reservados {
+    left: 187px;
+    top: 169px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 13px;
+    font-family: Roboto;
+    font-weight: 100;
+    word-wrap: break-word;
+
+}
+
+#sobre_footer {
+    left: 506px;
+    top: 179px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 14px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+
+}
+
+#guia_footer {
+    left: 642px;
+    top: 179px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 14px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+
+}
+
+#cadastro_footer {
+    left: 746px;
+    top: 179px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 14px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+#entrar_footer {
+    left: 899px;
+    top: 179px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 14px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+#instagram_footer {
+    width: 39.03px;
+    height: 35.43px;
+    left: 700.74px;
+    top: 44.02px;
+    position: absolute;
+    transform: rotate(1.14deg);
+    transform-origin: 0 0;
+    background: #E5E5E5
+}
+
+#background_footer {
+    width: 100vw;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: #4E008E;
+}
+
+#div_footer {
+    width: 100%;
+    height: 100%;
+    background: #4E008E
+}
+
+#div2_footer {
+    width: 1440px;
+    height: 242px;
+    left: 0px;
+    top: 3066px;
+    position: absolute
+}
+
+#logo_footer {
+    left: 187px;
+    top: 98px;
+    position: absolute;
+    text-align: right;
+    color: #F1C400;
+    font-size: 64px;
+    font-family: Outfit;
+    font-weight: 900;
+    word-wrap: break-word
+}
+
+#divisor_footer {
+    width: 1065px;
+    height: 0px;
+    left: 187px;
+    top: 89px;
+    position: absolute;
+    border: 3px white solid
+}
+
+#instagram_footer {
+    width: 39.03px;
+    height: 35.43px;
+    left: 700.74px;
+    top: 44.02px;
+    position: absolute;
+    transform: rotate(1.14deg);
+    transform-origin: 0 0;
+    background: #E5E5E5
+}
+
+#slogan_footer {
+    width: 274px;
+    left: 975px;
+    top: 109px;
+    position: absolute;
+    text-align: right;
+    color: #F1C400;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 700;
+    word-wrap: break-word
+}
+
+
+/********HOME**********/
+

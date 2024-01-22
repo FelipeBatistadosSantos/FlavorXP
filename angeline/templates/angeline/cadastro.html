@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'angeline/base.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Cadastro</h2>
+    <form method="post" action="{% url 'angeline:cadastro' %}">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        
+        <button type="submit">Cadastrar</button>
+        <h6>Já tem uma conta? faça seu login <a href="{% url 'angeline:login' %}">aqui</a></h6>
+    </form>
+</div>
+
+</body>
+</html>

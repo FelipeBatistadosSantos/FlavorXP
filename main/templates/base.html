@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+    <link rel="stylesheet" href="main/static/style_base.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>MyFood</title>
+</head>
+
+<body>
+    
+    <nav style="width: 1440px; height: 125px; left: 0px; top: 0px; position: absolute">
+        <div class="retangulo_nav"></div>
+        <div class="logo">MyFood</div>
+        <ul>
+            <li class="nav-link nav-link-signup"><a class="anav" href="{% url 'angeline:cadastro' %}">Cadastre-se</a></li>
+            <li class="nav-link nav-link-about"><a class="anav" href="#sobre_o_myfood_home">Sobre</a></li>
+            <li class="nav-link nav-link-guide"><a class="anav" href="#">Guia</a></li>
+            <li class="nav-link nav-link-login"><a class="anav" href="{% url 'angeline:login' %}">Entrar</a></li>
+
+        </ul>
+    </nav>
+
+    <main>  
+            <container class="container1_home">
+                <div style="width: 1440px; height: 1024px; background: #F1C400;"></div>
+                <div style="width: 573px; height: 557px; left: -220px; top: 387px; position: absolute; background: #4E008E; border-radius: 9999px; backdrop-filter: blur(4px)"></div>
+                <div class="texto1">"Sabores que unem, experiências que encantam”<br/><br/></div>
+                <div style="width: 504px; height: 112px; left: 765px; top: 594px; position: absolute; color: black; font-size: 46px; font-family: Outfit; font-weight: 300; word-wrap: break-word">Bem-vindo ao nosso  universo gastronômico!<br/><br/></div>
+                <img class="imagem_frango_home" src="angeline/static/img/frango_home.jpg" />
+                <div class="palito palito_roxo1"></div>
+                <div class="palito palito_roxo2"></div>
+                <div class="palito palito_roxo3"></div>
+                <div class="palito palito_roxo4"></div>
+                <a href="{%url 'angeline:cadastro'%}" class="">
+                    <button class="botao_cadastro1_home" type="button">
+                        <span class="spancad">Cadastre-se</span>
+                    </button>
+                </a>    
+            </container>
+            <container class="container2_home">
+                <div class="background_roxo_home"></div>
+                <div class="quadrado_amarelo_sob_imagem_home"></div>
+                <img id="imagem_pessoas_mesa_home" src="angeline/static/img/grupo_de_pessoas_home.jpg"/>
+                <div class="frase_bem_vindo_home">Bem-vindo à nossa plataforma gastronômica, onde transcender os limites da culinária é a nossa missão. Aqui, não conectamos apenas pessoas através de sabores excepcionais, mas também por afinidades culturais, musicais e além. Ao unir Hosts apaixonados por cozinhar e Convidados em busca de experiências autênticas, criamos encontros que vão além do paladar.<br/><br/></div>
+                <div class="frase_chamativa_home"><span class="texto_em_branco_home" >Seja parte dessa comunidade onde a diversidade de gostos se entrelaça, transformando cada refeição em uma celebração única que reflete não apenas o sabor, mas também as riquezas culturais e os interesses compartilhados. </span><span style="color: #F1C400; font-size: 28px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Junte-se a nós para descobrir como a culinária se torna a trilha sonora de novas amizades e a expressão autêntica de quem somos.<br/></span><span style="color: white; font-size: 24px; font-family: Outfit; font-weight: 600; word-wrap: break-word"><br/></span></div>
+                <div class="palito_amarelo_home"></div>
+                <div class="palito_amarelo2_home"></div>
+            </container>
+            <container class="container3_home">  
+                <div id="sobre_o_myfood_home" ><span style="color: white; font-size: 48px; font-family: Outfit; font-weight: 500; word-wrap: break-word">Sobre</span><span style="color: white; font-size: 64px; font-family: Outfit; font-weight: 400; word-wrap: break-word">  </span><span style="color: #F1C400; font-size: 64px; font-family: Outfit; font-weight: 900; word-wrap: break-word">MyFood</span></div>
+                <div class="backgrond_amarelo2_home"></div>
+                <div class="como_funciona_home"><span style="color: white; font-size: 64px; font-family: Outfit; font-weight: 400; word-wrap: break-word">Como funciona o </span><span style="color: #4E008E; font-size: 64px; font-family: Outfit; font-weight: 900; word-wrap: break-word">MyFood</span></div>
+                <button class="entrar_home" type="button">
+                    <span class="spanent">Entrar</span>
+                </button>
+                </button>
+                <div class="explicacao_myfood_home">Nossa plataforma online serve como um elo refinado entre anfitriões e convidados apaixonados pelo universo gastronômico e com interesses em comum, proporcionando aos anfitriões a oportunidade distinta de transformar suas habilidades culinárias em experiências remuneradas para os convidados.<br/><br/></div>
+                <div class="retangulo_sob_imagem1_home"></div>
+                <div class="retangulo_sob_imagem2_home" ></div>
+                <div class="retangulo_sob_imagem3_home"></div>
+                <div class="torne-se_um_anfitriao_home">Torne-se um Anfitrião</div>
+                <div class="seja_um_convidado_home">Seja um convidado</div>
+                <div class="agende_sua_refeicao_home">Agende sua refeição</div>
+                <div class="texto_img1_home">Cadastre-se como anfitrião e comece a ganhar dinheiro compartilhando suas habilidades culinárias.<br/><br/></div>
+                <div class="texo_img2_home">Descubra uma variedade de anfitriões talentosos e desfrute de experiências gastronômicas únicas.<br/><br/></div>
+                <div class="texto_img3_home">Escolha um anfitrião, selecione uma refeição e reserve sua experiência gastronômica.</div>
+                <img id="imagem_churrasco_home" src="angeline/static/img/churrasco_home.jpg" />
+                <img id="imagem_seja_um_convidado_home" src="angeline/static/img/seja_um_convidado_home.jpg"/>
+                <img id="imagem_reserva_home" src="angeline/static/img/reserva_home.jpg" />
+                <button class="botao-customizado" type="button">
+                    <span>Cadastre-se</span>
+                </button>
+            </container>
+            
+    </main>
+
+    <footer>
+        <div id="div_footer"></div>
+        <div id="div2_footer">
+            <div id="background_footer"></div>
+            <div id="logo_footer">MyFood</div>
+            <div id="divisor_footer"></div>
+            <p id="direitos_reservados">© 2024 MyFood. Todos os direitos reservados.</p>
+            <div><a id="sobre_footer" href="#sobre_o_myfood_home">Sobre nós</a></div>
+            <div><a id="guia_footer" href="#">Guia</a></div>
+            <div><a id="cadastro_footer" href="{% url 'angeline:cadastro' %}">Cadastre-se</a></div>
+            <div><a id="entrar_footer" href="{% url 'angeline:login' %}">Entrar</a></div>
+            <div id="instagram_footer"></div>
+            <div id="slogan_footer"style="">Conectando pessoas por meio da gastronomia </div>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Adiciona a animação de rolar suavemente ao clicar nos links da navegação
+            $(".anav").on('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+    
+                    var hash = this.hash;
+    
+                    // Animação de rolar suavemente
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function(){
+                        // Adiciona o hash (#) à URL ao finalizar a animação de rolar
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>    
+
+</body>
+
+</html>
