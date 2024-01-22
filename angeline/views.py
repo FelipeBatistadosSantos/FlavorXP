@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.contrib.auth import logout
 from .models import CustomUser
 from .forms import CadastroForm, LoginForm
 
@@ -49,4 +50,25 @@ def login(request):
     return render(request, 'angeline/login.html', {'form':form})
 
 def home(request):
+    return render(request, 'angeline/home.html')
+
+
+def host(request):
+    return render(request, 'angeline/host.html')
+
+def sair(request):
+    logout(request)
+    return redirect('main:base')
+
+def perfil(request):
+    return render(request, 'angeline/perfil.html')
+
+
+
+
+
+
+def teste(request):
+    lista = {'nome':'Jardinagem', }
+
     return render(request, 'angeline/home.html')

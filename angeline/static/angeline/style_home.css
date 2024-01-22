@@ -74,7 +74,30 @@ a {
     display: flex;
     margin-left: 20px;
     padding: solid 5px;
-    margin: solid 1px;
+    margin-bottom: 10px;
+}
+
+.nav div ul li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.nav-link-host {
+
+    background-color: #ff0000; 
+    padding: 10px; 
+}
+
+.nav-link-perfil {
+
+    background-color: #00ff00; 
+    padding: 10px; 
+}
+
+.nav-link-sair {
+    
+    background-color: #0000ff; 
+    padding: 10px; 
 }
 
 
