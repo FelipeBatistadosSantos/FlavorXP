@@ -5,14 +5,14 @@ footer,
 nav,
 header,
 section {
-    margin: 0;
+    margin: auto;
 }
 
 
 /* --NAVBAR--*/
 
 .section_nav {
-    width: 1440px;
+    width: 100vw;
     height: 899px;
     left: 0px;
     top: 125px;
@@ -21,7 +21,7 @@ section {
 }
 
 .retangulo_nav {
-    width: 1440px;
+    width: 100vw;
     height: 125px;
     left: 0px;
     top: 0px;
@@ -481,7 +481,7 @@ a {
     font-size: 13px;
     font-family: Roboto;
     font-weight: 100;
-    word-wrap: break-word"
+    word-wrap: break-word;
 
 }
 
@@ -494,7 +494,7 @@ a {
     font-size: 14px;
     font-family: Outfit;
     font-weight: 400;
-    word-wrap: break-word"
+    word-wrap: break-word;
 
 }
 
@@ -507,7 +507,7 @@ a {
     font-size: 14px;
     font-family: Outfit;
     font-weight: 400;
-    word-wrap: break-word"
+    word-wrap: break-word;
 
 }
 
@@ -547,7 +547,7 @@ a {
 }
 
 #background_footer {
-    width: 100%;
+    width: 100vw;
     height: 100%;
     left: 0px;
     top: 0px;
@@ -617,8 +617,9 @@ a {
 
 /********HOME**********/
 
-/* Estilos padrão para telas maiores */
+
+@media screen and (max-width: 768px) {
 
 
 
-
+@media screen and (max-width: 768px) {}
