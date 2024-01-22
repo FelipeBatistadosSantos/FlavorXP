@@ -5,14 +5,14 @@ footer,
 nav,
 header,
 section {
-    margin: 0;
+    margin: auto;
 }
 
 
 /* --NAVBAR--*/
 
 .section_nav {
-    width: 1440px;
+    width: 100vw;
     height: 899px;
     left: 0px;
     top: 125px;
@@ -21,7 +21,7 @@ section {
 }
 
 .retangulo_nav {
-    width: 1440px;
+    width: 100vw;
     height: 125px;
     left: 0px;
     top: 0px;
@@ -51,7 +51,7 @@ a {
 }
 
 .nav-link,
-a {
+.anav {
     position: absolute;
     font-family: Outfit;
     font-weight: 200;
@@ -166,6 +166,7 @@ a {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1000;
 }
 
 .botao_cadastro1_home:hover {
@@ -278,7 +279,7 @@ a {
     border: 5px #E9C300 solid;
 }
 
-.sobre_o_myfood_home {
+#sobre_o_myfood_home {
     left: 522px;
     top: 1124px;
     position: absolute;
@@ -480,7 +481,7 @@ a {
     font-size: 13px;
     font-family: Roboto;
     font-weight: 100;
-    word-wrap: break-word"
+    word-wrap: break-word;
 
 }
 
@@ -493,7 +494,7 @@ a {
     font-size: 14px;
     font-family: Outfit;
     font-weight: 400;
-    word-wrap: break-word"
+    word-wrap: break-word;
 
 }
 
@@ -506,7 +507,7 @@ a {
     font-size: 14px;
     font-family: Outfit;
     font-weight: 400;
-    word-wrap: break-word"
+    word-wrap: break-word;
 
 }
 
@@ -546,7 +547,7 @@ a {
 }
 
 #background_footer {
-    width: 100%;
+    width: 100vw;
     height: 100%;
     left: 0px;
     top: 0px;
@@ -613,10 +614,6 @@ a {
     word-wrap: break-word
 }
 
+
 /********HOME**********/
 
-
-
-
-
-@media screen and (max-width: 768px) {}

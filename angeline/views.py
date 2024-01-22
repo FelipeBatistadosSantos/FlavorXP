@@ -5,19 +5,25 @@ from .forms import CadastroForm, LoginForm
 def cadastro(request):
     if request.method == 'POST':
         form = CadastroForm(request.POST)
-        email = request.POST['email']
-        nome = request.POST['nome']
-        senha = request.POST['senha']
-        telefone = request.POST['telefone']
-        cidade = request.POST['cidade']
+        if form.is_valid():
+            email = request.POST['email']
+            nome = request.POST['nome']
+            cpf = request.POST['cpf']
+            senha = request.POST['senha']
+            telefone = request.POST['telefone']
+            cidade = request.POST['cidade']
+            estado = request.POST['estado']
 
-        usuario = CustomUser.objects.create_user(email=email, password=senha, nome=nome, telefone=telefone, cidade=cidade)
-        usuario.save()
-        return redirect('angeline:login')  # Redireciona para a página de login após o cadastro
+            usuario = CustomUser.objects.create_user(email=email, password=senha, nome=nome, telefone=telefone, cidade=cidade, cpf=cpf, estado=estado)
+            usuario.save()
+            return redirect('angeline:login')
+        else:
+            erros = form.errors
+            return render(request, 'angeline/cadastro.html', {'form': form, 'erros': erros})  
     else:
         form = CadastroForm()
     
-    return render(request, 'angeline/cadastro.html', {'form': form})  # Renderiza o formulário de cadastro
+    return render(request, 'angeline/cadastro.html', {'form': form})  
 
 
 def login(request):
