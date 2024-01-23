@@ -7,6 +7,7 @@
     <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
     <link rel="stylesheet" href="main/static/style_base.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://kit.fontawesome.com/3cb2d5abf9.js" crossorigin="anonymous"></script>
     <title>MyFood</title>
 </head>
 
@@ -14,13 +15,12 @@
     
     <nav style="width: 1440px; height: 125px; left: 0px; top: 0px; position: absolute">
         <div class="retangulo_nav"></div>
-        <div class="logo">MyFood</div>
+        <div class="logo"><i class="fa-solid fa-bowl-food"> </i> MyFood</div>
         <ul>
             <li class="nav-link nav-link-signup"><a class="anav" href="{% url 'angeline:cadastro' %}">Cadastre-se</a></li>
             <li class="nav-link nav-link-about"><a class="anav" href="#sobre_o_myfood_home">Sobre</a></li>
             <li class="nav-link nav-link-guide"><a class="anav" href="#">Guia</a></li>
             <li class="nav-link nav-link-login"><a class="anav" href="{% url 'angeline:login' %}">Entrar</a></li>
-
         </ul>
     </nav>
 
@@ -31,10 +31,6 @@
                 <div class="texto1">"Sabores que unem, experiências que encantam”<br/><br/></div>
                 <div style="width: 504px; height: 112px; left: 765px; top: 594px; position: absolute; color: black; font-size: 46px; font-family: Outfit; font-weight: 300; word-wrap: break-word">Bem-vindo ao nosso  universo gastronômico!<br/><br/></div>
                 <img class="imagem_frango_home" src="angeline/static/img/frango_home.jpg" />
-                <div class="palito palito_roxo1"></div>
-                <div class="palito palito_roxo2"></div>
-                <div class="palito palito_roxo3"></div>
-                <div class="palito palito_roxo4"></div>
                 <a href="{%url 'angeline:cadastro'%}" class="">
                     <button class="botao_cadastro1_home" type="button">
                         <span class="spancad">Cadastre-se</span>
