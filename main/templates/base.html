@@ -18,7 +18,7 @@
         <ul>
             <li class="nav-link nav-link-signup"><a class="anav" href="{% url 'angeline:cadastro' %}">Cadastre-se</a></li>
             <li class="nav-link nav-link-about"><a class="anav" href="#sobre_o_myfood_home">Sobre</a></li>
-            <li class="nav-link nav-link-guide"><a class="anav" href="#">Guia</a></li>
+            <li class="nav-link nav-link-guide"><a class="anav" href="#como_funciona_home">Guia</a></li>
             <li class="nav-link nav-link-login"><a class="anav" href="{% url 'angeline:login' %}">Entrar</a></li>
 
         </ul>
@@ -53,11 +53,12 @@
             <container class="container3_home">  
                 <div id="sobre_o_myfood_home" ><span style="color: white; font-size: 48px; font-family: Outfit; font-weight: 500; word-wrap: break-word">Sobre</span><span style="color: white; font-size: 64px; font-family: Outfit; font-weight: 400; word-wrap: break-word">  </span><span style="color: #F1C400; font-size: 64px; font-family: Outfit; font-weight: 900; word-wrap: break-word">MyFood</span></div>
                 <div class="backgrond_amarelo2_home"></div>
-                <div class="como_funciona_home"><span style="color: white; font-size: 64px; font-family: Outfit; font-weight: 400; word-wrap: break-word">Como funciona o </span><span style="color: #4E008E; font-size: 64px; font-family: Outfit; font-weight: 900; word-wrap: break-word">MyFood</span></div>
-                <button class="entrar_home" type="button">
-                    <span class="spanent">Entrar</span>
-                </button>
-                </button>
+                <div id="como_funciona_home"><span style="color: white; font-size: 64px; font-family: Outfit; font-weight: 400; word-wrap: break-word">Como funciona o </span><span style="color: #4E008E; font-size: 64px; font-family: Outfit; font-weight: 900; word-wrap: break-word">MyFood</span></div>
+                <a href="{%url 'angeline:login'%}" class="">
+                    <button class="entrar_home" type="button">
+                        <span class="spanent">Entrar</span>
+                    </button>
+                </a>
                 <div class="explicacao_myfood_home">Nossa plataforma online serve como um elo refinado entre anfitriões e convidados apaixonados pelo universo gastronômico e com interesses em comum, proporcionando aos anfitriões a oportunidade distinta de transformar suas habilidades culinárias em experiências remuneradas para os convidados.<br/><br/></div>
                 <div class="retangulo_sob_imagem1_home"></div>
                 <div class="retangulo_sob_imagem2_home" ></div>
@@ -71,9 +72,11 @@
                 <img id="imagem_churrasco_home" src="angeline/static/img/churrasco_home.jpg" />
                 <img id="imagem_seja_um_convidado_home" src="angeline/static/img/seja_um_convidado_home.jpg"/>
                 <img id="imagem_reserva_home" src="angeline/static/img/reserva_home.jpg" />
-                <button class="botao-customizado" type="button">
-                    <span>Cadastre-se</span>
-                </button>
+                <a href="{%url 'angeline:cadastro'%}" class="">
+                    <button class="botao-customizado" type="button">
+                        <span>Cadastre-se</span>
+                    </button>
+                </a>    
             </container>
             
     </main>
@@ -86,7 +89,7 @@
             <div id="divisor_footer"></div>
             <p id="direitos_reservados">© 2024 MyFood. Todos os direitos reservados.</p>
             <div><a id="sobre_footer" href="#sobre_o_myfood_home">Sobre nós</a></div>
-            <div><a id="guia_footer" href="#">Guia</a></div>
+            <div><a id="guia_footer" href="#como_funciona_home">Guia</a></div>
             <div><a id="cadastro_footer" href="{% url 'angeline:cadastro' %}">Cadastre-se</a></div>
             <div><a id="entrar_footer" href="{% url 'angeline:login' %}">Entrar</a></div>
             <div id="instagram_footer"></div>
@@ -97,7 +100,7 @@
     <script>
         $(document).ready(function() {
             // Adiciona a animação de rolar suavemente ao clicar nos links da navegação
-            $(".anav").on('click', function(event) {
+            $(".anav, #sobre_footer, #guia_footer").on('click', function(event) {
                 if (this.hash !== "") {
                     event.preventDefault();
     
