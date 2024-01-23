@@ -1,5 +1,30 @@
-<h1>Dados do usuário</h1>
-<p>Nome</p>
-<p>Telefone</p>
-<p>Cidade</p>
-<p>Experiências</p>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Seu Perfil</h1>
+        {% for value in tudo %}
+        <p>Nome: {{ value.nome }}</p>
+        <p>Telefone: {{ value.telefone }}</p>
+        <p>CPF: {{ value.cpf }}</p>
+        <p>Cidade: {{ value.cidade }}</p>
+        <p>Estado: {{ value.estado }}</p>
+        <p>Email: {{ value.email }}</p>
+        {% endfor %}
+
+
+    </div>
+
+</body>
+
+</html>

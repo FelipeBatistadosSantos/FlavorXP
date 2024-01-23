@@ -1,7 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from .models import CustomUser
 from .forms import CadastroForm, LoginForm
+
 
 def cadastro(request):
     if request.method == 'POST':
@@ -60,15 +62,35 @@ def sair(request):
     logout(request)
     return redirect('main:base')
 
+
 def perfil(request):
-    return render(request, 'angeline/perfil.html')
+    dados = CustomUser.objects.all() #puxa os dados gravados no models de cadastro
+    usuario = []                     #inicia uma lista vazia
+    
+    for perfil in dados:                #itera sobre os dados 
+        dado_usuario = {
+            'nome': perfil.nome,
+            'email': perfil.email,
+            'cidade': perfil.cidade,
+            'estado': perfil.estado,
+            'cpf': perfil.cpf,
+            'telefone': perfil.telefone
+        }
+        
+        usuario.append(dado_usuario)    #popula a lista com os dados iterados
+
+    all_context = {
+        'tudo': usuario             #cria um novo dic para receber a lista na chave 'tudo'
+    }
+
+    return render(request, 'angeline/perfil.html', all_context) #joga o dic novo para o template
 
 
 
 
 
 
-def teste(request):
+def testeFeed(request):
     lista = {'nome':'Jardinagem', }
 
     return render(request, 'angeline/home.html')
