@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +9,21 @@
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'angeline/base.css' %}">
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Login</h2>
-    <form method="post" action="{% url 'angeline:login' %}">
-        {% csrf_token %}
-        
-        {{ form.as_p }}
-        
-        <button type="submit">Entrar</button>
-    </form>
-</div>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="post" action="{% url 'angeline:login' %}">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">Entrar</button>
+            <h6>Não tem uma conta? <a href="{% url 'angeline:cadastro' %}">Cadastre-se </a></h6>
+        </form>
+    </div>
 
 </body>
+
 </html>
