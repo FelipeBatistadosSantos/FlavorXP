@@ -1,8 +1,22 @@
-<form method="get" action="{% url 'listar_produtos' %}">
-    {{ form.as_p }}
-    <input type="submit" value="Filtrar">
-</form>
+<!-- listar_produtos.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Produtos</title>
+</head>
+<body>
+    <h1>Listar Produtos</h1>
 
-{% for produto in produtos %}
-    <p>{{ produto.nome }} - R$ {{ produto.preco }} - {{ produto.cidade }}</p>
-{% endfor %}
+    <!-- Formulário de filtro -->
+    <form method="get" action="">
+        {{ form.cidade }}
+        <input type="submit" value="Filtrar">
+    </form>
+
+    <!-- Resultados -->
+    {% for produto in produtos %}
+        <p>{{ produto.nome }} - R$ {{ produto.preco }} - {{ produto.categoria }} - {{ produto.cidade }}</p>
+    {% endfor %}
+</body>
+</html>
