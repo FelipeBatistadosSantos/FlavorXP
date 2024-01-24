@@ -1,0 +1,8 @@
+<form method="get" action="{% url 'listar_produtos' %}">
+    {{ form.as_p }}
+    <input type="submit" value="Filtrar">
+</form>
+
+{% for produto in produtos %}
+    <p>{{ produto.nome }} - R$ {{ produto.preco }} - {{ produto.cidade }}</p>
+{% endfor %}

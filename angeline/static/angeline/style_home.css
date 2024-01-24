@@ -13,7 +13,7 @@ section {
 /* --NAVBAR--*/
 
 .nav{
-    position: absolute;
+    position: relative;
 }
 
 .section_nav {
@@ -30,7 +30,7 @@ section {
     height: 125px;
     left: 0px;
     top: 0px;
-    position: absolute;
+    position: relative;
     background: #4E008E;
     color: white;
     border-bottom: 1px solid #ccc;
@@ -62,9 +62,9 @@ a {
 
 }
 
-.nav-link,
+.nav-link
 a {
-    position: absolute;
+    position: relative;
     font-family: Outfit;
     font-weight: 200;
     font-size: 24px;
@@ -72,6 +72,7 @@ a {
     word-wrap: break-word;
     list-style: none;
     display: flex;
+    justify-content: space-evenly;
     margin-left: 20px;
     padding: solid 5px;
     margin-bottom: 10px;
@@ -82,22 +83,64 @@ a {
     margin-bottom: 10px;
 }
 
-.nav-link-host {
-
-    background-color: #ff0000; 
-    padding: 10px; 
+body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F1C400;
+    max-width: 100%;
+    overflow-x: hidden;
+    width: 100%;
 }
 
-.nav-link-perfil {
-
-    background-color: #00ff00; 
-    padding: 10px; 
+  .feed-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 800px;
+    margin: 15% auto;
 }
 
-.nav-link-sair {
-    
-    background-color: #0000ff; 
-    padding: 10px; 
+  .feed-item {
+    box-sizing: border-box;
+    width: calc(33.33% - 20px);
+    margin: 10px;
+    padding: 15px;
+    border: 6px solid #fff;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+  .feed-item:hover {
+    transform: scale(1.05);
+}
+
+  .feed-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+  .feed-item h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+  .feed-item p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+  .feed-item span {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #27ae60;
 }
 
 

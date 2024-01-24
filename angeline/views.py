@@ -3,6 +3,8 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser
 from .forms import CadastroForm, LoginForm
+from .models import Produto
+from .forms import ProdutoFilterForm
 
 
 def cadastro(request):
@@ -94,3 +96,16 @@ def testeFeed(request):
     lista = {'nome':'Jardinagem', }
 
     return render(request, 'angeline/home.html')
+
+
+def listar_produtos(request):
+    produtos = Produto.objects.all()
+    form = ProdutoFilterForm(request.GET)
+
+    if form.is_valid():
+        cidade = form.cleaned_data.get('cidade')
+
+        if cidade:
+            produtos = produtos.filter(cidade__icontains=cidade)
+
+    return render(request, 'angeline/filtro.html', {'produtos': produtos, 'form': form})
