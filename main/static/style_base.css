@@ -7,6 +7,8 @@ section {
     margin: auto;
 }
 
+
+    
 body {
     max-width: 100%;
     overflow-x: hidden;
@@ -24,6 +26,8 @@ body {
     position: absolute;
     background: #F1C400;
 }
+
+
 
 .retangulo_nav {
     width: 100vw;
@@ -210,7 +214,7 @@ a {
 
 
 .background_roxo_home {
-    width: 1440px;
+    width: 100vw;
     height: 1017px;
     left: 0px;
     top: 1024px;
@@ -292,7 +296,7 @@ a {
 }
 
 .backgrond_amarelo2_home {
-    width: 1440px;
+    width: 100vw;
     height: 1025px;
     left: 0px;
     top: 2041px;
