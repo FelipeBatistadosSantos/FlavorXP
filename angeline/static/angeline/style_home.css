@@ -13,7 +13,7 @@ section {
 /* --NAVBAR--*/
 
 .nav{
-    position: absolute;
+    position: relative;
 }
 
 .section_nav {
@@ -30,7 +30,7 @@ section {
     height: 125px;
     left: 0px;
     top: 0px;
-    position: absolute;
+    position: relative;
     background: #4E008E;
     color: white;
     border-bottom: 1px solid #ccc;
@@ -62,9 +62,9 @@ a {
 
 }
 
-.nav-link,
+.nav-link
 a {
-    position: absolute;
+    position: relative;
     font-family: Outfit;
     font-weight: 200;
     font-size: 24px;
@@ -72,6 +72,7 @@ a {
     word-wrap: break-word;
     list-style: none;
     display: flex;
+    justify-content: space-evenly;
     margin-left: 20px;
     padding: solid 5px;
     margin-bottom: 10px;
@@ -82,23 +83,7 @@ a {
     margin-bottom: 10px;
 }
 
-.nav-link-host {
 
-    background-color: #ff0000; 
-    padding: 10px; 
-}
-
-.nav-link-perfil {
-
-    background-color: #00ff00; 
-    padding: 10px; 
-}
-
-.nav-link-sair {
-    
-    background-color: #0000ff; 
-    padding: 10px; 
-}
 
 
 /*Footer*/
