@@ -3,7 +3,7 @@ from django.contrib.auth import logout, authenticate, login as auth_login
 from django.contrib import messages
 from .models import CustomUser
 from .forms import CustomUserCreationForm, CustomUserLoginForm
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
 
 
@@ -27,6 +27,10 @@ class CustomLoginView(LoginView):
     authentication_form = CustomUserLoginForm
 
 
+class CustomLogoutView(LogoutView):
+    next_page = 'main:base'
+
+
 
 def home(request):
     return render(request, 'angeline/home.html')
@@ -35,9 +39,9 @@ def home(request):
 def host(request):
     return render(request, 'angeline/host.html')
 
-def sair(request):
-    logout(request)
-    return redirect('main:base')
+
+
+
 
 
 def perfil(request):
