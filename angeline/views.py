@@ -6,7 +6,6 @@ from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastro
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser
-from .forms import CadastroForm, LoginForm
 from .models import Produto
 from .forms import ProdutoFilterForm
 
