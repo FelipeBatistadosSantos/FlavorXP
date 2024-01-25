@@ -29,6 +29,33 @@ class CustomUser(AbstractBaseUser):
     
     
 class CompleteCadastro(models.Model):
+
+    IDIOMA_CHOICES = [
+        ('ingles', 'Inglês'),
+        ('espanhol', 'Espanhol'),
+        ('italiano', 'Italiano'),
+        ('alemão', 'Alemão'),
+        ('outro', 'Outro')
+    ]
+
+    PROEFICIENCIA_CHOICES = [
+        ('basico', 'Básico'),
+        ('intermediario', 'Intermediário'),
+        ('avancado', 'Avançado'),
+        ('fluente', 'Fluente')
+    ]
+
+    RESTRICAO_CHOICES = [
+        ('gluten', 'Glúten'),
+        ('lactose', 'Lactose'),
+        ('vegano', 'Vegano'),
+        ('vegetariano', 'Vegetariano'),
+        ('outros', 'Outros')
+    ]
+
+
+
+
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     cep = models.CharField('cep', max_length=15, default=False)
     cpf = models.CharField('cpf', max_length=11, default=False)
@@ -39,8 +66,8 @@ class CompleteCadastro(models.Model):
     sobre = models.TextField('sobre', default=False)
     profissao = models.CharField('profissao',max_length=50)
     hobbie = models.CharField('hobbie', max_length=50)
-    idioma = models.CharField('idioma',max_length=50)
-
+    idioma = models.CharField('idioma', choices=IDIOMA_CHOICES, max_length=30)
+    proficiencia = models.CharField('Proficiência', max_length=20, choices=PROEFICIENCIA_CHOICES, default=False)
     comidaf = models.CharField('comidaf', max_length=50)
     bebida = models.CharField('bebida',max_length=50)
-    restricao = models.CharField('restricao',max_length=50)
+    restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30)
