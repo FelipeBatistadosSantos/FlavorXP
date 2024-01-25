@@ -1,5 +1,5 @@
 <!-- angeline/templates/angeline/perfil.html -->
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -7,7 +7,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    {% load static %}
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
 </head>
 
@@ -19,6 +18,12 @@
         {% if form_preenchido %}
             <h1>Seu Perfil</h1>
             <p>Usuario: {{ perfil_usuario.usuario }}</p>
+            <p>Email: {{ perfil_usuario.email }}</p>
+            <p>Cpf: {{ perfil_usuario.cpf }}</p>
+            <p>Cep: {{ perfil_usuario.cep }} </p>
+            <p>Cidade: {{ perfil_usuario.cidade }} </p>
+            <p>Estado: {{ perfil_usuario.estado }}</p>
+            <p>Telefone: {{ perfil_usuario.telefone }}</p>
             <p>Nascimento: {{ perfil_usuario.nascimento }}</p>
             <p>Sobre: {{ perfil_usuario.sobre }}</p>
             <p>Profissão: {{ perfil_usuario.profissao }}</p>
@@ -29,6 +34,8 @@
             <p>Restrições alimentares: {{ perfil_usuario.restricao }}</p>
 
             <a href="{% url 'angeline:perfil' %}?edit=1">Editar</a>
+            <a href="{% url 'angeline:home' %}">Home</a>
+
         {% else %}
             <h1>Complete seu perfil</h1>
             <form method="post" action="{% url 'angeline:perfil' %}">
@@ -36,6 +43,7 @@
                 {{ form.as_p }}
                 <button type="submit">Salvar</button>
             </form>
+            <a href="{% url 'angeline:home' %}">Home</a>
         {% endif %}
 
     </div>

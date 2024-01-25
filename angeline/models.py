@@ -30,6 +30,11 @@ class CustomUser(AbstractBaseUser):
     
 class CompleteCadastro(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
+    cep = models.CharField('cep', max_length=15, default=False)
+    cpf = models.CharField('cpf', max_length=11, default=False)
+    cidade = models.CharField('cidade', max_length=50, default=False)
+    estado = models.CharField('estado', max_length=2, default=False)
+    telefone = models.CharField('telefone', max_length=11, default=False)
     nascimento = models.CharField('nascimento', max_length=10)
     sobre = models.TextField('sobre', default=False)
     profissao = models.CharField('profissao',max_length=50)

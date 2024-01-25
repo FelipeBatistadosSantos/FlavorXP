@@ -4,6 +4,7 @@ from django.contrib import messages
 from .models import CustomUser, CompleteCadastro
 from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -43,7 +44,7 @@ def host(request):
 
 
 
-
+@login_required
 def perfil(request):
     perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
 
@@ -63,6 +64,7 @@ def perfil(request):
     return render(request, 'angeline/perfil.html', {'form': form, 'perfil_usuario': perfil_usuario, 'form_preenchido': not created})
 
 
+@login_required
 def editar_perfil(request):
     perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
 

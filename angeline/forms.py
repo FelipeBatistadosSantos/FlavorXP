@@ -20,4 +20,4 @@ class CustomUserLoginForm(AuthenticationForm):
 class CompleteCadastroForm(forms.ModelForm):
     class Meta:
         model = CompleteCadastro
-        fields = ['nascimento','sobre','profissao','hobbie','idioma','comidaf','bebida','restricao']
+        fields = ['nascimento','sobre','profissao','hobbie','idioma','comidaf','bebida','restricao', 'cpf','cep','cidade','estado','telefone']
