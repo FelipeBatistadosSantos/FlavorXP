@@ -1,0 +1,28 @@
+<!-- angeline/templates/angeline/editar_perfil.html -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Editar Perfil</h1>
+
+        <form method="post" action="{% url 'angeline:editar_perfil' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Salvar</button>
+        </form>
+
+    </div>
+</body>
+
+</html>

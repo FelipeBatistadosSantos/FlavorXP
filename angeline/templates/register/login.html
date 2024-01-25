@@ -7,7 +7,6 @@
     <title>Login</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'angeline/base.css' %}">
 </head>
 
 <body>
@@ -20,7 +19,11 @@
             {{ form.as_p }}
 
             <button type="submit">Entrar</button>
-            <h6>Não tem uma conta? <a href="{% url 'angeline:cadastro' %}">Cadastre-se </a></h6>
+            <h6>Ainda não tem uma conta? Cadastre-se <a href="{% url 'angeline:cadastro' %}">aqui</a></h6>
+
+            {% if error_message %}
+                <p class="error">{{ error_message }}</p>
+            {% endif %}
         </form>
     </div>
 
