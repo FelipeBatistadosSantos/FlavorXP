@@ -1,4 +1,3 @@
-<!-- listar_produtos.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +7,12 @@
 <body>
     <h1>Listar Produtos</h1>
 
-    <!-- Formulário de filtro -->
+
     <form method="get" action="">
         {{ form.cidade }}
         <input type="submit" value="Filtrar">
     </form>
 
-    <!-- Resultados -->
     {% for produto in produtos %}
         <p>{{ produto.nome }} - R$ {{ produto.preco }} - {{ produto.categoria }} - {{ produto.cidade }}</p>
     {% endfor %}
