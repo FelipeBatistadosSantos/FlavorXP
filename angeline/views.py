@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import logout, authenticate, login as auth_login
 from django.contrib import messages
-from .models import CustomUser
-from .forms import CustomUserCreationForm, CustomUserLoginForm
+from .models import CustomUser, CompleteCadastro
+from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm
 from django.contrib.auth.views import LoginView, LogoutView
 
 
@@ -45,9 +45,36 @@ def host(request):
 
 
 def perfil(request):
-    return render(request, )
+    perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
+
+    if 'edit' in request.GET:
+        return redirect('angeline:editar_perfil')
+
+    if request.method == 'POST':
+        form = CompleteCadastroForm(request.POST, request.FILES, instance=perfil_usuario)
+        if form.is_valid():
+            form.save()
+            
+            if created:
+                return redirect('angeline:perfil')
+    else:
+        form = CompleteCadastroForm(instance=perfil_usuario)
+
+    return render(request, 'angeline/perfil.html', {'form': form, 'perfil_usuario': perfil_usuario, 'form_preenchido': not created})
 
 
+def editar_perfil(request):
+    perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
+
+    if request.method == 'POST':
+        form = CompleteCadastroForm(request.POST, request.FILES, instance=perfil_usuario)
+        if form.is_valid():
+            form.save()
+            return redirect('angeline:perfil')  
+    else:
+        form = CompleteCadastroForm(instance=perfil_usuario)
+
+    return render(request, 'angeline/editar_perfil.html', {'form': form, 'perfil_usuario': perfil_usuario})
 
 
 

@@ -1,4 +1,4 @@
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, User
 from django.db import models
 from cpf_field.models import CPFField
 
@@ -26,3 +26,16 @@ class CustomUser(AbstractBaseUser):
 
     def __str__(self):
         return self.email
+    
+    
+class CompleteCadastro(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
+    nascimento = models.CharField('nascimento', max_length=10)
+    sobre = models.TextField('sobre', default=False)
+    profissao = models.CharField('profissao',max_length=50)
+    hobbie = models.CharField('hobbie', max_length=50)
+    idioma = models.CharField('idioma',max_length=50)
+
+    comidaf = models.CharField('comidaf', max_length=50)
+    bebida = models.CharField('bebida',max_length=50)
+    restricao = models.CharField('restricao',max_length=50)
