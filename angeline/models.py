@@ -1,44 +1,32 @@
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, User
 from django.db import models
+from cpf_field.models import CPFField
+
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, email, password):
         if not email:
             raise ValueError('O endereço de e-mail deve ser fornecido')
+        
+        if not password:
+            raise ValueError('A senha deve ser fornecida')
+
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+        user = self.model(email=email)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
-        return self.create_user(email, password, **extra_fields)
-
-
 class CustomUser(AbstractBaseUser):
-    nome = models.CharField(max_length=255, default=False)
-    endereco = models.CharField(max_length=255, default=False)
-    telefone = models.CharField(max_length=15, default=False)
-    cpf = models.CharField(max_length=11, default=False, unique=True)
-    cidade = models.CharField(max_length=30, default=False)
-    estado = models.CharField(max_length=30, default=False)
-    email = models.EmailField(verbose_name='email address', max_length=255, unique=True, default=False)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
+    email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
+    password = models.TextField(verbose_name='password')
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['nome', 'endereco', 'telefone', 'cidade', 'cpf', 'estado']
-
     objects = CustomUserManager()
 
     def __str__(self):
         return self.email
     
-    def has_module_perms(self, app_label):
-        return True
     
     def has_perm(self, perm, obj=None):
         return True
@@ -46,3 +34,48 @@ class CustomUser(AbstractBaseUser):
 
 class Produto(models.Model):
     cidade = models.CharField(max_length=50)
+
+    
+class CompleteCadastro(models.Model):
+
+    IDIOMA_CHOICES = [
+        ('ingles', 'Inglês'),
+        ('espanhol', 'Espanhol'),
+        ('italiano', 'Italiano'),
+        ('alemão', 'Alemão'),
+        ('outro', 'Outro')
+    ]
+
+    PROEFICIENCIA_CHOICES = [
+        ('basico', 'Básico'),
+        ('intermediario', 'Intermediário'),
+        ('avancado', 'Avançado'),
+        ('fluente', 'Fluente')
+    ]
+
+    RESTRICAO_CHOICES = [
+        ('gluten', 'Glúten'),
+        ('lactose', 'Lactose'),
+        ('vegano', 'Vegano'),
+        ('vegetariano', 'Vegetariano'),
+        ('outros', 'Outros')
+    ]
+
+
+
+
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
+    cep = models.CharField('cep', max_length=15, default=False)
+    cpf = models.CharField('cpf', max_length=11, default=False)
+    cidade = models.CharField('cidade', max_length=50, default=False)
+    estado = models.CharField('estado', max_length=2, default=False)
+    telefone = models.CharField('telefone', max_length=11, default=False)
+    nascimento = models.CharField('nascimento', max_length=10)
+    sobre = models.TextField('sobre', default=False)
+    profissao = models.CharField('profissao',max_length=50)
+    hobbie = models.CharField('hobbie', max_length=50)
+    idioma = models.CharField('idioma', choices=IDIOMA_CHOICES, max_length=30)
+    proficiencia = models.CharField('Proficiência', max_length=20, choices=PROEFICIENCIA_CHOICES, default=False)
+    comidaf = models.CharField('comidaf', max_length=50)
+    bebida = models.CharField('bebida',max_length=50)
+    restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30)

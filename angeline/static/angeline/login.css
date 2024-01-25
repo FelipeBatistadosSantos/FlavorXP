@@ -14,9 +14,9 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(33, 18, 164, 0.1);
     padding: 20px;
-    width: 320px;
-    height: 555px;
-    text-align: center;
+    width: 400px;
+    height: 300px;
+    text-align: left;
     color: #000000;
 }
 
@@ -51,10 +51,8 @@ button {
 }
 
 button:hover {
-
     transform: scaleY(1.125);
     background-color: #7a10d2;
-    
 }
 
 

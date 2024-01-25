@@ -1,3 +1,5 @@
+<!-- angeline/templates/angeline/perfil.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,26 +7,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    {% load static %}
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
 </head>
 
 <body>
     <div class="container">
 
-        <h1>Seu Perfil</h1>
-        {% for value in tudo %}
-        <p>Nome: {{ value.nome }}</p>
-        <p>Telefone: {{ value.telefone }}</p>
-        <p>CPF: {{ value.cpf }}</p>
-        <p>Cidade: {{ value.cidade }}</p>
-        <p>Estado: {{ value.estado }}</p>
-        <p>Email: {{ value.email }}</p>
-        {% endfor %}
 
+
+        {% if form_preenchido %}
+            <h1>Seu Perfil</h1>
+            <p>Usuario: {{ perfil_usuario.usuario }}</p>
+            <p>Email: {{ perfil_usuario.email }}</p>
+            <p>Cpf: {{ perfil_usuario.cpf }}</p>
+            <p>Cep: {{ perfil_usuario.cep }} </p>
+            <p>Cidade: {{ perfil_usuario.cidade }} </p>
+            <p>Estado: {{ perfil_usuario.estado }}</p>
+            <p>Telefone: {{ perfil_usuario.telefone }}</p>
+            <p>Nascimento: {{ perfil_usuario.nascimento }}</p>
+            <p>Sobre: {{ perfil_usuario.sobre }}</p>
+            <p>Profissão: {{ perfil_usuario.profissao }}</p>
+            <p>Hobbies: {{ perfil_usuario.hobbie }}</p>
+            <p>Idiomas: {{ perfil_usuario.idioma }}</p>
+            <p>Comida favorita: {{ perfil_usuario.comidaf }}</p>
+            <p>Bebida favorita: {{ perfil_usuario.bebida }}</p>
+            <p>Restrições alimentares: {{ perfil_usuario.restricao }}</p>
+
+            <a href="{% url 'angeline:perfil' %}?edit=1">Editar</a>
+            <a href="{% url 'angeline:home' %}">Home</a>
+
+        {% else %}
+            <h1>Complete seu perfil</h1>
+            <form method="post" action="{% url 'angeline:perfil' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Salvar</button>
+            </form>
+            <a href="{% url 'angeline:home' %}">Home</a>
+        {% endif %}
 
     </div>
-
 </body>
 
 </html>

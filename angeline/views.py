@@ -1,5 +1,9 @@
 from django.shortcuts import render, HttpResponse, redirect
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate, login as auth_login
+from django.contrib import messages
+from .models import CustomUser, CompleteCadastro
+from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser
 from .forms import CadastroForm, LoginForm
@@ -7,51 +11,31 @@ from .models import Produto
 from .forms import ProdutoFilterForm
 
 
+
 def cadastro(request):
     if request.method == 'POST':
-        form = CadastroForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            email = request.POST['email']
-            nome = request.POST['nome']
-            cpf = request.POST['cpf']
-            senha = request.POST['senha']
-            telefone = request.POST['telefone']
-            cidade = request.POST['cidade']
-            estado = request.POST['estado']
-
-            usuario = CustomUser.objects.create_user(email=email, password=senha, nome=nome, telefone=telefone, cidade=cidade, cpf=cpf, estado=estado)
-            usuario.save()
+            user = form.save()
+            messages.success(request, 'Cadastro realizado com sucesso. Faça o login.')
             return redirect('angeline:login')
         else:
-            erros = form.errors
-            return render(request, 'angeline/cadastro.html', {'form': form, 'erros': erros})  
+            messages.error(request, 'Erro no cadastro. Por favor, corrija os erros abaixo.')
     else:
-        form = CadastroForm()
-    
-    return render(request, 'angeline/cadastro.html', {'form': form})  
+        form = CustomUserCreationForm()
+
+    return render(request, 'register/cadastro.html', {'form': form})
 
 
-def login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        email = request.POST['email']
-        senha = request.POST['senha']
-        try:
-            usuario = CustomUser.objects.get(email=email)
-            if usuario.check_password(senha):
-               
-                return redirect('angeline:home')  # Redireciona para a página inicial após o login bem-sucedido
-            else:
-               
-                return render(request, 'angeline/login.html', {'form': form,})
-            
-        except CustomUser.DoesNotExist:
-            
-            return render(request, 'angeline/login.html', {'form': form})
-    else:
-        form = LoginForm()
-    
-    return render(request, 'angeline/login.html', {'form':form})
+class CustomLoginView(LoginView):
+    template_name = 'register/login.html'
+    authentication_form = CustomUserLoginForm
+
+
+class CustomLogoutView(LogoutView):
+    next_page = 'main:base'
+
+
 
 def home(request):
     return render(request, 'angeline/home.html')
@@ -60,35 +44,43 @@ def home(request):
 def host(request):
     return render(request, 'angeline/host.html')
 
-def sair(request):
-    logout(request)
-    return redirect('main:base')
 
 
+
+
+@login_required
 def perfil(request):
-    dados = CustomUser.objects.all() #puxa os dados gravados no models de cadastro
-    usuario = []                     #inicia uma lista vazia
-    
-    for perfil in dados:                #itera sobre os dados 
-        dado_usuario = {
-            'nome': perfil.nome,
-            'email': perfil.email,
-            'cidade': perfil.cidade,
-            'estado': perfil.estado,
-            'cpf': perfil.cpf,
-            'telefone': perfil.telefone
-        }
-        
-        usuario.append(dado_usuario)    #popula a lista com os dados iterados
+    perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
 
-    all_context = {
-        'tudo': usuario             #cria um novo dic para receber a lista na chave 'tudo'
-    }
+    if 'edit' in request.GET:
+        return redirect('angeline:editar_perfil')
 
-    return render(request, 'angeline/perfil.html', all_context) #joga o dic novo para o template
+    if request.method == 'POST':
+        form = CompleteCadastroForm(request.POST, request.FILES, instance=perfil_usuario)
+        if form.is_valid():
+            form.save()
+            
+            if created:
+                return redirect('angeline:perfil')
+    else:
+        form = CompleteCadastroForm(instance=perfil_usuario)
+
+    return render(request, 'angeline/perfil.html', {'form': form, 'perfil_usuario': perfil_usuario, 'form_preenchido': not created})
 
 
+@login_required
+def editar_perfil(request):
+    perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
 
+    if request.method == 'POST':
+        form = CompleteCadastroForm(request.POST, request.FILES, instance=perfil_usuario)
+        if form.is_valid():
+            form.save()
+            return redirect('angeline:perfil')  
+    else:
+        form = CompleteCadastroForm(instance=perfil_usuario)
+
+    return render(request, 'angeline/editar_perfil.html', {'form': form, 'perfil_usuario': perfil_usuario})
 
 
 

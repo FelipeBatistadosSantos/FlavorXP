@@ -87,7 +87,7 @@ section {
     left: 188px;
     top: 22px;
     position: absolute;
-    color: #E5E5E5;
+    color: #F1C400;
     font-size: 64px;
     font-family: Outfit;
     font-weight: 900;
@@ -129,7 +129,7 @@ body {
     font-family: 'Outfit', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #F1C400;
+    background-color: #ffffff;
     max-width: 100%;
     overflow-x: hidden;
     width: 100%;
@@ -148,10 +148,11 @@ body {
     width: calc(33.33% - 20px);
     margin: 10px;
     padding: 15px;
-    border: 6px solid #fff;
+    border: 0.001px solid #000000;
+    border-style: ridge;
     border-radius: 10px;
     background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out;
 }
 
