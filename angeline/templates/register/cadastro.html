@@ -7,7 +7,6 @@
     <title>Cadastro</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'angeline/base.css' %}">
 </head>
 
 <body>
@@ -20,7 +19,7 @@
             {{ form.as_p }}
 
             <button type="submit">Cadastrar</button>
-            <h6>Já tem uma conta? faça seu login <a href="{% url 'angeline:login' %}">aqui</a></h6>
+            <h6>Já tem uma conta? Faça seu login <a href="{% url 'angeline:login' %}">aqui</a></h6>
         </form>
     </div>
 
