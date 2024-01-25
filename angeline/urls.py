@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView
-from .views import cadastro, CustomLoginView, home, host, perfil, CustomLogoutView
+from .views import cadastro, CustomLoginView, home, host, perfil, CustomLogoutView, editar_perfil
 
 app_name = 'angeline'
 
@@ -11,5 +11,6 @@ urlpatterns = [
     path('seja host', host, name='host'),
     path('perfil', perfil, name='perfil'),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
+    path('editar_perfil', editar_perfil, name='editar_perfil')
     
 ]
