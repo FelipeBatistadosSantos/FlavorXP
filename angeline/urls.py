@@ -10,5 +10,4 @@ urlpatterns = [
     path('home', home, name='home'),
     path('seja host', host, name='host'),
     path('perfil', perfil, name='perfil'),
-    
 ]

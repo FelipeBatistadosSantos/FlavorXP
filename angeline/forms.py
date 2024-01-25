@@ -49,3 +49,7 @@ class CadastroForm(forms.Form):
             raise forms.ValidationError('As senhas não coincidem.')
 
         return confirmar_senha
+
+
+class ProdutoFilterForm(forms.Form):
+    cidade = forms.CharField(required=False)
