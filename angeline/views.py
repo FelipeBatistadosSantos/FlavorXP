@@ -5,6 +5,8 @@ from .models import CustomUser, CompleteCadastro
 from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
+import json
+from django.views import View
 
 
 
@@ -77,6 +79,12 @@ def editar_perfil(request):
         form = CompleteCadastroForm(instance=perfil_usuario)
 
     return render(request, 'angeline/editar_perfil.html', {'form': form, 'perfil_usuario': perfil_usuario})
+
+
+
+
+
+
 
 
 
