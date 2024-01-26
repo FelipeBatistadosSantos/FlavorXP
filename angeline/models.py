@@ -71,3 +71,29 @@ class CompleteCadastro(models.Model):
     comidaf = models.CharField('comidaf', max_length=50)
     bebida = models.CharField('bebida',max_length=50)
     restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30)
+
+
+class Host(models.Model):
+    PROFISSIONAL = 'profissional'
+    AMADOR = 'amador'
+    AREA_GASTRONOMIA_CHOICES = [
+        (PROFISSIONAL, 'Profissional'),
+        (AMADOR, 'Amante da Gastronomia'),
+    ]
+
+    FREQUENCIA_CHOICES = [
+        ('diaria', 'Diariamente'),
+        ('semanal', 'Semanalmente'),
+        ('mensal', 'Mensalmente'),
+        ('ocasional', 'Ocasionalmente'),
+    ]
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
+    nome_empresa = models.CharField('Nome da Empresa/Marca/Apelido', max_length=100)
+    motivo = models.TextField('Motivo para ser um host')
+    area_gastronomia = models.CharField('Profissional da Área ou Amante da Gastronomia', max_length=20, choices=AREA_GASTRONOMIA_CHOICES)
+    servicos = models.TextField('Serviços Disponíveis')
+    frequencia_servicos = models.CharField('Frequência de Disponibilização de Serviços', max_length=20, choices=FREQUENCIA_CHOICES)
+    local_servico = models.CharField('Local de Serviço', max_length=100)
+    descricao_local = models.TextField('Descrição do Local de Serviço')
+
+

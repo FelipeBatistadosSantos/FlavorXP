@@ -7,7 +7,6 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 
 
-
 def cadastro(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -84,3 +83,59 @@ def testeFeed(request):
     lista = {'nome':'Jardinagem', }
 
     return render(request, 'angeline/home.html')
+
+
+from django.shortcuts import render
+from .models import Host
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Host
+from .forms import HostForm
+
+@login_required
+def editar_host(request):
+    # Obtém ou cria um objeto Host associado ao usuário logado
+    host, created = Host.objects.get_or_create(usuario=request.user)
+
+    if request.method == 'POST':
+        # Preenche o formulário com os dados do objeto Host
+        form = HostForm(request.POST, instance=host)
+        if form.is_valid():
+            # Salva os dados do formulário no objeto Host
+            form.save()
+            # Redireciona para a página de perfil ou outra página desejada
+            return redirect('angeline:host')
+    else:
+        # Se for uma requisição GET, preenche o formulário com os dados existentes
+        form = HostForm(instance=host)
+
+    return render(request, 'angeline/editar_host.html', {'form': form, 'host': host, 'form_preenchido': not created})
+
+@login_required
+def perfil_host(request):
+    # Obtém ou cria um objeto Host associado ao usuário logado
+    host, created = Host.objects.get_or_create(usuario=request.user)
+
+    if 'edit' in request.GET:
+        # Redireciona para a página de edição de host
+        return redirect('angeline:editar_host')
+
+    if request.method == 'POST':
+        # Preenche o formulário com os dados do objeto Host
+        form = HostForm(request.POST, instance=host)
+        if form.is_valid():
+            # Salva os dados do formulário no objeto Host
+            form.save()
+
+            if created:
+                # Se o objeto Host foi criado agora, redireciona para a página de perfil do host
+                return redirect('angeline:host')
+    else:
+        # Se for uma requisição GET, preenche o formulário com os dados existentes
+        form = HostForm(instance=host)
+
+    return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
+
+
+

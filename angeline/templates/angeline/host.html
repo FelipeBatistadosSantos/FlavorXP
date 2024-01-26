@@ -1,11 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seja Host</title>
+    <title>Detalhes do Host</title>
+    <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
 </head>
+
 <body>
-    
+
+    <div class="container">
+        <h1>Detalhes do Host</h1>
+        <p>Nome da Empresa/Marca: {{ host.nome_empresa }}</p>
+        <p>Motivo: {{ host.motivo }}</p>
+        <p>Área Gastronômica: {{ host.get_area_gastronomia_display }}</p>
+        <p>Serviços Disponíveis: {{ host.servicos }}</p>
+        <p>Frequência de Serviços: {{ host.get_frequencia_servicos_display }}</p>
+        <p>Local de Serviço: {{ host.local_servico }}</p>
+        <p>Descrição do Local de Serviço: {{ host.descricao_local }}</p>
+
+        <a href="{% url 'angeline:editar_host' %}?edit=1">Editar</a>
+        <a href="{% url 'angeline:home' %}">Home</a>
+    </div>    
 </body>
+
 </html>
