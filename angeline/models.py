@@ -31,11 +31,6 @@ class CustomUser(AbstractBaseUser):
     def has_perm(self, perm, obj=None):
         return True
     
-
-class Produto(models.Model):
-    cidade = models.CharField(max_length=50)
-
-    
 class CompleteCadastro(models.Model):
 
     IDIOMA_CHOICES = [
@@ -79,3 +74,11 @@ class CompleteCadastro(models.Model):
     comidaf = models.CharField('comidaf', max_length=50)
     bebida = models.CharField('bebida',max_length=50)
     restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30)
+
+class Cidade(models.Model):
+    nome = models.CharField(max_length=100)
+    evento = models.CharField(max_length=100)
+    nacionalidade = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nome

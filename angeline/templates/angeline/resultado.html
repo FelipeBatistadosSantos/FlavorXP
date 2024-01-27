@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultados</title>
+</head>
+<body>
+    <h2>Resultados para '{{ filtro }}':</h2>
+    {% if resultados %}
+        <ul>
+            {% for resultado in resultados %}
+                <li>{{ resultado.nome }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum resultado encontrado.</p>
+    {% endif %}
+</body>
+</html>

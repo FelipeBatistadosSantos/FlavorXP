@@ -6,7 +6,6 @@ from .models import CustomUser, CompleteCadastro
 
 
 
-
 class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
@@ -38,10 +37,6 @@ class CustomUserLoginForm(AuthenticationForm):
             raise forms.ValidationError('As senhas não coincidem.')
 
         return confirmar_senha
-
-
-class ProdutoFilterForm(forms.Form):
-    cidade = forms.CharField(required=False)
 
     
 class CompleteCadastroForm(forms.ModelForm):
