@@ -6,8 +6,9 @@ from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastro
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser
-# from .utils import filtrar_cidades
+from .utils import filtrar_cidades
 from django.db import models
+from .models import Cidade
 
 
 def cadastro(request):
@@ -88,41 +89,17 @@ def testeFeed(request):
     return render(request, 'angeline/home.html')
 
 
-
-# def filtrar_cidades_view(request):
-#     if request.method == 'POST':
-#         filtro = request.POST.get('filtro')
-#         cidades = [
-#             {1: {'nome': 'blumenau', 'evento': 'churrasco', 'nacionalidade': 'brasileira'}},
-#             {2: {'nome': 'brusque', 'evento': 'jantar', 'nacionalidade': 'italiana'}},
-#             {3: {'nome': 'joinville', 'evento': 'aulas de culinária', 'nacionalidade': 'francesa'}},
-#             {4: {'nome': 'florianopolis', 'evento': 'churrasco', 'nacionalidade': 'brasileira'}},
-#             {5: {'nome': 'itajai', 'evento': 'jantar', 'nacionalidade': 'espanhola'}},
-#             # Adicione mais cidades conforme necessário
-#         ]
-
-#         resultados = filtrar_cidades(cidades, filtro)
-
-#         return render(request, 'angeline/resultado.html', {'resultados': resultados, 'filtro': filtro})
-
-#     return render(request, 'angeline/filtrar_cidades.html')
-
-
-from .models import Cidade
-
-
-
 def filtrar_cidades_view(request):
     if request.method == 'POST':
         filtro = request.POST.get('filtro')
-        if len(filtro) >2 :
-
+        if len(filtro) > 2:
             resultados = Cidade.objects.filter(
                 models.Q(nome__icontains=filtro) |
                 models.Q(evento__icontains=filtro) |
                 models.Q(nacionalidade__icontains=filtro)
             )
-            
             return render(request, 'angeline/resultado.html', {'resultados': resultados, 'filtro': filtro})
+        else:
+            return render(request, 'angeline/resultado.html', {'resultados': [], 'filtro': filtro})
 
-    return render(request, 'angeline/resultado.html')
+    return render(request, 'angeline/filtrar_cidades.html')
