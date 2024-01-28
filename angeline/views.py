@@ -6,7 +6,8 @@ from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastro
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser
-from .utils import filtrar_cidades
+# from .utils import filtrar_cidades
+from django.db import models
 
 
 def cadastro(request):
@@ -87,28 +88,16 @@ def testeFeed(request):
     return render(request, 'angeline/home.html')
 
 
-# def listar_produtos(request):
-#     produtos = Produto.objects.all()
-#     form = ProdutoFilterForm(request.GET)
-
-#     if form.is_valid():
-#         cidade = form.cleaned_data.get('cidade')
-
-#         if cidade:
-#             produtos = produtos.filter(cidade__icontains=cidade)
-
-#     return render(request, 'angeline/filtro.html', {'produtos': produtos, 'form': form})
-
-
-# from django.shortcuts import render
 
 # def filtrar_cidades_view(request):
 #     if request.method == 'POST':
 #         filtro = request.POST.get('filtro')
 #         cidades = [
-#             {1: {'nome': 'blumenau'}},
-#             {2: {'nome': 'brusque'}},
-#             {3: {'nome': 'joinville'}},
+#             {1: {'nome': 'blumenau', 'evento': 'churrasco', 'nacionalidade': 'brasileira'}},
+#             {2: {'nome': 'brusque', 'evento': 'jantar', 'nacionalidade': 'italiana'}},
+#             {3: {'nome': 'joinville', 'evento': 'aulas de culinária', 'nacionalidade': 'francesa'}},
+#             {4: {'nome': 'florianopolis', 'evento': 'churrasco', 'nacionalidade': 'brasileira'}},
+#             {5: {'nome': 'itajai', 'evento': 'jantar', 'nacionalidade': 'espanhola'}},
 #             # Adicione mais cidades conforme necessário
 #         ]
 
@@ -119,45 +108,21 @@ def testeFeed(request):
 #     return render(request, 'angeline/filtrar_cidades.html')
 
 
+from .models import Cidade
 
-
-
-# def filtrar_cidades_view(request):
-#     if request.method == 'POST':
-#         filtro = request.POST.get('filtro')
-#         evento = request.POST.get('evento')  # Adicione um campo correspondente ao seu formulário HTML
-#         nacionalidade = request.POST.get('nacionalidade')  # Adicione um campo correspondente ao seu formulário HTML
-
-#         cidades = [
-#             {1: {'nome': 'blumenau', 'evento': 'churrasco', 'nacionalidade': 'brasileira'}},
-#             {2: {'nome': 'brusque', 'evento': 'jantar', 'nacionalidade': 'italiana'}},
-#             {3: {'nome': 'joinville', 'evento': 'aulas de culinária', 'nacionalidade': 'francesa'}},
-#             {4: {'nome': 'florianopolis', 'evento': 'churrasco', 'nacionalidade': 'brasileira'}},
-#             {5: {'nome': 'itajai', 'evento': 'jantar', 'nacionalidade': 'espanhola'}},
-#             # Adicione mais cidades conforme necessário
-#         ]
-
-#         resultados = filtrar_cidades(cidades, filtro, evento, nacionalidade)
-
-#         return render(request, 'angeline/resultado.html', {'resultados': resultados, 'filtro': filtro})
-
-#     return render(request, 'angeline/filtrar_cidades.html')
 
 
 def filtrar_cidades_view(request):
     if request.method == 'POST':
         filtro = request.POST.get('filtro')
-        cidades = [
-            {1: {'nome': 'blumenau', 'evento': 'churrasco', 'nacionalidade': 'brasileira'}},
-            {2: {'nome': 'brusque', 'evento': 'jantar', 'nacionalidade': 'italiana'}},
-            {3: {'nome': 'joinville', 'evento': 'aulas de culinária', 'nacionalidade': 'francesa'}},
-            {4: {'nome': 'florianopolis', 'evento': 'churrasco', 'nacionalidade': 'brasileira'}},
-            {5: {'nome': 'itajai', 'evento': 'jantar', 'nacionalidade': 'espanhola'}},
-            # Adicione mais cidades conforme necessário
-        ]
+        if len(filtro) >2 :
 
-        resultados = filtrar_cidades(cidades, filtro)
+            resultados = Cidade.objects.filter(
+                models.Q(nome__icontains=filtro) |
+                models.Q(evento__icontains=filtro) |
+                models.Q(nacionalidade__icontains=filtro)
+            )
+            
+            return render(request, 'angeline/resultado.html', {'resultados': resultados, 'filtro': filtro})
 
-        return render(request, 'angeline/resultado.html', {'resultados': resultados, 'filtro': filtro})
-
-    return render(request, 'angeline/filtrar_cidades.html')
+    return render(request, 'angeline/resultado.html')
