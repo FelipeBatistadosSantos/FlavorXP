@@ -133,4 +133,20 @@ def perfil_host(request):
     return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
 
 
+def criar_evento(request):
+    # Verificar se o usuário é um host e se todos os campos obrigatórios foram preenchidos
+    user_is_host = Host.objects.filter(usuario=request.user).exists()
+    if user_is_host:
+        host = Host.objects.get(usuario=request.user)
+        if host.nome_empresa and host.motivo and host.area_gastronomia:
+            return render(request, 'angeline/criar_evento.html')
+        else:
+            # Redirecionar para outra página informando ao usuário que ele precisa preencher o formulário completo
+            return redirect('angeline:host_incompleto')
+    else:
+        # Se o usuário não for um host, redirecionar para a página de host
+        return redirect('angeline:host')
+
+
+
 

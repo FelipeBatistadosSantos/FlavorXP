@@ -15,7 +15,11 @@
         <div class="retangulo_nav"></div>
         <div class="logo">FlavorXP</div>
         <ul>
+          {% if request.user.host %}
+            <li class="nav-link-evento"><a href="{% url 'angeline:criar_evento' %}">Criar Evento</a></li>
+          {% else %}
             <li class="nav-link-host"><a href="{% url 'angeline:host' %}">Seja Host</a></li>
+          {% endif %}
             <li class="nav-link-perfil"><a href="{% url 'angeline:perfil' %}">Icone perfil</a></li>
             <li class="nav-link-sair"><a href="{% url 'main:home_page' %}">Sair</a></li>
         </ul>
