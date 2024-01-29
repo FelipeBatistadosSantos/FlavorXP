@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import logout, authenticate, login as auth_login
 from django.contrib import messages
 from .models import CustomUser, CompleteCadastro,Host
-from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm
+from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm, EventoForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 import json
@@ -46,9 +46,7 @@ def host(request):
         return redirect('angeline:perfil_host')
     else:
         return redirect('angeline:editar_host')
-
-
-
+    
 
 @login_required
 def perfil(request):
@@ -84,9 +82,18 @@ def editar_perfil(request):
 
     return render(request, 'angeline/editar_perfil.html', {'form': form, 'perfil_usuario': perfil_usuario})
 
+@login_required
+def evento(request):
+    perfil_usuario = CompleteCadastro.objects.get_or_create(usuario=request.user)
+    if request.method == 'POST':
+        form = EventoForm()
+        if form.is_valid():
+            form.save()
 
-
-
+    else:
+        form = EventoForm()
+        
+    return render(request, 'angeline/evento.html', {'form':form, 'perfil_usuario':perfil_usuario})
 
 
 

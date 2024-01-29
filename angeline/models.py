@@ -115,3 +115,7 @@ class Host(models.Model):
     descricao_local = models.TextField('Descrição do Local de Serviço')
 
 
+class Evento(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
+    nome = models.CharField('nome', max_length=100)
+    descricao = models.CharField('descricao', max_length=200)

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
-from .models import CustomUser, CompleteCadastro, Host
+from .models import CustomUser, CompleteCadastro, Host, Evento
 import json
 
 
@@ -39,3 +39,8 @@ class HostForm(forms.ModelForm):
     class Meta:
         model = Host
         fields = ['nome_empresa', 'motivo', 'area_gastronomia', 'servicos', 'frequencia_servicos', 'local_servico', 'descricao_local']
+
+class EventoForm(forms.ModelForm):
+    class Meta:
+        model = Evento
+        fields = ['nome','descricao']
