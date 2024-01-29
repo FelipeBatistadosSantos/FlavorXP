@@ -71,24 +71,30 @@ class CompleteCadastro(models.Model):
     
 
 class Estado(models.Model):
-    codigo = models.IntegerField(primary_key=True)
+    codigo = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=50)
     sigla = models.CharField(max_length=2)
-    codigoCapital = models.IntegerField()
 
     def __str__(self):
         return self.nome
 
 class Cidade(models.Model):
-    codigoUf = models.IntegerField()
-    codigo = models.IntegerField(primary_key=True)
+    codigo = models.IntegerField(primary_key=True)  
     nome = models.CharField(max_length=50)
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
+    latitude = models.FloatField(default=0.0)
+    longitude = models.FloatField(default=0.0)
+    capital = models.BooleanField(default=False)
+    codigo_uf = models.IntegerField(default=0)
+
+    def save(self, *args, **kwargs):
+        if not self.codigo:
+            uf_codigo = str(self.estado.codigo).zfill(2)
+            self.codigo = int(f"{uf_codigo}{Cidade.objects.count() + 1:03}")
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.nome
-
-    
 
 
 class Host(models.Model):
