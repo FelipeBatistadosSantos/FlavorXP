@@ -34,4 +34,10 @@ class CompleteCadastroForm(forms.ModelForm):
     class Meta:
         model = CompleteCadastro
         fields = ['nascimento','sobre','profissao','hobbie','idioma','comidaf','bebida','restricao', 'cpf','cep','cidade','estado','telefone']
-        
+
+from .models import Host
+
+class HostForm(forms.ModelForm):
+    class Meta:
+        model = Host
+        fields = ['nome_empresa', 'motivo', 'area_gastronomia', 'servicos', 'frequencia_servicos', 'local_servico', 'descricao_local']
