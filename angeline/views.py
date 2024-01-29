@@ -1,14 +1,12 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import logout, authenticate, login as auth_login
 from django.contrib import messages
-from .models import CustomUser, CompleteCadastro
-from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm
+from .models import CustomUser, CompleteCadastro,Host
+from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 import json
 from django.views import View
-from .models import Host
-from .forms import HostForm
 
 
 def cadastro(request):
@@ -40,9 +38,14 @@ def home(request):
     return render(request, 'angeline/home.html')
 
 
+@login_required
 def host(request):
-    return render(request, 'angeline/host.html')
+    user = request.user
 
+    if Host.objects.filter(usuario=user).exists():
+        return redirect('angeline:perfil_host')
+    else:
+        return redirect('angeline:editar_host')
 
 
 
@@ -116,8 +119,8 @@ def editar_host(request):
 
             messages.success(request, 'Informações do host atualizadas com sucesso!')
             return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
-
-    form = HostForm(instance=host)
+    else:
+        form = HostForm(instance=host)
     return render(request, 'angeline/editar_host.html', {'form': form, 'host': host, 'form_preenchido': not created})
 
 @login_required
@@ -125,7 +128,6 @@ def perfil_host(request):
     host, created = Host.objects.get_or_create(usuario=request.user)
 
     if 'edit' in request.GET:
-
         return redirect('angeline:editar_host')
 
     if request.method == 'POST':
@@ -134,7 +136,7 @@ def perfil_host(request):
             form.save()
 
             if created:
-                return redirect('angeline:host')
+                return redirect('angeline:perfil_host')
     else:
         form = HostForm(instance=host)
 
