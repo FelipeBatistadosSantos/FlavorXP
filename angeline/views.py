@@ -5,6 +5,8 @@ from .models import CustomUser, CompleteCadastro
 from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
+from .models import Host
+from .forms import HostForm
 
 
 def cadastro(request):
@@ -85,13 +87,7 @@ def testeFeed(request):
     return render(request, 'angeline/home.html')
 
 
-from django.shortcuts import render
-from .models import Host
 
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from .models import Host
-from .forms import HostForm
 
 @login_required
 def editar_host(request):
