@@ -95,44 +95,43 @@ from .forms import HostForm
 
 @login_required
 def editar_host(request):
-    # Obtém ou cria um objeto Host associado ao usuário logado
     host, created = Host.objects.get_or_create(usuario=request.user)
 
     if request.method == 'POST':
-        # Preenche o formulário com os dados do objeto Host
         form = HostForm(request.POST, instance=host)
         if form.is_valid():
-            # Salva os dados do formulário no objeto Host
             form.save()
-            # Redireciona para a página de perfil ou outra página desejada
-            return redirect('angeline:host')
-    else:
-        # Se for uma requisição GET, preenche o formulário com os dados existentes
-        form = HostForm(instance=host)
 
+            request.session['host_nome_empresa'] = host.nome_empresa
+            request.session['host_motivo'] = host.motivo
+            request.session['host_get_area_gastronomia_display'] = host.area_gastronomia
+            request.session['host_servicos'] = host.servicos
+            request.session['host_get_frequencia_servicos_display'] = host.frequencia_servicos
+            request.session['host_local_servico'] = host.local_servico
+            request.session['host_descricao_local'] = host.descricao_local
+
+            messages.success(request, 'Informações do host atualizadas com sucesso!')
+            return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
+
+    form = HostForm(instance=host)
     return render(request, 'angeline/editar_host.html', {'form': form, 'host': host, 'form_preenchido': not created})
 
 @login_required
 def perfil_host(request):
-    # Obtém ou cria um objeto Host associado ao usuário logado
     host, created = Host.objects.get_or_create(usuario=request.user)
 
     if 'edit' in request.GET:
-        # Redireciona para a página de edição de host
+
         return redirect('angeline:editar_host')
 
     if request.method == 'POST':
-        # Preenche o formulário com os dados do objeto Host
-        form = HostForm(request.POST, instance=host)
+        form = HostForm(request.POST, request.FILES, instance=host)
         if form.is_valid():
-            # Salva os dados do formulário no objeto Host
             form.save()
 
             if created:
-                # Se o objeto Host foi criado agora, redireciona para a página de perfil do host
                 return redirect('angeline:host')
     else:
-        # Se for uma requisição GET, preenche o formulário com os dados existentes
         form = HostForm(instance=host)
 
     return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
