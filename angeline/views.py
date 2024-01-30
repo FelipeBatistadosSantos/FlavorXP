@@ -1,12 +1,17 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import logout, authenticate, login as auth_login
 from django.contrib import messages
-from .models import CustomUser, CompleteCadastro
-from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm
+from .models import CustomUser, CompleteCadastro,Host
+from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm, EventoForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
+<<<<<<< HEAD
 from .models import CustomUser
 from .forms import CadastroForm, LoginForm
+=======
+import json
+from django.views import View
+>>>>>>> origin/dev
 
 
 def cadastro(request):
@@ -38,12 +43,15 @@ def home(request):
     return render(request, 'angeline/home.html')
 
 
+@login_required
 def host(request):
-    return render(request, 'angeline/host.html')
+    user = request.user
 
-
-
-
+    if Host.objects.filter(usuario=user).exists():
+        return redirect('angeline:perfil_host')
+    else:
+        return redirect('angeline:editar_host')
+    
 
 @login_required
 def perfil(request):
@@ -79,6 +87,21 @@ def editar_perfil(request):
 
     return render(request, 'angeline/editar_perfil.html', {'form': form, 'perfil_usuario': perfil_usuario})
 
+@login_required
+def evento(request):
+    perfil_usuario = CompleteCadastro.objects.get_or_create(usuario=request.user)
+    if request.method == 'POST':
+        form = EventoForm()
+        if form.is_valid():
+            form.save()
+
+    else:
+        form = EventoForm()
+        
+    return render(request, 'angeline/evento.html', {'form':form, 'perfil_usuario':perfil_usuario})
+
+
+
 
 
 def testeFeed(request):
@@ -87,6 +110,7 @@ def testeFeed(request):
     return render(request, 'angeline/home.html')
 
 
+<<<<<<< HEAD
 def listar_produtos(request):
     produtos = Produto.objects.all()
     form = ProdutoFilterForm(request.GET)
@@ -98,3 +122,54 @@ def listar_produtos(request):
             produtos = produtos.filter(cidade__icontains=cidade)
 
     return render(request, 'angeline/filtro.html', {'produtos': produtos, 'form': form})
+=======
+
+
+@login_required
+def editar_host(request):
+    host, created = Host.objects.get_or_create(usuario=request.user)
+
+    if request.method == 'POST':
+        form = HostForm(request.POST, instance=host)
+        if form.is_valid():
+            form.save()
+
+            request.session['host_nome_empresa'] = host.nome_empresa
+            request.session['host_motivo'] = host.motivo
+            request.session['host_get_area_gastronomia_display'] = host.area_gastronomia
+            request.session['host_servicos'] = host.servicos
+            request.session['host_get_frequencia_servicos_display'] = host.frequencia_servicos
+            request.session['host_local_servico'] = host.local_servico
+            request.session['host_descricao_local'] = host.descricao_local
+
+            messages.success(request, 'Informações do host atualizadas com sucesso!')
+            return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
+    else:
+        form = HostForm(instance=host)
+    return render(request, 'angeline/editar_host.html', {'form': form, 'host': host, 'form_preenchido': not created})
+
+@login_required
+def perfil_host(request):
+    host, created = Host.objects.get_or_create(usuario=request.user)
+
+    if 'edit' in request.GET:
+        return redirect('angeline:editar_host')
+
+    if request.method == 'POST':
+        form = HostForm(request.POST, request.FILES, instance=host)
+        if form.is_valid():
+            form.save()
+
+            if created:
+                return redirect('angeline:perfil_host')
+    else:
+        form = HostForm(instance=host)
+
+    return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
+
+
+
+
+
+
+>>>>>>> origin/dev
