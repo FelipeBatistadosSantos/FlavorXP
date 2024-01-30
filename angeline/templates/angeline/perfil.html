@@ -15,7 +15,7 @@
     <div class="container">
 
 
-
+        {% if form_preenchido %}
         <div class="left">
             <h1>Seu Perfil</h1>
             <p>Usuario: {{ perfil_usuario.usuario }}</p>
@@ -35,9 +35,23 @@
             <p>Restrições alimentares: {{ perfil_usuario.restricao }}</p>
 
             <a href="{% url 'angeline:perfil' %}?edit=1">Completar perfil</a>
-            <a href="{% url 'angeline:home' %}">Home</a>
-            <a href="{%url 'angeline:editar_host' %}">Editar perfil Host</a>
+            
+            
+            
         </div>
+   
+        <a class="oi" href="{% url 'angeline:home' %}">Voltar para  Home</a>
+   
+
+        {% else %}
+           <h1>Complete seu perfil</h1>
+           <form method="post" action="{% url 'angeline:perfil' %}">
+               {% csrf_token %}
+               {{ form.as_p }}
+               <button type="submit">Salvar</button>
+           </form>
+           <a href="{% url 'angeline:home' %}">Home</a>
+           {% endif %}
             {% if request.user.host %}
             <div class="right">
             <h1>Detalhes do Host</h1>
@@ -48,16 +62,10 @@
             <p>Frequência de Serviços: {{ request.session.host_get_frequencia_servicos_display }}</p>
             <p>Local de Serviço: {{ request.session.host_local_servico }}</p>
             <p>Descrição do Local de Serviço: {{ request.session.host_descricao_local }}</p>
-            </div>
+            <a href="{%url 'angeline:editar_host' %}">Editar perfil Host</a>
+        </div>
 
-<!-- 
-            <h1>Complete seu perfil</h1>
-            <form method="post" action="{% url 'angeline:perfil' %}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Salvar</button>
-            </form>
-            <a href="{% url 'angeline:home' %}">Home</a> -->
+ 
         {% endif %}
 
     </div>

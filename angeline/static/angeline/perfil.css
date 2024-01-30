@@ -13,4 +13,17 @@
           float: right;
           width: 50%;
       }
-      
+      .oi {
+        color: #1f42a3; /* Cor do link */
+        text-decoration: none; /* Remove o sublinhado */
+        font-size: 20px; /* Tamanho da fonte */
+        margin-left: 100px;
+        margin-right: 200px;
+        word-wrap:none;
+        
+    }
+    
+    .oi:hover {
+        color: #0056b3; /* Cor do link quando o mouse passa por cima */
+    }
+    
