@@ -16,7 +16,7 @@
         <div class="logo">FlavorXP</div>
         <ul>
           {% if request.user.host %}
-            <li class="nav-link-evento"><a href="{% url 'angeline:criar_evento' %}">Criar Evento</a></li>
+            <li class="nav-link-evento"><a href="{% url 'angeline:evento' %}">Criar Evento</a></li>
           {% else %}
             <li class="nav-link-host"><a href="{% url 'angeline:host' %}">Seja Host</a></li>
           {% endif %}

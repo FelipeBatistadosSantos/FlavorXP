@@ -2,8 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
-from .models import CustomUser, CompleteCadastro
-
+from .models import CustomUser, CompleteCadastro, Host, Evento
+import json
 
 
 
@@ -35,9 +35,12 @@ class CompleteCadastroForm(forms.ModelForm):
         model = CompleteCadastro
         fields = ['nascimento','sobre','profissao','hobbie','idioma','comidaf','bebida','restricao', 'cpf','cep','cidade','estado','telefone']
 
-from .models import Host
-
 class HostForm(forms.ModelForm):
     class Meta:
         model = Host
         fields = ['nome_empresa', 'motivo', 'area_gastronomia', 'servicos', 'frequencia_servicos', 'local_servico', 'descricao_local']
+
+class EventoForm(forms.ModelForm):
+    class Meta:
+        model = Evento
+        fields = ['nome','descricao']

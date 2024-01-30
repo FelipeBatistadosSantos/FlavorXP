@@ -1,12 +1,12 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import logout, authenticate, login as auth_login
 from django.contrib import messages
-from .models import CustomUser, CompleteCadastro
-from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm
+from .models import CustomUser, CompleteCadastro,Host
+from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm, EventoForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
-from .models import Host
-from .forms import HostForm
+import json
+from django.views import View
 
 
 def cadastro(request):
@@ -38,12 +38,15 @@ def home(request):
     return render(request, 'angeline/home.html')
 
 
+@login_required
 def host(request):
-    return render(request, 'angeline/host.html')
+    user = request.user
 
-
-
-
+    if Host.objects.filter(usuario=user).exists():
+        return redirect('angeline:perfil_host')
+    else:
+        return redirect('angeline:editar_host')
+    
 
 @login_required
 def perfil(request):
@@ -79,6 +82,21 @@ def editar_perfil(request):
 
     return render(request, 'angeline/editar_perfil.html', {'form': form, 'perfil_usuario': perfil_usuario})
 
+@login_required
+def evento(request):
+    perfil_usuario = CompleteCadastro.objects.get_or_create(usuario=request.user)
+    if request.method == 'POST':
+        form = EventoForm()
+        if form.is_valid():
+            form.save()
+
+    else:
+        form = EventoForm()
+        
+    return render(request, 'angeline/evento.html', {'form':form, 'perfil_usuario':perfil_usuario})
+
+
+
 
 
 def testeFeed(request):
@@ -108,8 +126,8 @@ def editar_host(request):
 
             messages.success(request, 'Informações do host atualizadas com sucesso!')
             return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
-
-    form = HostForm(instance=host)
+    else:
+        form = HostForm(instance=host)
     return render(request, 'angeline/editar_host.html', {'form': form, 'host': host, 'form_preenchido': not created})
 
 @login_required
@@ -117,7 +135,6 @@ def perfil_host(request):
     host, created = Host.objects.get_or_create(usuario=request.user)
 
     if 'edit' in request.GET:
-
         return redirect('angeline:editar_host')
 
     if request.method == 'POST':
@@ -126,26 +143,13 @@ def perfil_host(request):
             form.save()
 
             if created:
-                return redirect('angeline:host')
+                return redirect('angeline:perfil_host')
     else:
         form = HostForm(instance=host)
 
     return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
 
 
-def criar_evento(request):
-    # Verificar se o usuário é um host e se todos os campos obrigatórios foram preenchidos
-    user_is_host = Host.objects.filter(usuario=request.user).exists()
-    if user_is_host:
-        host = Host.objects.get(usuario=request.user)
-        if host.nome_empresa and host.motivo and host.area_gastronomia:
-            return render(request, 'angeline/criar_evento.html')
-        else:
-            # Redirecionar para outra página informando ao usuário que ele precisa preencher o formulário completo
-            return redirect('angeline:host_incompleto')
-    else:
-        # Se o usuário não for um host, redirecionar para a página de host
-        return redirect('angeline:host')
 
 
 

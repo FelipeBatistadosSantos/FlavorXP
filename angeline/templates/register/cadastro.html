@@ -8,11 +8,32 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'angeline/style_form.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
 </head>
 
 <body>
+        
 
-    <div class="container">
+
+    <div style="width: 100%; height: 100%; position: relative; background: white">
+        <img style="width: 720px; height: 1025.42px; left: 0px; top: 0px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset" src="https://via.placeholder.com/720x1025" />
+        <div style="width: 720px; height: 1025px; left: 0px; top: 0px; position: absolute; background: rgba(0, 0, 0, 0.40)"></div>
+        <div style="left: 870px; top: 270px; position: absolute; text-align: center"><span style="color: black; font-size: 48px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Faça seu  </span><span style="color: #4E008E; font-size: 48px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Cadastro</span><span style="color: #F1C400; font-size: 48px; font-family: Outfit; font-weight: 600; word-wrap: break-word">!</span></div>
+        <div style="width: 529px; height: 378px; left: 836px; top: 375px; position: absolute; background: #4E008E; border-radius: 4px"></div>
+        <div style="left: 871px; top: 421px; position: absolute; text-align: center; color: #F1C400; font-size: 20px; font-family: Roboto; font-weight: 600; word-wrap: break-word">Usuário:</div>
+        <div style="width: 301px; height: 21px; left: 966px; top: 425px; position: absolute; background: #D9D9D9; border-radius: 2px"></div>
+        <div style="left: 870px; top: 482px; position: absolute; text-align: center; color: #F1C400; font-size: 20px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Email:</div>
+        <div style="width: 301px; height: 21px; left: 966px; top: 486px; position: absolute; background: #D9D9D9; border-radius: 2px"></div>
+        <div style="left: 870px; top: 543px; position: absolute; text-align: center; color: #F1C400; font-size: 20px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Senha:</div>
+        <div style="width: 136px; height: 21px; left: 946px; top: 547px; position: absolute; background: #D9D9D9; border-radius: 2px"></div>
+        <div style="left: 870px; top: 604px; position: absolute; color: #F1C400; font-size: 20px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Confirmar Senha</div>
+        <div style="width: 136px; height: 21px; left: 1041px; top: 606px; position: absolute; background: #D9D9D9; border-radius: 2px"></div>
+        <div style="width: 172px; height: 28px; left: 1015px; top: 669px; position: absolute; background: #F1C400; border-radius: 3px"></div>
+        <div style="left: 1058px; top: 673px; position: absolute; color: black; font-size: 15px; font-family: Outfit; font-weight: 400; word-wrap: break-word">Cadastre-se</div>
+        <div style="left: 975px; top: 715px; position: absolute; color: white; font-size: 15px; font-family: Outfit; font-weight: 400; word-wrap: break-word">Já tem uma conta? Faça seu login aqui</div>
+        <div style="width: 614px; left: 53px; top: 387px; position: absolute"><span style="color: white; font-size: 40px; font-family: Outfit; font-weight: 600; word-wrap: break-word">“Descubra a arte da boa comida através de uma </span><span style="color: #F1C400; font-size: 40px; font-family: Outfit; font-weight: 600; word-wrap: break-word">experiência exclusiva</span><span style="color: white; font-size: 40px; font-family: Outfit; font-weight: 600; word-wrap: break-word">. Cadastre-se e mergulhe em sabores memoráveis.”</span></div>
+    </div>
+    <!-- <div class="container">
         <h2>Cadastro</h2>
         <form method="post" action="{% url 'angeline:cadastro' %}">
             {% csrf_token %}
@@ -22,7 +43,7 @@
             <button type="submit">Cadastrar</button>
             <h6>Já tem uma conta? Faça seu login <a href="{% url 'angeline:login' %}">aqui</a></h6>
         </form>
-    </div>
+    </div> -->
 
 </body>
 
