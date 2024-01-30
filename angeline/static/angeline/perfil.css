@@ -1,0 +1,16 @@
+/* CSS */
+.container {
+          display: flex;
+          justify-content: space-between;
+      }
+      
+      .container .left {
+          float: left;
+          width: 50%;
+      }
+      
+      .container .right {
+          float: right;
+          width: 50%;
+      }
+      
