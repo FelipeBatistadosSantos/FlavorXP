@@ -43,4 +43,21 @@ class HostForm(forms.ModelForm):
 class EventoForm(forms.ModelForm):
     class Meta:
         model = Evento
-        fields = ['nome','descricao']
+        fields = [
+            'estilo',
+            'tema',
+            'fotos',
+            'host',
+            'descricao',
+            'cardapio',
+            'inclui_bebidas',
+            'bebidas_oferecidas',
+            'convidado_pode_trazer',
+            'max_convidados',
+            'local',
+            'data',
+            'horario',
+            'valor_host',
+        ]
+    def __init__(self, *args, **kwargs):
+        super(EventoForm, self).__init__(*args, **kwargs)

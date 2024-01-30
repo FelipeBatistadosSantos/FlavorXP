@@ -1,6 +1,7 @@
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, User
 from django.db import models
 from cpf_field.models import CPFField
+from django.utils import timezone
 
 
 class CustomUserManager(BaseUserManager):
@@ -108,6 +109,41 @@ class Host(models.Model):
 
 
 class Evento(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
-    nome = models.CharField('nome', max_length=100)
-    descricao = models.CharField('descricao', max_length=200)
+
+    def default_data():
+        return timezone.now().date()
+
+    def default_horario():
+        return timezone.now().time()
+
+    ESTILO_CHOICES = [
+            ('janta', 'Janta'),
+            ('almoco', 'Almoço'),
+            ('city_tour_gastronomico', 'City Tour Gastronômico'),
+            ('harmonizacao', 'Harmonização'),
+            ('workshop_gastronomico', 'Workshop Gastronômico'),
+            ('aula_pratica', 'Aula prática de Cozinha'),
+            ('outro', 'Outro'),
+        ]
+
+    estilo = models.CharField('Estilo de Evento', max_length=30, choices=ESTILO_CHOICES, default='')
+    tema = models.CharField('Tema da experiência', max_length=255, default='Sem tema')
+    fotos = models.ImageField('Fotos do Evento', upload_to='evento_fotos/', blank=True, null=True, max_length=255)
+    host = models.ForeignKey(User, on_delete=models.CASCADE, default='')
+    descricao = models.TextField('Descrição da experiência')
+    cardapio = models.TextField('Cardápio', blank=True, null=True)
+    inclui_bebidas = models.BooleanField('Inclui Bebidas?', default=False)
+    bebidas_oferecidas = models.CharField('Bebidas Oferecidas', max_length=255, blank=True, null=True)
+    convidado_pode_trazer = models.BooleanField('Convidado pode trazer bebidas?', default=False)
+    max_convidados = models.PositiveIntegerField('Máximo de Convidados', default=1)
+    local = models.CharField('Local', max_length=255, default='Minha casa')
+    data = models.DateField('Data', default=default_data)
+    horario = models.TimeField('Horário', default=default_horario)
+    valor_host = models.DecimalField('Valor Host', max_digits=10, decimal_places=2, default=10.0)
+    valor_manutencao_site = models.DecimalField('Valor Manutenção do Site (%)', max_digits=5, decimal_places=2, default=0)
+
+    def valor_total_evento(self):
+        return self.valor_host + (self.valor_host * (self.valor_manutencao_site / 100))
+
+    def __str__(self):
+        return f'{self.estilo} - {self.tema} por {self.host.username} em {self.local} em {self.data} às {self.horario}'
