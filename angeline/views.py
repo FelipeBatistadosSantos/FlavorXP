@@ -98,6 +98,7 @@ def filtrar_cidades_view(request):
                 models.Q(evento__icontains=filtro) |
                 models.Q(nacionalidade__icontains=filtro)
             )
+            print(resultados)
             return render(request, 'angeline/resultado.html', {'resultados': resultados, 'filtro': filtro})
         else:
             return render(request, 'angeline/resultado.html', {'resultados': [], 'filtro': filtro})
