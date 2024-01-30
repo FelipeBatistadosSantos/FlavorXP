@@ -2,8 +2,7 @@ import csv
 import os
 import django
 
-# Configuração do Django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myfood/settings.py')  # Substitua 'myfood.settings' pelo seu caminho real
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myfood.settings')  
 django.setup()
 
 # Importe o modelo Estado após a configuração

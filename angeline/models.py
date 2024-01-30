@@ -38,13 +38,6 @@ class CompleteCadastro(models.Model):
         ('outro', 'Outro')
     ]
 
-    PROEFICIENCIA_CHOICES = [
-        ('basico', 'Básico'),
-        ('intermediario', 'Intermediário'),
-        ('avancado', 'Avançado'),
-        ('fluente', 'Fluente')
-    ]
-
     RESTRICAO_CHOICES = [
         ('gluten', 'Glúten'),
         ('lactose', 'Lactose'),
@@ -64,7 +57,6 @@ class CompleteCadastro(models.Model):
     profissao = models.CharField('profissao',max_length=50)
     hobbie = models.CharField('hobbie', max_length=50)
     idioma = models.CharField('idioma', choices=IDIOMA_CHOICES, max_length=30)
-    proficiencia = models.CharField('Proficiência', max_length=20, choices=PROEFICIENCIA_CHOICES, default=False)
     comidaf = models.CharField('comida', max_length=50)
     bebida = models.CharField('bebida',max_length=50)
     restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30)
@@ -86,12 +78,6 @@ class Cidade(models.Model):
     longitude = models.FloatField(default=0.0)
     capital = models.BooleanField(default=False)
     codigo_uf = models.IntegerField(default=0)
-
-    def save(self, *args, **kwargs):
-        if not self.codigo:
-            uf_codigo = str(self.estado.codigo).zfill(2)
-            self.codigo = int(f"{uf_codigo}{Cidade.objects.count() + 1:03}")
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.nome
