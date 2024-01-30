@@ -84,16 +84,19 @@ def editar_perfil(request):
 
 @login_required
 def evento(request):
-    perfil_usuario = CompleteCadastro.objects.get_or_create(usuario=request.user)
-    if request.method == 'POST':
-        form = EventoForm()
-        if form.is_valid():
-            form.save()
+    perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
 
+    if request.method == 'POST':
+        form = EventoForm(request.POST)
+        if form.is_valid():
+            evento = form.save(commit=False)
+            evento.host = request.user
+            evento.save()
+            return redirect('angeline:home') 
     else:
         form = EventoForm()
-        
-    return render(request, 'angeline/evento.html', {'form':form, 'perfil_usuario':perfil_usuario})
+
+    return render(request, 'angeline/evento.html', {'form': form, 'perfil_usuario': perfil_usuario})
 
 
 
