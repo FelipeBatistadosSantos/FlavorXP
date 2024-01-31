@@ -7,24 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/widgets.css' %}">  <!-- carregar os formatos dos widgets forms no html -->
-
-    <script>
-        // Função para mostrar/ocultar o campo 'outra_restricao' com base na escolha 'outros'
-        function toggleOutraRestricao() {
-            var restricaoField = document.getElementById("id_restricao");
-            var outraRestricaoField = document.getElementById("id_outra_restricao");
-
-            // Se a opção 'outros' estiver selecionada, mostra o campo 'outra_restricao', caso contrário, oculta
-            outraRestricaoField.style.display = restricaoField.value === 'Outros' ? 'block' : 'none';
-        }
-
-        // Adiciona um ouvinte de evento para chamar a função ao mudar a opção de restrição
-        document.addEventListener('DOMContentLoaded', function () {
-            toggleOutraRestricao();  // Chamada inicial para configurar o estado inicial
-            document.getElementById("id_restricao").addEventListener('change', toggleOutraRestricao);
-        });
-    </script>
+    <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'angeline/perfil.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/widgets.css' %}">  
 
 </head>
 
@@ -32,8 +17,8 @@
     <div class="container">
 
 
-
         {% if form_preenchido %}
+        <div class="left">
             <h1>Seu Perfil</h1>
             <p>Usuario: {{ perfil_usuario.usuario }}</p>
             <p>Email: {{ perfil_usuario.email }}</p>
@@ -51,18 +36,38 @@
             <p>Bebida favorita: {{ perfil_usuario.bebida }}</p>
             <p>Restrições alimentares: {{ perfil_usuario.restricao }}</p>
 
-            <a href="{% url 'angeline:perfil' %}?edit=1">Editar</a>
-            <a href="{% url 'angeline:home' %}">Home</a>
-            <a href="{%url 'angeline:editar_host' %}">Editar perfil Host</a>
+            <a href="{% url 'angeline:perfil' %}?edit=1">Completar perfil</a>
+            
+            
+            
+        </div>
+   
+        <a class="oi" href="{% url 'angeline:home' %}">Voltar para  Home</a>
+   
 
         {% else %}
-            <h1>Complete seu perfil</h1>
-            <form method="post" action="{% url 'angeline:perfil' %}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Salvar</button>
-            </form>
-            <a href="{% url 'angeline:home' %}">Home</a>
+           <h1>Complete seu perfil</h1>
+           <form method="post" action="{% url 'angeline:perfil' %}">
+               {% csrf_token %}
+               {{ form.as_p }}
+               <button type="submit">Salvar</button>
+           </form>
+           <a href="{% url 'angeline:home' %}">Home</a>
+           {% endif %}
+            {% if request.user.host %}
+            <div class="right">
+            <h1>Detalhes do Host</h1>
+            <p>Nome da Empresa/Marca: {{ request.session.host_nome_empresa }}</p>
+            <p>Motivo: {{ request.session.host_motivo }}</p>
+            <p>Área Gastronômica: {{ request.session.host_get_area_gastronomia_display }}</p>
+            <p>Serviços Disponíveis: {{ request.session.host_servicos }}</p>
+            <p>Frequência de Serviços: {{ request.session.host_get_frequencia_servicos_display }}</p>
+            <p>Local de Serviço: {{ request.session.host_local_servico }}</p>
+            <p>Descrição do Local de Serviço: {{ request.session.host_descricao_local }}</p>
+            <a href="{%url 'angeline:editar_host' %}">Editar perfil Host</a>
+        </div>
+
+ 
         {% endif %}
 
     </div>
