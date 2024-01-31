@@ -25,7 +25,22 @@
         </ul>
     </nav>
     <main>
-        <div class="feed-container">
+      <div class="feed-container">
+        {% for evento in eventos %}
+            <div class="feed-item">
+                {% if evento.fotos %}
+                    <img src="{{ evento.fotos.url }}" alt="{{ evento.tema }}">
+                {% else %}
+                    <p>Imagem não disponível</p>
+                {% endif %}
+                <h3>{{ evento.tema }}</h3>
+                <p>{{ evento.descricao }}</p>
+                <span>R$ {{ evento.valor_host }}</span>
+            </div>
+        {% endfor %}
+      </div>
+
+        <!-- <div class="feed-container">
             <div class="feed-item">
               <img src="angeline/static/img/churrasco_home.jpg" alt="Jantar Exclusivo">
               <h3>Jantar Exclusivo</h3>
@@ -46,7 +61,7 @@
               <p>Romance e gastronomia se encontram nesta experiência única à luz de velas.</p>
               <span>R$ 75,00</span>
             </div>
-          </div>
+          </div> -->
     </main>
 
     <footer>
