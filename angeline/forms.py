@@ -52,10 +52,11 @@ class CompleteCadastroForm(forms.ModelForm):
     cpf = BRCPFField()
     cep = BRZipCodeField()
     telefone = PhoneNumberField()
+    descricao = forms.CharField(label='Descrição da Restrição Personalizada', required=False)
         
     class Meta:
         model = CompleteCadastro
-        fields = ['nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao', 'cpf', 'cep', 'cidade', 'estado', 'telefone']
+        fields = ['nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao', 'outra_restricao', 'cpf', 'cep', 'cidade', 'estado', 'telefone']
         
     def clean_nascimento(self):
         nascimento = self.cleaned_data.get('nascimento')
@@ -65,29 +66,34 @@ class CompleteCadastroForm(forms.ModelForm):
 
         return nascimento
 
+    
+
 class HostForm(forms.ModelForm):
     class Meta:
         model = Host
         fields = ['nome_empresa', 'motivo', 'area_gastronomia', 'servicos', 'frequencia_servicos', 'local_servico', 'descricao_local']
 
+
+class CustomDecimalField(forms.RegexField):
+    def __init__(self, **kwargs):
+        
+        kwargs['regex'] = r'^(\d+(\.\d{1,2})?|\d+,\d{2})?$'
+
+        super().__init__(**kwargs)
+
+
 class EventoForm(forms.ModelForm):
+
+    valor_host = CustomDecimalField(label='Valor do Host')
+
     class Meta:
         model = Evento
-        fields = [
-            'estilo',
-            'tema',
-            'fotos',
-            'host',
-            'descricao',
-            'cardapio',
-            'inclui_bebidas',
-            'bebidas_oferecidas',
-            'convidado_pode_trazer',
-            'max_convidados',
-            'local',
-            'data',
-            'horario',
-            'valor_host',
-        ]
+        fields = ['estilo','tema','fotos','host','descricao','cardapio','inclui_bebidas','bebidas_oferecidas','convidado_pode_trazer',
+                  'max_convidados','local','data','horario','valor_host',]
+        
+        widgets = {
+            'horario': forms.TimeInput(format='%H:%M', attrs={'type': 'time'}),
+        }
+        
     def __init__(self, *args, **kwargs):
         super(EventoForm, self).__init__(*args, **kwargs)
