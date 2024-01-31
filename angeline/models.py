@@ -1,7 +1,9 @@
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, User
 from django.db import models
-from cpf_field.models import CPFField
 from django.utils import timezone
+from localflavor.br.models import BRPostalCodeField, BRCPFField
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 
 class CustomUserManager(BaseUserManager):
@@ -69,11 +71,11 @@ class CompleteCadastro(models.Model):
     ]
 
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
-    cep = models.CharField('cep', max_length=15, default='')
-    cpf = CPFField('cpf')
+    cep = BRPostalCodeField()
+    cpf = BRCPFField()
     cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, blank=True)
     estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, blank=True)
-    telefone = models.CharField('telefone', max_length=11, default='')
+    telefone = PhoneNumberField(unique=True, null=False, blank=False)
     nascimento = models.DateField('nascimento')
     sobre = models.TextField('sobre', default='')
     profissao = models.CharField('profissao',max_length=50)

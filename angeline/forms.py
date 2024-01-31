@@ -6,7 +6,9 @@ from django.core.exceptions import ValidationError
 from .models import CustomUser, CompleteCadastro, Host, Evento
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
-from cpf_field.forms import CPFFieldForm
+from localflavor.br.forms import BRZipCodeField, BRCPFField
+from phonenumber_field.modelfields import PhoneNumberField
+
 import json
 
 
@@ -46,7 +48,9 @@ class CompleteCadastroForm(forms.ModelForm):
     comidaf = forms.CharField(label='Comida favorita: ')
     bebida = forms.CharField(label='Bebida favorita')
     restricao = forms.ChoiceField(label='Você possui alguma restrição? ', choices=CompleteCadastro.RESTRICAO_CHOICES)
-    cpf = CPFFieldForm('CPF')
+    cpf = BRCPFField()
+    cep = BRZipCodeField()
+    telefone = PhoneNumberField()
         
     class Meta:
         model = CompleteCadastro

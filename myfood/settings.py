@@ -40,9 +40,10 @@ INSTALLED_APPS = [
     'angeline',
     'main',
     'cpf_field',
-    
-
-    
+    'localflavor',
+    'localflavor.br',
+    'phonenumber_field',
+        
 ]
 
 MIDDLEWARE = [
