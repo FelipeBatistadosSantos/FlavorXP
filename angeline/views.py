@@ -35,8 +35,7 @@ class CustomLogoutView(LogoutView):
 
 
 def home(request):
-    eventos = Evento.objects.all()
-    return render(request, 'angeline/home.html', {'eventos': eventos})
+    return render(request, 'angeline/home.html')
 
 
 @login_required
@@ -83,9 +82,6 @@ def editar_perfil(request):
 
     return render(request, 'angeline/editar_perfil.html', {'form': form, 'perfil_usuario': perfil_usuario})
 
-from .models import Evento
-
-
 @login_required
 def evento(request):
     perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
@@ -100,9 +96,7 @@ def evento(request):
     else:
         form = EventoForm()
 
-    eventos = Evento.objects.all()  # Obtém todos os eventos
-    return render(request, 'angeline/evento.html', {'form': form, 'perfil_usuario': perfil_usuario, 'eventos': eventos})
-
+    return render(request, 'angeline/evento.html', {'form': form, 'perfil_usuario': perfil_usuario})
 
 
 
