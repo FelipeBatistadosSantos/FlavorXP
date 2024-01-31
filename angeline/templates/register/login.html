@@ -4,20 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+   <title>flavorxp</title>
+    
     {% load static %}
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'angeline/login.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
 </head>
 
 <body>
 
     <div class="container">
-        <h2>Login</h2>
+        <h2>FlavorXP</h2>
+        <h3>Fazer login</h3>
         <form method="post" action="{% url 'angeline:login' %}">
             {% csrf_token %}
-
-            {{ form.as_p }}
+            
+            <div class="formulario">            
+                {{ form.as_p }}
+            </div>
 
             <button type="submit">Entrar</button>
             <h6>Ainda não tem uma conta? Cadastre-se <a href="{% url 'angeline:cadastro' %}">aqui</a></h6>
