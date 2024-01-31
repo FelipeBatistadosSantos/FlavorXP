@@ -1,7 +1,9 @@
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, User
 from django.db import models
-from cpf_field.models import CPFField
 from django.utils import timezone
+from localflavor.br.models import BRPostalCodeField, BRCPFField
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 
 class CustomUserManager(BaseUserManager):
@@ -51,6 +53,7 @@ class Cidade(models.Model):
 class CompleteCadastro(models.Model):
 
     IDIOMA_CHOICES = [
+        ('nenhuma', 'Nenhum'),
         ('ingles', 'Inglês'),
         ('espanhol', 'Espanhol'),
         ('italiano', 'Italiano'),
@@ -59,6 +62,7 @@ class CompleteCadastro(models.Model):
     ]
 
     RESTRICAO_CHOICES = [
+        ('nenhum', 'Nenhum'),
         ('gluten', 'Glúten'),
         ('lactose', 'Lactose'),
         ('vegano', 'Vegano'),
@@ -67,12 +71,12 @@ class CompleteCadastro(models.Model):
     ]
 
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
-    cep = models.CharField('cep', max_length=15, default='')
-    cpf = CPFField('cpf')
+    cep = BRPostalCodeField()
+    cpf = BRCPFField()
     cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, blank=True)
     estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, blank=True)
-    telefone = models.CharField('telefone', max_length=11, default='')
-    nascimento = models.CharField('nascimento', max_length=10)
+    telefone = PhoneNumberField(unique=True, null=False, blank=False)
+    nascimento = models.DateField('nascimento')
     sobre = models.TextField('sobre', default='')
     profissao = models.CharField('profissao',max_length=50)
     hobbie = models.CharField('hobbie', max_length=50)

@@ -2,7 +2,13 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
+from django.core.exceptions import ValidationError
 from .models import CustomUser, CompleteCadastro, Host, Evento
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
+from localflavor.br.forms import BRZipCodeField, BRCPFField
+from phonenumber_field.modelfields import PhoneNumberField
+
 import json
 
 
@@ -11,12 +17,10 @@ class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
 
-        # Remover mensagens de validação padrão
         for field in self.fields.values():
             field.widget.attrs.pop("title", None)
             field.help_text = None
 
-        # Adicionar placeholders se desejar
         self.fields['username'].widget.attrs['placeholder'] = 'Usuário'
         self.fields['email'].widget.attrs['placeholder'] = 'Endereço de email'
         self.fields['password1'].widget.attrs['placeholder'] = 'Senha'
@@ -30,10 +34,35 @@ class CustomUserLoginForm(AuthenticationForm):
         model = CustomUser
         fields = ['email', 'password']
 
+
+class DateInput(forms.DateInput):
+    input_type = 'text'
+    format = '%d/%m/%Y'
+    attrs = {'placeholder': '__/__/____'}
+
 class CompleteCadastroForm(forms.ModelForm):
+    
+    nascimento = forms.DateField(label=_('Data de Nascimento:'), input_formats=["%d/%m/%Y",], widget=DateInput())
+    sobre = forms.CharField(label='Fale um pouco sobre você: ', widget=forms.Textarea)
+    idioma = forms.ChoiceField(label='Você conhece outro idioma? ', choices=CompleteCadastro.IDIOMA_CHOICES)
+    comidaf = forms.CharField(label='Comida favorita: ')
+    bebida = forms.CharField(label='Bebida favorita')
+    restricao = forms.ChoiceField(label='Você possui alguma restrição? ', choices=CompleteCadastro.RESTRICAO_CHOICES)
+    cpf = BRCPFField()
+    cep = BRZipCodeField()
+    telefone = PhoneNumberField()
+        
     class Meta:
         model = CompleteCadastro
-        fields = ['nascimento','sobre','profissao','hobbie','idioma','comidaf','bebida','restricao', 'cpf','cep','cidade','estado','telefone']
+        fields = ['nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao', 'cpf', 'cep', 'cidade', 'estado', 'telefone']
+        
+    def clean_nascimento(self):
+        nascimento = self.cleaned_data.get('nascimento')
+
+        if nascimento and nascimento > timezone.now().date():
+            raise ValidationError(_('A data de nascimento não pode ser no futuro.'))
+
+        return nascimento
 
 class HostForm(forms.ModelForm):
     class Meta:

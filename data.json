@@ -51299,19 +51299,19 @@
         "pk": 1,
         "fields": {
             "usuario": 1,
-            "cep": "",
-            "cpf": "",
+            "cep": "89041210",
+            "cpf": "10658164996",
             "cidade": null,
             "estado": null,
-            "telefone": "",
-            "nascimento": "",
-            "sobre": "",
-            "profissao": "",
-            "hobbie": "",
-            "idioma": "",
-            "comidaf": "",
-            "bebida": "",
-            "restricao": ""
+            "telefone": "47997452468",
+            "nascimento": "2003-06-03",
+            "sobre": "aa",
+            "profissao": "Lombriga",
+            "hobbie": "Chorar",
+            "idioma": "null",
+            "comidaf": "Abóbora",
+            "bebida": "Água",
+            "restricao": "null"
         }
     }
 ]
