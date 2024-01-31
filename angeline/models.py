@@ -84,6 +84,7 @@ class CompleteCadastro(models.Model):
     comidaf = models.CharField('comida', max_length=50)
     bebida = models.CharField('bebida',max_length=50)
     restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30)
+    outra_restricao = models.CharField('descrição', blank=True, null=True, max_length=100)
 
 
 class Host(models.Model):
@@ -131,7 +132,7 @@ class Evento(models.Model):
     estilo = models.CharField('Estilo de Evento', max_length=30, choices=ESTILO_CHOICES, default='')
     tema = models.CharField('Tema da experiência', max_length=255, default='Sem tema')
     fotos = models.ImageField('Fotos do Evento', upload_to='evento_fotos/', blank=True, null=True, max_length=255)
-    host = models.ForeignKey(User, on_delete=models.CASCADE, default='')
+    host = models.ForeignKey(User, on_delete=models.PROTECT, default='')
     descricao = models.TextField('Descrição da experiência')
     cardapio = models.TextField('Cardápio', blank=True, null=True)
     inclui_bebidas = models.BooleanField('Inclui Bebidas?', default=False)

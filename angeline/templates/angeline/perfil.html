@@ -9,6 +9,23 @@
     <title>Perfil</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/widgets.css' %}">  <!-- carregar os formatos dos widgets forms no html -->
 
+    <script>
+        // Função para mostrar/ocultar o campo 'outra_restricao' com base na escolha 'outros'
+        function toggleOutraRestricao() {
+            var restricaoField = document.getElementById("id_restricao");
+            var outraRestricaoField = document.getElementById("id_outra_restricao");
+
+            // Se a opção 'outros' estiver selecionada, mostra o campo 'outra_restricao', caso contrário, oculta
+            outraRestricaoField.style.display = restricaoField.value === 'Outros' ? 'block' : 'none';
+        }
+
+        // Adiciona um ouvinte de evento para chamar a função ao mudar a opção de restrição
+        document.addEventListener('DOMContentLoaded', function () {
+            toggleOutraRestricao();  // Chamada inicial para configurar o estado inicial
+            document.getElementById("id_restricao").addEventListener('change', toggleOutraRestricao);
+        });
+    </script>
+
 </head>
 
 <body>
