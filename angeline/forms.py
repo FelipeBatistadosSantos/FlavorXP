@@ -6,11 +6,12 @@ from django.core.exceptions import ValidationError
 from .models import CustomUser, CompleteCadastro, Host, Evento
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
-# from localflavor.br.forms import BRZipCodeField, BRCPFField
-# from phonenumber_field.modelfields import PhoneNumberField
+from localflavor.br.forms import BRZipCodeField, BRCPFField
+from phonenumber_field.modelfields import PhoneNumberField
 
-# from localflavor.br.forms import BRZipCodeField, BRCPFField
-# from phonenumber_field.modelfields import PhoneNumberFieldimport json
+from localflavor.br.forms import BRZipCodeField, BRCPFField
+from phonenumber_field.modelfields import PhoneNumberField
+import json
 
 
 

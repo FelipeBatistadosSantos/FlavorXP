@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'angeline',
     'main',
-    'cpf_field',
     'localflavor',
     'localflavor.br',
     'phonenumber_field',
