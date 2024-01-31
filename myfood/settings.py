@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'angeline',
     'main',
     'cpf_field',
+    
+
+    
 ]
 
 MIDDLEWARE = [

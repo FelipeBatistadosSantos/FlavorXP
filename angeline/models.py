@@ -51,6 +51,7 @@ class Cidade(models.Model):
 class CompleteCadastro(models.Model):
 
     IDIOMA_CHOICES = [
+        ('nenhuma', 'Nenhum'),
         ('ingles', 'Inglês'),
         ('espanhol', 'Espanhol'),
         ('italiano', 'Italiano'),
@@ -59,6 +60,7 @@ class CompleteCadastro(models.Model):
     ]
 
     RESTRICAO_CHOICES = [
+        ('nenhum', 'Nenhum'),
         ('gluten', 'Glúten'),
         ('lactose', 'Lactose'),
         ('vegano', 'Vegano'),
@@ -72,7 +74,7 @@ class CompleteCadastro(models.Model):
     cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, blank=True)
     estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, blank=True)
     telefone = models.CharField('telefone', max_length=11, default='')
-    nascimento = models.CharField('nascimento', max_length=10)
+    nascimento = models.DateField('nascimento')
     sobre = models.TextField('sobre', default='')
     profissao = models.CharField('profissao',max_length=50)
     hobbie = models.CharField('hobbie', max_length=50)
