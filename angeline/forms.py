@@ -47,10 +47,11 @@ class CompleteCadastroForm(forms.ModelForm):
     bebida = forms.CharField(label='Bebida favorita')
     restricao = forms.ChoiceField(label='Você possui alguma restrição? ', choices=CompleteCadastro.RESTRICAO_CHOICES)
     cpf = CPFFieldForm('CPF')
+    outra_restricao = forms.CharField(label='Informe ')
         
     class Meta:
         model = CompleteCadastro
-        fields = ['nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao', 'cpf', 'cep', 'cidade', 'estado', 'telefone']
+        fields = ['nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao','outra_restricao', 'cpf', 'cep', 'cidade', 'estado', 'telefone']
         
     def clean_nascimento(self):
         nascimento = self.cleaned_data.get('nascimento')
@@ -60,10 +61,12 @@ class CompleteCadastroForm(forms.ModelForm):
 
         return nascimento
 
+
 class HostForm(forms.ModelForm):
     class Meta:
         model = Host
         fields = ['nome_empresa', 'motivo', 'area_gastronomia', 'servicos', 'frequencia_servicos', 'local_servico', 'descricao_local']
+
 
 class EventoForm(forms.ModelForm):
     class Meta:
