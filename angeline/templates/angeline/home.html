@@ -27,7 +27,7 @@
     <main>
       <div class="feed-container">
         {% for evento in eventos %}
-            <div class="feed-item">
+        <a href="{% url 'angeline:specific_page' %}" class="feed-item">
                 {% if evento.fotos %}
                     <img src="{{ evento.fotos.url }}" alt="{{ evento.tema }}">
                 {% else %}
@@ -36,7 +36,7 @@
                 <h3>{{ evento.tema }}</h3>
                 <p>{{ evento.descricao }}</p>
                 <span>R$ {{ evento.valor_host }}</span>
-            </div>
+        </a>
         {% endfor %}
       </div>
 

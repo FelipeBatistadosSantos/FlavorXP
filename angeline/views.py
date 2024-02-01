@@ -104,10 +104,9 @@ def evento(request):
 
 
 
-def testeFeed(request):
-    lista = {'nome':'Jardinagem', }
-
-    return render(request, 'angeline/home.html')
+def specific_page(request):
+    
+    return render(request, 'angeline/specific_page.html')
 
 
 
