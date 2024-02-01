@@ -12,7 +12,10 @@ def popular_cidades_com_csv(caminho_arquivo):
         leitor_csv = csv.reader(arquivo_csv)
         next(leitor_csv)
 
-        for linha in sorted(leitor_csv, key=lambda x: x[2]):  # Ordena pelo terceiro elemento
+        # Ordena as linhas do CSV pelo nome da cidade (índice 2)
+        linhas_ordenadas = sorted(leitor_csv, key=lambda x: x[2])
+
+        for linha in linhas_ordenadas:
             codigo_uf, codigo_ibge, nome = linha
 
             estado, created = Estado.objects.get_or_create(codigo=int(codigo_uf), defaults={'nome': 'Unknown', 'sigla': 'XX'})

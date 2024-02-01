@@ -76,7 +76,7 @@ class CompleteCadastro(models.Model):
     cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, blank=True)
     estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, blank=True)
     telefone = PhoneNumberField(unique=True, null=False, blank=False)
-    nascimento = models.DateField('nascimento')
+    nascimento = models.DateField(null=True)
     sobre = models.TextField('sobre', default='')
     profissao = models.CharField('profissao',max_length=50)
     hobbie = models.CharField('hobbie', max_length=50)
