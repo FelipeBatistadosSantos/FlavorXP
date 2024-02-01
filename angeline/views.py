@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import logout, authenticate, login as auth_login
 from django.contrib import messages
-from .models import CustomUser, CompleteCadastro,Host
+from .models import CustomUser, CompleteCadastro,Host, Evento
 from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm, EventoForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
@@ -33,9 +33,9 @@ class CustomLogoutView(LogoutView):
     next_page = 'main:base'
 
 
-
 def home(request):
-    return render(request, 'angeline/home.html')
+    eventos = Evento.objects.all()
+    return render(request, 'angeline/home.html', {'eventos': eventos})
 
 
 @login_required
@@ -96,7 +96,9 @@ def evento(request):
     else:
         form = EventoForm()
 
-    return render(request, 'angeline/evento.html', {'form': form, 'perfil_usuario': perfil_usuario})
+    eventos = Evento.objects.all()
+
+    return render(request, 'angeline/evento.html', {'form': form, 'perfil_usuario': perfil_usuario, 'eventos':eventos})
 
 
 
