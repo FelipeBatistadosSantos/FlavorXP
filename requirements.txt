@@ -6,9 +6,11 @@ django-localflavor==4.0
 django-phonenumber-field==7.3.0
 django-postalcodes==0.4.0
 idna==2.7
+localflavor==1.9
 phonenumberslite==8.13.29
 pillow==10.2.0
 python-stdnum==1.19
+six==1.16.0
 sqlparse==0.4.4
 typing_extensions==4.9.0
 tzdata==2023.4

@@ -9,11 +9,6 @@ from django.utils import timezone
 from localflavor.br.forms import BRZipCodeField, BRCPFField
 from phonenumber_field.modelfields import PhoneNumberField
 
-from localflavor.br.forms import BRZipCodeField, BRCPFField
-from phonenumber_field.modelfields import PhoneNumberField
-import json
-
-
 
 class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
