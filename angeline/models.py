@@ -129,6 +129,7 @@ class Evento(models.Model):
             ('outro', 'Outro'),
         ]
 
+    id = models.AutoField(primary_key=True)
     estilo = models.CharField('Estilo de Evento', max_length=30, choices=ESTILO_CHOICES, default='')
     tema = models.CharField('Tema da experiência', max_length=255, default='Sem tema')
     fotos = models.ImageField('Fotos do Evento', upload_to='evento_fotos/', blank=True, null=True, max_length=255)

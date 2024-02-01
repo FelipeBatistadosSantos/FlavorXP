@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.contrib.auth import logout, authenticate, login as auth_login
 from django.contrib import messages
 from .models import CustomUser, CompleteCadastro,Host, Evento
@@ -82,6 +82,7 @@ def editar_perfil(request):
 
     return render(request, 'angeline/editar_perfil.html', {'form': form, 'perfil_usuario': perfil_usuario})
 
+
 @login_required
 def evento(request):
     perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
@@ -103,11 +104,14 @@ def evento(request):
 
 
 
+def specific_page(request, evento_id):
+    evento = get_object_or_404(Evento, id=evento_id)
 
-def specific_page(request):
-    
-    return render(request, 'angeline/specific_page.html')
+    context = {
+        'evento': evento,
+    }
 
+    return render(request, 'angeline/specific_page.html', context)
 
 
 
