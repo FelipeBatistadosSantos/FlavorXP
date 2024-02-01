@@ -84,7 +84,7 @@ class CompleteCadastro(models.Model):
     comidaf = models.CharField('comida', max_length=50)
     bebida = models.CharField('bebida',max_length=50)
     restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30)
-    outra_restricao = models.CharField('descrição', blank=True, null=True, max_length=100)
+    outra_restricao = models.CharField('outra_restricao', max_length=30, default='')
 
 
 class Host(models.Model):
