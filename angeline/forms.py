@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from localflavor.br.forms import BRZipCodeField, BRCPFField
 from phonenumber_field.modelfields import PhoneNumberField
+import json
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -48,11 +49,15 @@ class CompleteCadastroForm(forms.ModelForm):
     cpf = BRCPFField()
     cep = BRZipCodeField()
     telefone = PhoneNumberField()
-    descricao = forms.CharField(label='Descrição da Restrição Personalizada', required=False)
+    outra_restricao = forms.CharField(label='Informe ')
+
         
     class Meta:
         model = CompleteCadastro
         fields = ['nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao', 'outra_restricao', 'cpf', 'cep', 'cidade', 'estado', 'telefone']
+
+        
+   
         
     def clean_nascimento(self):
         nascimento = self.cleaned_data.get('nascimento')
@@ -61,8 +66,6 @@ class CompleteCadastroForm(forms.ModelForm):
             raise ValidationError(_('A data de nascimento não pode ser no futuro.'))
 
         return nascimento
-
-    
 
 class HostForm(forms.ModelForm):
     class Meta:
@@ -76,6 +79,7 @@ class CustomDecimalField(forms.RegexField):
         kwargs['regex'] = r'^(\d+(\.\d{1,2})?|\d+,\d{2})?$'
 
         super().__init__(**kwargs)
+
 
 
 class EventoForm(forms.ModelForm):

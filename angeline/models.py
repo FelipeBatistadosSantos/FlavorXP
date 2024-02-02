@@ -76,7 +76,7 @@ class CompleteCadastro(models.Model):
     cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, blank=True)
     estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, blank=True)
     telefone = PhoneNumberField(unique=True, null=False, blank=False)
-    nascimento = models.DateField('nascimento')
+    nascimento = models.DateField(null=True)
     sobre = models.TextField('sobre', default='')
     profissao = models.CharField('profissao',max_length=50)
     hobbie = models.CharField('hobbie', max_length=50)
@@ -84,7 +84,7 @@ class CompleteCadastro(models.Model):
     comidaf = models.CharField('comida', max_length=50)
     bebida = models.CharField('bebida',max_length=50)
     restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30)
-    outra_restricao = models.CharField('descrição', blank=True, null=True, max_length=100)
+    outra_restricao = models.CharField('outra_restricao', max_length=30, default='')
 
 
 class Host(models.Model):
@@ -129,6 +129,7 @@ class Evento(models.Model):
             ('outro', 'Outro'),
         ]
 
+    id = models.AutoField(primary_key=True)
     estilo = models.CharField('Estilo de Evento', max_length=30, choices=ESTILO_CHOICES, default='')
     tema = models.CharField('Tema da experiência', max_length=255, default='Sem tema')
     fotos = models.ImageField('Fotos do Evento', upload_to='evento_fotos/', blank=True, null=True, max_length=255)
