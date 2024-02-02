@@ -158,7 +158,14 @@ def perfil_host(request):
     return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
 
 
-
+def host_servico(request):
+    hoster = Host.objects.get()
+    
+    context = {
+        'host' : hoster
+    }
+    
+    return render(request, 'angeline/host_servico.html', context)
     
 
 

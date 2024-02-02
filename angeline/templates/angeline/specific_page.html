@@ -9,7 +9,7 @@
     <h1>{{ evento.tema }}</h1>
     <p>Estilo {{ evento.estilo }}</p>
     <p>Fotos {{ envento.fotos }}</p>
-    <a href="angeline/host_servico.html"><p>{{ evento.host }}</p></a>  
+    <a href="{% url 'angeline:host_servico' %}"><p>{{ evento.host }}</p></a>  
     <p>Descrição {{ evento.descricao }}</p>
     <p>Cardápio {{ evento.cardapio }}</p>
     <p>Bebidas oferecidas {{ evento.bebidas_oferecidas }}</p>
