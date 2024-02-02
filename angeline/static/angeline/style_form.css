@@ -22,7 +22,7 @@ body {
 
 .faça_seu_cadastro {
     left: 65.5%;
-    top: 15%;
+    top: 10%;
     position: absolute;
     text-align: center;
     z-index: 10;
@@ -32,7 +32,7 @@ body {
     width: 34.7%;
     height: 69%;
     left: 63%;
-    top: 29%;
+    top: 25%;
     position: absolute;
     background: #4E008E;
     border-radius: 4px;
@@ -214,7 +214,7 @@ body {
     z-index: 11;
     position: relative;
     left: 30.5%;
-    margin-top: 14%;
+    margin-top: 12%;
 }
 
 h2 {
