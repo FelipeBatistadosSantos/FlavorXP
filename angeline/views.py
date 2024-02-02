@@ -168,7 +168,10 @@ def host_servico(request):
     return render(request, 'angeline/host_servico.html', context)
     
 
+def agendamento(request):
+    return render(request, 'angeline/agendamento.html')
 
 
-
+def editar_evento(request):
+    return render(request, 'angeline/editar_evento.html')
 

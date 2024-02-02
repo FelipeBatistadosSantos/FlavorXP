@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView
-from .views import cadastro, CustomLoginView, home, host, perfil, CustomLogoutView, editar_perfil, editar_host, perfil_host, evento, specific_page, host_servico
+from .views import cadastro, CustomLoginView, home, host, perfil, CustomLogoutView, editar_perfil, editar_host, perfil_host, evento, specific_page, host_servico, agendamento, editar_evento
 
 app_name = 'angeline'
 
@@ -16,5 +16,8 @@ urlpatterns = [
     path('perfil_host', perfil_host, name='perfil_host'),
     path('evento', evento, name='evento'),
     path('specific_page/<int:evento_id>/', specific_page, name='specific_page'),
-    path('host_servico', host_servico, name='host_servico')
+    path('host_servico', host_servico, name='host_servico'),
+    path('agendamento', agendamento, name='agendamento'),
+    path('editar_evento', editar_evento, name='editar_evento'),
+    
 ]

@@ -18,7 +18,13 @@
     <p>Data {{ evento.data }}</p>
     <p>Horário {{ evento.horario }}</p>
     <p>Valor {{ evento.valor_host }}</p>
-    
+
+    {% if request.user.host %}
+        <a href="{% url 'angeline:editar_evento' %}">Editar evento</a>
+    {% else %}    
+        <a href="{% url 'angeline:agendamento' %}">Agendar</a>
+    {% endif %}
+    <a href="{% url 'angeline:home' %}">Voltar</a>
     
     
     
