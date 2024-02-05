@@ -24,6 +24,9 @@
     }
     
     .oi:hover {
-        color: #0056b3; /* Cor do link quando o mouse passa por cima */
+        color: #0056b3;
     }
     
+body{
+    margin:0 ;
+}
