@@ -6,7 +6,7 @@ from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastro
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser
-from .utils import filtrar_cidades
+# from .utils import filtro_evento
 from django.db import models
 from .models import Cidades
 import json
@@ -185,7 +185,7 @@ def editar_evento(request):
     return render(request, 'angeline/home.html')
 
 
-def filtrar_cidades_view(request):
+def filtro_evento(request):
     if request.method == 'POST':
         filtro = request.POST.get('filtro')
         if len(filtro) > 2:
@@ -199,4 +199,4 @@ def filtrar_cidades_view(request):
         else:
             return render(request, 'angeline/resultado.html', {'resultados': [], 'filtro': filtro})
 
-    return render(request, 'angeline/filtrar_cidades.html')
+    return render(request, 'angeline/filtrar_eventos.html')

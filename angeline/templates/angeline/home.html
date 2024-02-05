@@ -18,7 +18,7 @@
           var csrfToken = $('input[name=csrfmiddlewaretoken]').val();
           $.ajax({
             type: "POST",
-            url: "/angeline/filtrar_cidades_view/",  // Verifique o caminho correto para a sua view
+            url: "/angeline/filtro_evento/ ",  // Verifique o caminho correto para a sua view
             data: {
               filtro: filtroValue,
               csrfmiddlewaretoken: csrfToken
@@ -50,7 +50,7 @@
           </g>
         </svg>
         <input id="filtro-input" placeholder="Search" type="search" class="input">
-        <button id="buscar-btn">Buscar</button>
+        <button id="buscar-btn" type="s">Buscar</button>
       </form>
         </div>
         
@@ -63,28 +63,6 @@
         </ul>
     </nav>
     <main>
-        <div class="feed-container">
-            <div class="feed-item">
-              <img src="angeline/static/img/churrasco_home.jpg" alt="Jantar Exclusivo">
-              <h3>Jantar Exclusivo</h3>
-              <p>Desfrute de uma noite única com um menu gourmet preparado por nosso talentoso anfitrião.</p>
-              <span>R$ 50,00</span>
-            </div>
-  
-            <div class="feed-item">
-              <img src="angeline/static/img/reserva_home.jpg" alt="Experiência Gastronômica">
-              <h3>Experiência Gastronômica</h3>
-              <p>Explore sabores incríveis em um jantar com pratos autênticos e deliciosos.</p>
-              <span>R$ 35,00</span>
-            </div>
-            
-            <div class="feed-item">
-              <img src="angeline/static/img/seja_um_convidado_home.jpg" alt="Jantar à Luz de Velas">
-              <h3>Jantar à Luz de Velas</h3>
-              <p>Romance e gastronomia se encontram nesta experiência única à luz de velas.</p>
-              <span>R$ 75,00</span>
-            </div>
-          </div>
     </main>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
