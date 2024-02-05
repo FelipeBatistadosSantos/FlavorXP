@@ -88,7 +88,7 @@ class CompleteCadastro(models.Model):
     bebida = models.CharField('bebida',max_length=50)
     restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30)
 
-class Cidade(models.Model):
+class Cidades(models.Model):
     nome = models.CharField(max_length=100)
     evento = models.CharField(max_length=100)
     nacionalidade = models.CharField(max_length=100)

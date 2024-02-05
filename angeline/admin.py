@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import CustomUser, Cidade
+from .models import CustomUser, Cidades
 
 # Register your models here.
-admin.site.register(CustomUser)
-admin.site.register(Cidade)
+
+admin.site.register(Cidades)
 from .models import CustomUser, Host, Cidade, Estado, Evento, CompleteCadastro
 
 # Register your models here.

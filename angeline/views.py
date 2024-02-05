@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from .models import CustomUser
 from .utils import filtrar_cidades
 from django.db import models
-from .models import Cidade
+from .models import Cidades
 import json
 from django.views import View
 
@@ -189,7 +189,7 @@ def filtrar_cidades_view(request):
     if request.method == 'POST':
         filtro = request.POST.get('filtro')
         if len(filtro) > 2:
-            resultados = Cidade.objects.filter(
+            resultados = Cidades.objects.filter(
                 models.Q(nome__icontains=filtro) |
                 models.Q(evento__icontains=filtro) |
                 models.Q(nacionalidade__icontains=filtro)
