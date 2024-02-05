@@ -5,13 +5,8 @@ from .models import CustomUser, CompleteCadastro,Host
 from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm, EventoForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
-<<<<<<< HEAD
-from .models import CustomUser
-from .forms import CadastroForm, LoginForm
-=======
 import json
 from django.views import View
->>>>>>> origin/dev
 
 
 def cadastro(request):
@@ -110,19 +105,6 @@ def testeFeed(request):
     return render(request, 'angeline/home.html')
 
 
-<<<<<<< HEAD
-def listar_produtos(request):
-    produtos = Produto.objects.all()
-    form = ProdutoFilterForm(request.GET)
-
-    if form.is_valid():
-        cidade = form.cleaned_data.get('cidade')
-
-        if cidade:
-            produtos = produtos.filter(cidade__icontains=cidade)
-
-    return render(request, 'angeline/filtro.html', {'produtos': produtos, 'form': form})
-=======
 
 
 @login_required
@@ -172,4 +154,3 @@ def perfil_host(request):
 
 
 
->>>>>>> origin/dev
