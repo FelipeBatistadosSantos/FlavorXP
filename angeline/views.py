@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.contrib.auth import logout, authenticate, login as auth_login
 from django.contrib import messages
-from .models import CustomUser, CompleteCadastro,Host, Evento
-from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm, EventoForm
+from .models import CustomUser, CompleteCadastro,Host, Evento, Agendamento
+from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm, EventoForm, AgendamentoForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 import json
@@ -186,8 +186,22 @@ def host_servico(request, evento_id):
     return render(request, 'angeline/host_servico.html', context)
     
 
-def agendamento(request):
-    return render(request, 'angeline/agendamento.html')
+@login_required
+def agendamento(request, evento_id):
+    evento = Evento.objects.get(id=evento_id)
+
+    if request.method == 'POST':
+        form = AgendamentoForm(request.POST)
+        if form.is_valid():
+            agendamento = form.save(commit=False)
+            agendamento.usuario = request.user
+            agendamento.evento = evento
+            agendamento.save()
+            return redirect('angeline:agendamentos') 
+    else:
+        form = AgendamentoForm()
+
+    return render(request, 'angeline/agendamento.html', {'form': form, 'evento': evento})
 
 
 @login_required
@@ -207,3 +221,7 @@ def editar_evento(request, evento_id):
 
     return render(request, 'angeline/editar_evento.html', {'form': form, 'evento': evento})
 
+def agendamentos(request):
+    agendamentos = Agendamento.objects.filter(usuario=request.user)
+
+    return render(request, 'angeline/agendamentos.html', {'agendamentos': agendamentos})
