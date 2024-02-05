@@ -34,8 +34,11 @@ class CustomLogoutView(LogoutView):
 
 
 def home(request):
+    perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
+
     eventos = Evento.objects.all()
-    return render(request, 'angeline/home.html', {'eventos': eventos})
+
+    return render(request, 'angeline/home.html', {'eventos': eventos, 'perfil_usuario':perfil_usuario,'form_preenchido': not created})
 
 
 @login_required

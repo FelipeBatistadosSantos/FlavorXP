@@ -87,6 +87,12 @@ a {
     margin-bottom: 10px;
 }
 
+.perfil_usuario{
+    height: 40px;
+    width: 40px;
+    top: 2%;
+}
+
 ul {
     list-style: none;
     margin: 0;
@@ -105,6 +111,7 @@ li {
     color:#ffffff
 
 }
+
 
 
 body {
