@@ -30,6 +30,17 @@ class CustomUser(AbstractBaseUser):
     def __str__(self):
         return self.email
     
+class Estado(models.Model):
+    codigo = models.IntegerField(primary_key=True)
+    nome = models.CharField(max_length=50)
+    sigla = models.CharField(max_length=2)
+
+class Cidade(models.Model):
+    codigo_uf = models.IntegerField()
+    codigo_ibge = models.IntegerField(primary_key=True)
+    nome = models.CharField(max_length=50)
+    estado = models.ForeignKey(Estado, on_delete=models.CASCADE, default='')    
+    
     
 class CompleteCadastro(models.Model):
 
