@@ -189,10 +189,10 @@ def filtrar_cidades_view(request):
     if request.method == 'POST':
         filtro = request.POST.get('filtro')
         if len(filtro) > 2:
-            resultados = Cidades.objects.filter(
-                models.Q(nome__icontains=filtro) |
-                models.Q(evento__icontains=filtro) |
-                models.Q(nacionalidade__icontains=filtro)
+            resultados = Evento.objects.filter(
+                models.Q(estilo__icontains=filtro) |
+                models.Q(tema__icontains=filtro) |
+                models.Q(local__icontains=filtro)
             )
             print(resultados)
             return render(request, 'angeline/resultado.html', {'resultados': resultados, 'filtro': filtro})
