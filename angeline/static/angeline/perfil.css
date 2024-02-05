@@ -1,4 +1,4 @@
-/* CSS */
+/* CSS
 .container {
           display: flex;
           justify-content: space-between;
@@ -15,17 +15,19 @@
       }
       .oi {
         color: #1f42a3; /* Cor do link */
-        text-decoration: none; /* Remove o sublinhado */
-        font-size: 20px; /* Tamanho da fonte */
+        /* text-decoration: none; /* Remove o sublinhado 
+        font-size: 20px; /* Tamanho da fonte 
         margin-left: 100px;
         margin-right: 200px;
-        word-wrap:none;
+        word-wrap:none; 
         
     }
     
     .oi:hover {
         color: #0056b3;
-    }
+    } */
+    
+
     
 body{
     margin:0 ;
