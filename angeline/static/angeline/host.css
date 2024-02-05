@@ -10,67 +10,41 @@ body {
 }
 
 .container {
-    background-color: #ffffff;
-    border-radius: 30px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-    padding: 40px;
+    background-color: #F1C400;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(33, 18, 164, 0.1);
+    padding: 20px;
     width: 400px;
     min-height: 300px; /* Alterado para min-height para garantir que o contêiner tenha pelo menos 300px de altura */
     text-align: left;
     color: #000000;
     overflow: auto; /* Adicionado para permitir rolar caso o conteúdo seja maior que o contêiner */
-    justify-content: center;
-    
 }
 
 h2 {
-    color: #F1C400;
+    color: #333;
     margin-bottom: 20px;
-    margin-left: 105px;
-    background-color: #4E008E;
-    width: 100px;
-    text-align: center;
-    font-family: Outfit;
-    justify-content: baseline;
-    display: flex;
-    font-size:x-large;
-    padding-left: 10px;
-    padding-right: 107px;
 }
-h3{
 
-    margin-left: 80px;
-    font-size:xx-large;
-    
-}
 form {
-    display: flex;      
+    display: flex;
     flex-direction: column;
 }
 
-.formulario p {
-    display: flex;
-    justify-content: space-between;
+label {
+    margin-bottom: 6px;
 }
 
-label {
-    text-align: center;
-    padding: 8px;
-}
+
 
 input {
-    align-self: flex-start;
     padding: 8px;
-    margin: 0px 0px 10px 0px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 button {
-    width: 100%;
     background-color: #4E008E;
     color: #F1C400;
     padding: 10px;

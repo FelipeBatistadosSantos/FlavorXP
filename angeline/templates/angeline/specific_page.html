@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{ evento.tema }}</h1>
+    <p>Estilo {{ evento.estilo }}</p>
+    <p>Fotos {{ envento.fotos }}</p>
+    <a href="{% url 'angeline:host_servico' %}"><p>{{ evento.host }}</p></a>  
+    <p>Descrição {{ evento.descricao }}</p>
+    <p>Cardápio {{ evento.cardapio }}</p>
+    <p>Bebidas oferecidas {{ evento.bebidas_oferecidas }}</p>
+    <p>Lotação máxima {{ evento.max_convidados }}</p>
+    <p>Localização {{ evento.local }}</p>
+    <p>Data {{ evento.data }}</p>
+    <p>Horário {{ evento.horario }}</p>
+    <p>Valor {{ evento.valor_host }}</p>
+
+    {% if request.user.host %}
+        <a href="{% url 'angeline:editar_evento' %}">Editar evento</a>
+    {% else %}    
+        <a href="{% url 'angeline:agendamento' %}">Agendar</a>
+    {% endif %}
+    <a href="{% url 'angeline:home' %}">Voltar</a>
+    
+    
+    
+    
+</body>
+</html>
