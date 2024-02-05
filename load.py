@@ -5,13 +5,12 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myfood.settings')  
 django.setup()
 
-# Importe o modelo Estado após a configuração
-from angeline.models import Estado  # Substitua 'seu_app' pelo nome real do seu aplicativo Django
+from angeline.models import Estado  
 
 def popular_estados_com_csv(caminho_arquivo):
     with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo_csv:
         leitor_csv = csv.reader(arquivo_csv)
-        next(leitor_csv)  # Pular o cabeçalho
+        next(leitor_csv)  
 
         for linha in leitor_csv:
             codigo, nome, sigla = linha

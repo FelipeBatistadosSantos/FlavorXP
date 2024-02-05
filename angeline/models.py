@@ -1,6 +1,9 @@
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, User
 from django.db import models
-from cpf_field.models import CPFField
+from django.utils import timezone
+from localflavor.br.models import BRPostalCodeField, BRCPFField
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 
 class CustomUserManager(BaseUserManager):
@@ -27,14 +30,11 @@ class CustomUser(AbstractBaseUser):
     def __str__(self):
         return self.email
     
-    def has_module_perms(self, app_label):
-        return True
     
-    def has_perm(self, perm, obj=None):
-        return True
 class CompleteCadastro(models.Model):
 
     IDIOMA_CHOICES = [
+        ('nenhuma', 'Nenhum'),
         ('ingles', 'Inglês'),
         ('espanhol', 'Espanhol'),
         ('italiano', 'Italiano'),
@@ -43,6 +43,7 @@ class CompleteCadastro(models.Model):
     ]
 
     RESTRICAO_CHOICES = [
+        ('nenhum', 'Nenhum'),
         ('gluten', 'Glúten'),
         ('lactose', 'Lactose'),
         ('vegano', 'Vegano'),
@@ -51,12 +52,12 @@ class CompleteCadastro(models.Model):
     ]
 
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
-    cep = models.CharField('cep', max_length=15, default='')
-    cpf = CPFField('cpf')
-    cidade = models.CharField('cidade', max_length=50, default='')
-    estado = models.CharField('estado', max_length=2, default='')
-    telefone = models.CharField('telefone', max_length=11, default='')
-    nascimento = models.CharField('nascimento', max_length=10)
+    cep = BRPostalCodeField()
+    cpf = BRCPFField()
+    cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, blank=True)
+    estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, blank=True)
+    telefone = PhoneNumberField(unique=True, null=False, blank=False)
+    nascimento = models.DateField(null=True)
     sobre = models.TextField('sobre', default='')
     profissao = models.CharField('profissao',max_length=50)
     hobbie = models.CharField('hobbie', max_length=50)
@@ -64,27 +65,7 @@ class CompleteCadastro(models.Model):
     comidaf = models.CharField('comida', max_length=50)
     bebida = models.CharField('bebida',max_length=50)
     restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30)
-    
-
-class Estado(models.Model):
-    codigo = models.AutoField(primary_key=True)
-    nome = models.CharField(max_length=50)
-    sigla = models.CharField(max_length=2)
-
-    def __str__(self):
-        return self.nome
-
-class Cidade(models.Model):
-    codigo = models.IntegerField(primary_key=True)  
-    nome = models.CharField(max_length=50)
-    estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
-    latitude = models.FloatField(default=0.0)
-    longitude = models.FloatField(default=0.0)
-    capital = models.BooleanField(default=False)
-    codigo_uf = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.nome
+    outra_restricao = models.CharField('outra_restricao', max_length=30, default='')
 
 
 class Host(models.Model):

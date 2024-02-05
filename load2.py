@@ -12,19 +12,21 @@ def popular_cidades_com_csv(caminho_arquivo):
         leitor_csv = csv.reader(arquivo_csv)
         next(leitor_csv)
 
-        for linha in leitor_csv:
-            codigo_ibge, nome, latitude, longitude, capital, codigo_uf, siafi_id, ddd, fuso_horario = linha
+        # Ordena as linhas do CSV pelo nome da cidade (índice 2)
+        linhas_ordenadas = sorted(leitor_csv, key=lambda x: x[2])
+
+        for linha in linhas_ordenadas:
+            codigo_uf, codigo_ibge, nome = linha
 
             estado, created = Estado.objects.get_or_create(codigo=int(codigo_uf), defaults={'nome': 'Unknown', 'sigla': 'XX'})
             
-            cidade = Cidade.objects.create(
-                codigo=int(codigo_ibge),
-                nome=nome,
-                estado=estado,
-                latitude=float(latitude),
-                longitude=float(longitude),
-                capital=bool(int(capital)),
+            cidade, created = Cidade.objects.get_or_create(
                 codigo_uf=int(codigo_uf),
+                codigo_ibge=int(codigo_ibge),
+                defaults={
+                    'nome': nome,
+                    'estado': estado,
+                }
             )
 
             print(f"Cidade criada: {cidade.nome}")

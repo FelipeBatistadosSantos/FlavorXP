@@ -1,65 +1,65 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
-    <link rel="stylesheet" href="{% static 'angeline/style_home.css' %}">
-    <title>FlavorXP</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'angeline/style_home.css' %}">
+  <title>FlavorXP</title>
 </head>
 
 <body>
-    
-    <nav style="width: 1440px; height: 125px; left: 0px; top: 0px; position: absolute">
-        <div class="retangulo_nav"></div>
-        <div class="logo">FlavorXP</div>
-        <ul>
-          {% if request.user.host %}
-            <li class="nav-link-evento"><a href="{% url 'angeline:evento' %}">Criar Evento</a></li>
-          {% else %}
-            <li class="nav-link-host"><a href="{% url 'angeline:host' %}">Seja Host</a></li>
-          {% endif %}
-            <li class="nav-link-perfil"><a href="{% url 'angeline:perfil' %}">Icone perfil</a></li>
-            <li class="nav-link-sair"><a href="{% url 'main:home_page' %}">Sair</a></li>
-        </ul>
-    </nav>
-    <main>
-        <div class="feed-container">
-            <div class="feed-item">
-              <img src="angeline/static/img/churrasco_home.jpg" alt="Jantar Exclusivo">
-              <h3>Jantar Exclusivo</h3>
-              <p>Desfrute de uma noite única com um menu gourmet preparado por nosso talentoso anfitrião.</p>
-              <span>R$ 50,00</span>
-            </div>
-  
-            <div class="feed-item">
-              <img src="angeline/static/img/reserva_home.jpg" alt="Experiência Gastronômica">
-              <h3>Experiência Gastronômica</h3>
-              <p>Explore sabores incríveis em um jantar com pratos autênticos e deliciosos.</p>
-              <span>R$ 35,00</span>
-            </div>
-            
-            <div class="feed-item">
-              <img src="angeline/static/img/seja_um_convidado_home.jpg" alt="Jantar à Luz de Velas">
-              <h3>Jantar à Luz de Velas</h3>
-              <p>Romance e gastronomia se encontram nesta experiência única à luz de velas.</p>
-              <span>R$ 75,00</span>
-            </div>
-          </div>
-    </main>
 
-    <footer>
-        <div id="div_footer"></div>
-        <div id="div2_footer">
-            <div id="background_footer"></div>
-            <div id="logo_footer">FlavorXP</div>
-            <div id="divisor_footer"></div>
-            <p id="direitos_reservados">© 2024 FlavorXP. Todos os direitos reservados.</p>
-            <div id="instagram_footer"></div>
-            <div id="slogan_footer"style="">Conectando pessoas por meio da gastronomia </div>
-        </div>
-    </footer>
+  <nav style="width: 1440px; height: 125px; left: 0px; top: 0px; position: absolute">
+    <div class="retangulo_nav"></div>
+    <div class="logo">FlavorXP</div>
+    <ul>
+      {% if request.user.host %}
+      <li class="nav-link-evento"><a href="{% url 'angeline:evento' %}">Criar Evento</a></li>
+      {% else %}
+      <li class="nav-link-host"><a href="{% url 'angeline:host' %}">Seja Host</a></li>
+      {% endif %}
+      {% if form_preenchido %}
+      <li class="nav-link-perfil"><a href="{% url 'angeline:perfil' %}"><img class="perfil_usuario"
+            src="angeline/static/img/male-profile.png" alt="Ícone Perfil"></a></li>
+      {% else %}
+      <li class="nav-link-perfil"><a href="{% url 'angeline:perfil' %}">Complete seu perfil</a></li>
+      {% endif %}
+      <li class="nav-link-sair"><a href="{% url 'main:home_page' %}">Sair</a></li>
+
+    </ul>
+  </nav>
+  <main>
+    <div class="feed-container">
+      {% for evento in eventos %}
+      <a href="{% url 'angeline:specific_page' evento_id=evento.id %}" class="feed-item">
+        {% if evento.fotos %}
+        <img src="{{ evento.fotos.url }}" alt="{{ evento.tema }}">
+        {% else %}
+        <p>Imagem não disponível</p>
+        {% endif %}
+        <h3>{{ evento.tema }}</h3>
+        <p>{{ evento.descricao }}</p>
+        <span>R$ {{ evento.valor_host }}</span>
+      </a>
+      {% endfor %}
+    </div>
+
+  </main>
+
+  <footer>
+    <div id="div_footer"></div>
+    <div id="div2_footer">
+      <div id="background_footer"></div>
+      <div id="logo_footer">FlavorXP</div>
+      <div id="divisor_footer"></div>
+      <p id="direitos_reservados">© 2024 FlavorXP. Todos os direitos reservados.</p>
+      <div id="instagram_footer"></div>
+      <div id="slogan_footer" style="">Conectando pessoas por meio da gastronomia </div>
+    </div>
+  </footer>
 
 </body>
 

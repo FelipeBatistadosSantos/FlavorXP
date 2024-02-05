@@ -8,11 +8,37 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'angeline/style_form.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
 </head>
 
 <body>
+        
 
+    <img class="box_shadow_img" src="static/img/img_cadastro.jpg" />
+    <div class="box_shadow_img2"></div>
+    <div class="faça_seu_cadastro">
+        <span class="span_faca_seu">Faça seu </span>
+        <span class="span_cad">Cadastro</span>
+        <span class="span_e">!</span>
+    </div>
+    <div class="quadrado_roxo"></div>
     <div class="container">
+        <form method="post" action="{% url 'angeline:cadastro' %}">
+            {% csrf_token %}
+    
+            {{ form.as_p }}
+    
+            <button type="submit">Cadastre-se</button>
+            <h6>Já tem uma conta? Faça seu login <a href="{% url 'angeline:login' %}">aqui</a></h6>
+        </form>
+    </div>
+    
+    <div class="textos">
+        <span class="span_descubra">“Descubra a arte da boa comida através de uma </span>
+        <span class="span_exp-exc" style="color: #F1C400;">experiência exclusiva</span>
+        <span class="span_mergulhe">. Cadastre-se e mergulhe em sabores memoráveis.”</span>
+    </div>
+    <!-- <div class="container">
         <h2>Cadastro</h2>
         <form method="post" action="{% url 'angeline:cadastro' %}">
             {% csrf_token %}
@@ -22,7 +48,7 @@
             <button type="submit">Cadastrar</button>
             <h6>Já tem uma conta? Faça seu login <a href="{% url 'angeline:login' %}">aqui</a></h6>
         </form>
-    </div>
+    </div>  -->
 
 </body>
 

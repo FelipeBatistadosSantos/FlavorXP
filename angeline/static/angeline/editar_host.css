@@ -1,0 +1,101 @@
+body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 130vh;
+          background-color: #ffffff;
+         
+      }
+      
+      .container {
+          background-color: #ffffff;
+          border-radius: 30px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: black;
+          box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          width: 350px;
+          min-height: 300px; /* Alterado para min-height para garantir que o contêiner tenha pelo menos 300px de altura */
+          text-align:left;
+          color: #000000;
+          overflow: auto; /* Adicionado para permitir rolar caso o conteúdo seja maior que o contêiner */
+          justify-content: center;
+          
+      }
+      
+      h2 {
+          color: #F1C400;
+          margin-bottom: 20px;
+          margin-left: 105px;
+          background-color: #4E008E;
+          width: 100px;
+          text-align: center;
+          font-family: Outfit;
+          justify-content: baseline;
+          display: flex;
+          font-size:x-large;
+          padding-left: 10px;
+          padding-right: 107px;
+      }
+      h3{
+      
+          margin-left: 80px;
+          font-size:xx-large;
+          
+      }
+      form {
+          display: flex;      
+          flex-direction: column;
+      }
+      
+      .formulario p {
+          display: flex;
+          justify-content: space-between;
+      }
+      
+      label {
+          text-align: center;
+          padding: 8px;
+      }
+      
+      input {
+          align-self: flex-start;
+          padding: 8px;
+          margin: 0px 0px 10px 0px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+      }
+      
+      button {
+          width: 100%;
+          background-color: #4E008E;
+          color: #F1C400;
+          padding: 10px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+      
+      button:hover {
+          transform: scaleY(1.125);
+          background-color: #7a10d2;
+      }
+      
+      textarea{
+          height: 50px;
+      }
+
+      .local_servico{
+
+          height: 9000px;
+      }
+      
+      input[type='text']{
+          width: 320px;
+      }
+      
+      
