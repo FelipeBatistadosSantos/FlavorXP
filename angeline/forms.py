@@ -27,6 +27,10 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
+class CustomUserLoginForm(AuthenticationForm):
+    class Meta:
+        model = CustomUser
+        fields = ['email', 'password']
 
 class DateInput(forms.DateInput):
     input_type = 'text'
