@@ -6,12 +6,12 @@
     <title>Host</title>
 </head>
 <body>
-    <h1>{{ host.nome_empresa }}</h1>
-    <p>{{ host.area_gastronomica }}</p>
-    <p>{{ host.frequencia_servicos }}</p>
+    <h1>{{ evento.host.nome_empresa }}</h1>
+    <p>{{ evento.host.area_gastronomia }}</p>
+    <p>{{ evento.host.frequencia_servicos }}</p>
     <p>Avaliações: 5.0 </p>
     <p>Eventos hosteados: 3</p>
 
-    <a href="{% url 'angeline:home' %}">Voltar</a>
+    <a href="{% url 'angeline:specific_page' evento_id=evento.id %}">Voltar</a>
 </body>
 </html>

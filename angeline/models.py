@@ -110,6 +110,9 @@ class Host(models.Model):
     local_servico = models.CharField('Local de Serviço', max_length=100)
     descricao_local = models.TextField('Descrição do Local de Serviço')
 
+    def __str__(self):
+        return self.usuario.username
+
 
 class Evento(models.Model):
 
@@ -133,7 +136,7 @@ class Evento(models.Model):
     estilo = models.CharField('Estilo de Evento', max_length=30, choices=ESTILO_CHOICES, default='')
     tema = models.CharField('Tema da experiência', max_length=255, default='Sem tema')
     fotos = models.ImageField('Fotos do Evento', upload_to='evento_fotos/', blank=True, null=True, max_length=255)
-    host = models.ForeignKey(User, on_delete=models.PROTECT, default='')
+    host = models.ForeignKey(Host, on_delete=models.PROTECT, default='')
     descricao = models.TextField('Descrição da experiência')
     cardapio = models.TextField('Cardápio', blank=True, null=True)
     inclui_bebidas = models.BooleanField('Inclui Bebidas?', default=False)

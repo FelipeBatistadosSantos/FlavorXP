@@ -1,1 +1,9 @@
 <h1>Futura página de editar evento pelo host</h1>
+
+  <h2>Editar Evento</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar Alterações</button>
+  </form>
+  <a href="{% url 'angeline:home' %}">Cancelar</a>

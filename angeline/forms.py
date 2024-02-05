@@ -88,7 +88,7 @@ class EventoForm(forms.ModelForm):
 
     class Meta:
         model = Evento
-        fields = ['estilo','tema','fotos','host','descricao','cardapio','inclui_bebidas','bebidas_oferecidas','convidado_pode_trazer',
+        fields = ['estilo','tema','fotos','descricao','cardapio','inclui_bebidas','bebidas_oferecidas','convidado_pode_trazer',
                   'max_convidados','local','data','horario','valor_host',]
         
         widgets = {

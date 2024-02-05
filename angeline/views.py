@@ -33,12 +33,18 @@ class CustomLogoutView(LogoutView):
     next_page = 'main:base'
 
 
+@login_required
 def home(request):
-    perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
-
+    perfil_usuario = CompleteCadastro.objects.filter(usuario=request.user).first()
     eventos = Evento.objects.all()
 
-    return render(request, 'angeline/home.html', {'eventos': eventos, 'perfil_usuario':perfil_usuario,'form_preenchido': not created})
+    if perfil_usuario:
+        return render(request, 'angeline/home.html', {'eventos': eventos,'perfil_usuario': perfil_usuario, 'form_preenchido': True})
+    else:
+        
+        return render(request, 'angeline/home.html', {'eventos': eventos,'form_preenchido': False})
+
+    
 
 
 @login_required
@@ -53,7 +59,9 @@ def host(request):
 
 @login_required
 def perfil(request):
-    perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
+    perfil_usuario = CompleteCadastro.objects.filter(usuario=request.user).first()
+
+    created = False
 
     if 'edit' in request.GET:
         return redirect('angeline:editar_perfil')
@@ -61,14 +69,20 @@ def perfil(request):
     if request.method == 'POST':
         form = CompleteCadastroForm(request.POST, request.FILES, instance=perfil_usuario)
         if form.is_valid():
-            form.save()
-            
-            if created:
-                return redirect('angeline:perfil')
+            if not perfil_usuario:
+                perfil_usuario = form.save(commit=False)
+                perfil_usuario.usuario = request.user
+                perfil_usuario.save()
+                created = True
+            else:
+                form.save()
+
+            return redirect('angeline:perfil')
     else:
         form = CompleteCadastroForm(instance=perfil_usuario)
 
     return render(request, 'angeline/perfil.html', {'form': form, 'perfil_usuario': perfil_usuario, 'form_preenchido': not created})
+
 
 
 @login_required
@@ -94,7 +108,8 @@ def evento(request):
         form = EventoForm(request.POST)
         if form.is_valid():
             evento = form.save(commit=False)
-            evento.host = request.user
+            host_instance, created = Host.objects.get_or_create(usuario=request.user, defaults={'nome_empresa': 'Nome da Empresa Padrão'})
+            evento.host = host_instance
             evento.save()
             return redirect('angeline:home') 
     else:
@@ -161,11 +176,11 @@ def perfil_host(request):
     return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
 
 
-def host_servico(request):
-    hoster = Host.objects.get()
+def host_servico(request, evento_id):
+    evento = get_object_or_404(Evento, id=evento_id)
     
     context = {
-        'host' : hoster
+        'evento': evento,
     }
     
     return render(request, 'angeline/host_servico.html', context)
@@ -175,6 +190,20 @@ def agendamento(request):
     return render(request, 'angeline/agendamento.html')
 
 
-def editar_evento(request):
-    return render(request, 'angeline/editar_evento.html')
+@login_required
+def editar_evento(request, evento_id):
+    evento = get_object_or_404(Evento, id=evento_id)
+
+    if request.user != evento.host.usuario:
+        return redirect('angeline:home')
+
+    if request.method == 'POST':
+        form = EventoForm(request.POST, instance=evento)
+        if form.is_valid():
+            form.save()
+            return redirect('angeline:specific_page', evento_id=evento.id)
+    else:
+        form = EventoForm(instance=evento)
+
+    return render(request, 'angeline/editar_evento.html', {'form': form, 'evento': evento})
 

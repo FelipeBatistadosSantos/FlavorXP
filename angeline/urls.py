@@ -16,8 +16,8 @@ urlpatterns = [
     path('perfil_host', perfil_host, name='perfil_host'),
     path('evento', evento, name='evento'),
     path('specific_page/<int:evento_id>/', specific_page, name='specific_page'),
-    path('host_servico', host_servico, name='host_servico'),
+    path('host_servico/<int:evento_id>/', host_servico, name='host_servico'),
     path('agendamento', agendamento, name='agendamento'),
-    path('editar_evento', editar_evento, name='editar_evento'),
+    path('editar_evento/<int:evento_id>/', editar_evento, name='editar_evento'),
     
 ]
