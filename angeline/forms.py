@@ -3,8 +3,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
-from .models import CustomUser, CompleteCadastro, Host, Evento
+from .models import CustomUser, CompleteCadastro, Host, Evento, Agendamento
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as __
+import datetime
 from django.utils import timezone
 from localflavor.br.forms import BRZipCodeField, BRCPFField
 from phonenumber_field.modelfields import PhoneNumberField
@@ -88,7 +90,7 @@ class EventoForm(forms.ModelForm):
 
     class Meta:
         model = Evento
-        fields = ['estilo','tema','fotos','host','descricao','cardapio','inclui_bebidas','bebidas_oferecidas','convidado_pode_trazer',
+        fields = ['estilo','tema','fotos','descricao','cardapio','inclui_bebidas','bebidas_oferecidas','convidado_pode_trazer',
                   'max_convidados','local','data','horario','valor_host',]
         
         widgets = {
@@ -97,3 +99,15 @@ class EventoForm(forms.ModelForm):
         
     def __init__(self, *args, **kwargs):
         super(EventoForm, self).__init__(*args, **kwargs)
+
+
+class AgendamentoForm(forms.ModelForm):
+    class Meta:
+        model = Agendamento
+        fields = ['quantidade_pessoas', 'nomes_convidados', 'datas_nascimento_convidados']
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['nomes_convidados'].widget = forms.Textarea(attrs={'rows': 3})
+        self.fields['datas_nascimento_convidados'].widget = forms.Textarea(attrs={'rows': 3})

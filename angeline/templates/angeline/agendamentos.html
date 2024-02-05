@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos do Usuário</title>
+</head>
+<body>
+    <h1>Meus gendamentos</h1>
+
+    {% if agendamentos %}
+        <ul>
+            {% for agendamento in agendamentos %}
+                <li>{{ agendamento.evento }} - {{ agendamento.data_agendamento }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum agendamento encontrado.</p>
+    {% endif %}
+
+    <a href="{% url 'angeline:home' %}">Voltar para Home</a>
+</body>
+</html>

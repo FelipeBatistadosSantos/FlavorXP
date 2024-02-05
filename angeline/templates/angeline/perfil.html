@@ -64,6 +64,7 @@
             <p>Comida favorita: {{ perfil_usuario.comidaf }}</p>
             <p>Bebida favorita: {{ perfil_usuario.bebida }}</p>
             <p>Restrições alimentares: {{ perfil_usuario.restricao }}</p>
+            <p><a href="{% url 'angeline:agendamentos' %}">Meus agendamentos</a></p>
 
             <a href="{% url 'angeline:perfil' %}?edit=1">Completar perfil</a>
             
