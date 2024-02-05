@@ -30,10 +30,8 @@ class CustomUser(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return True
     
-<<<<<<< HEAD
     def has_perm(self, perm, obj=None):
         return True
-=======
 class CompleteCadastro(models.Model):
 
     IDIOMA_CHOICES = [
@@ -117,4 +115,3 @@ class Evento(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     nome = models.CharField('nome', max_length=100)
     descricao = models.CharField('descricao', max_length=200)
->>>>>>> origin/dev
