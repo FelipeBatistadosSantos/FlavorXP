@@ -5,8 +5,9 @@ body {
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 160vh;
+          height: 130vh;
           background-color: #ffffff;
+         
       }
       
       .container {
@@ -16,8 +17,8 @@ body {
           border-style: solid;
           border-color: black;
           box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-          padding: 40px;
-          width: 400px;
+          padding: 20px;
+          width: 350px;
           min-height: 300px; /* Alterado para min-height para garantir que o contêiner tenha pelo menos 300px de altura */
           text-align:left;
           color: #000000;
@@ -83,4 +84,18 @@ body {
           transform: scaleY(1.125);
           background-color: #7a10d2;
       }
+      
+      textarea{
+          height: 50px;
+      }
+
+      .local_servico{
+
+          height: 9000px;
+      }
+      
+      input[type='text']{
+          width: 320px;
+      }
+      
       
