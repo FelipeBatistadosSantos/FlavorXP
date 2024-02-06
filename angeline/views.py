@@ -151,7 +151,7 @@ def editar_host(request):
             request.session['host_descricao_local'] = host.descricao_local
 
             messages.success(request, 'Informações do host atualizadas com sucesso!')
-            return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
+            return render(request, 'angeline/perfil.html', {'form': form, 'host': host, 'form_preenchido': not created})
     else:
         form = HostForm(instance=host)
     return render(request, 'angeline/editar_host.html', {'form': form, 'host': host, 'form_preenchido': not created})
