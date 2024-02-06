@@ -1,11 +1,10 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.contrib.auth import logout, authenticate, login as auth_login
 from django.contrib import messages
-from .models import CustomUser, CompleteCadastro,Host, Evento, Agendamento
+from .models import CompleteCadastro,Host, Evento, Agendamento
 from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm, EventoForm, AgendamentoForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
-import json
 from django.views import View
 
 
@@ -105,19 +104,20 @@ def evento(request):
     perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
 
     if request.method == 'POST':
-        form = EventoForm(request.POST)
+        form = EventoForm(request.POST, request.FILES)  # Passa request.FILES para lidar com arquivos
         if form.is_valid():
             evento = form.save(commit=False)
-            host_instance, created = Host.objects.get_or_create(usuario=request.user, defaults={'nome_empresa': 'Nome da Empresa Padrão'})
-            evento.host = host_instance
-            evento.save()
+            evento.host, created = Host.objects.get_or_create(usuario=request.user, defaults={'nome_empresa': 'Nome da Empresa Padrão'})
+            evento.save()  # Salva o evento primeiro para garantir que o ID seja gerado
+            form.save_m2m()  # Salva os muitos-para-muitos se houver
+            messages.success(request, 'Evento criado com sucesso!')
             return redirect('angeline:home') 
     else:
         form = EventoForm()
 
     eventos = Evento.objects.all()
 
-    return render(request, 'angeline/evento.html', {'form': form, 'perfil_usuario': perfil_usuario, 'eventos':eventos})
+    return render(request, 'angeline/evento.html', {'form': form, 'perfil_usuario': perfil_usuario, 'eventos': eventos})
 
 
 
@@ -221,7 +221,24 @@ def editar_evento(request, evento_id):
 
     return render(request, 'angeline/editar_evento.html', {'form': form, 'evento': evento})
 
+
+
 def agendamentos(request):
     agendamentos = Agendamento.objects.filter(usuario=request.user)
 
     return render(request, 'angeline/agendamentos.html', {'agendamentos': agendamentos})
+
+
+@login_required
+def cancelar(request, agendamento_id):
+    agendamento = get_object_or_404(Agendamento, id=agendamento_id, usuario=request.user)
+    evento_id = agendamento.evento.id
+    agendamento.delete()
+    return redirect('angeline:agendamentos')
+
+
+@login_required
+def excluir_evento(request, evento_id):
+    evento = get_object_or_404(Evento, id=evento_id, host__usuario=request.user)
+    evento.delete() 
+    return redirect('angeline:home')

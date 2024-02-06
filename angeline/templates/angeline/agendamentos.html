@@ -11,8 +11,10 @@
     {% if agendamentos %}
         <ul>
             {% for agendamento in agendamentos %}
-                <li>{{ agendamento.evento }} - {{ agendamento.data_agendamento }}</li>
+                <li>{{ agendamento.evento }} - {{ agendamento.data_agendamento }}<a href="{% url 'angeline:cancelar' agendamento.id %}">Cancelar agendamento</a></li>
+                
             {% endfor %}
+
         </ul>
     {% else %}
         <p>Nenhum agendamento encontrado.</p>

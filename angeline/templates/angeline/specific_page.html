@@ -25,6 +25,7 @@
 
     {% if request.user.host and evento.host.usuario == request.user %}
     <a href="{% url 'angeline:editar_evento' evento_id=evento.id %}">Editar evento</a>
+    <a href="{% url 'angeline:excluir_evento' evento_id=evento.id %}">Excluir evento</a>
     {% else %}
     <a href="{% url 'angeline:agendamento' evento_id=evento.id %}">Agendar</a>
     {% endif %}

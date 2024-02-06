@@ -94,6 +94,7 @@ class EventoForm(forms.ModelForm):
                   'max_convidados','local','data','horario','valor_host',]
         
         widgets = {
+            'fotos': forms.FileInput(),
             'horario': forms.TimeInput(format='%H:%M', attrs={'type': 'time'}),
         }
         

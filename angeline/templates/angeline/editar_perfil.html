@@ -16,7 +16,7 @@
 
         <h1>Editar Perfil</h1>
 
-        <form method="post" action="{% url 'angeline:editar_perfil' %}">
+        <form method="post" action="{% url 'angeline:editar_perfil' %}" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Salvar</button>

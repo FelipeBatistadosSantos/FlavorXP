@@ -135,7 +135,7 @@ class Evento(models.Model):
     id = models.AutoField(primary_key=True)
     estilo = models.CharField('Estilo de Evento', max_length=30, choices=ESTILO_CHOICES, default='')
     tema = models.CharField('Tema da experiência', max_length=255, default='Sem tema')
-    fotos = models.ImageField('Fotos do Evento', upload_to='evento_fotos/', blank=True, null=True, max_length=255)
+    fotos = models.ImageField('Fotos do Evento', upload_to='media/', blank=True, null=True, max_length=255)
     host = models.ForeignKey(Host, on_delete=models.PROTECT, default='')
     descricao = models.TextField('Descrição da experiência')
     cardapio = models.TextField('Cardápio', blank=True, null=True)
