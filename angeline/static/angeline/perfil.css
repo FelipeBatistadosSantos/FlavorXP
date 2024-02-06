@@ -27,8 +27,365 @@
         color: #0056b3;
     } */
     
-
-    
 body{
     margin:0 ;
 }
+
+.retangulo_nav {
+    width: 100vw;
+    height: 212px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: #4E008E;
+  }
+  
+  .ola_usuario {
+    left: 89px;
+    top: 226px;
+    position: absolute;
+    color: #4E008E;
+    font-size: 64px;
+    font-family: Outfit;
+    font-weight: 600;
+    word-wrap: break-word;
+  }
+  
+  .perfil_usuario {
+    left: 89px;
+    top: 182px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 600;
+    word-wrap: break-word;
+  }
+  
+  .perfil_host {
+    left: 267px;
+    top: 182px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 600;
+    word-wrap: break-word;
+  }
+  
+  .titulo_perfil_host {
+    left: 89px;
+    top: 37px;
+    position: absolute;
+  }
+  
+  .titulo_perfil_host .span_perfil {
+    color: white;
+    font-size: 48px;
+    font-family: Outfit;
+    font-weight: 600;
+    word-wrap: break-word;
+  }
+  
+  .titulo_perfil_host .espaco_perfil_usuario {
+    color: black;
+    font-size: 48px;
+    font-family: Outfit;
+    font-weight: 600;
+    word-wrap: break-word;
+  }
+  
+  .titulo_perfil_host .usuario_titulo {
+    color: #F1C400;
+    font-size: 48px;
+    font-family: Outfit;
+    font-weight: 600;
+    word-wrap: break-word;
+  }
+  
+  .editar_perfil_convidado {
+    left: 1039px;
+    top: 56px;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .email_usuario {
+    left: 91px;
+    top: 297px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .cpf_usuario {
+    left: 973px;
+    top: 106px;
+    position: absolute;
+  }
+  
+  .cpf_usuario .cpf {
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .cpf_usuario .numero_cpf {
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+
+  .cep_usuario {
+    left: 1022px;
+    top: 131px;
+    position: absolute;
+  }
+  
+  .cep_usuario .cep {
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .cep_usuario .numero_cep {
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .cidade_usuario {
+    left: 91px;
+    top: 412px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .estado_usuario {
+    left: 91px;
+    top: 456px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .telefone_usuario {
+    left: 986px;
+    top: 81px;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .data_nascimento_usuario {
+    left: 91px;
+    top: 500px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .idiomas {
+    left: 722px;
+    top: 500px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .restricoes_alimentares {
+    left: 722px;
+    top: 632px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+
+  .bebida_favorita {
+    left: 722px;
+    top: 588px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .comida_favorita {
+    left: 723px;
+    top: 544px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .profissao_usuario {
+    left: 722px;
+    top: 412px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .sobre_usuario {
+    left: 91px;
+    top: 544px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .hobbies {
+    left: 722px;
+    top: 456px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .imagem_usuario {
+    width: 156px;
+    height: 156px;
+    left: 1165px;
+    top: 19px;
+    position: absolute;
+    border-radius: 9999px;
+  }
+  
+  .footer_retangulo {
+    width: 1440px;
+    height: 239px;
+    left: 0px;
+    top: 784px;
+    position: absolute;
+  }
+  
+  .footer_retangulo2 {
+    width: 100vw;
+    height: 239px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: #4E008E;
+  }
+  
+  .editar_perfil {
+    left: 539px;
+    top: 105px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .home_footer {
+    left: 722px;
+    top: 103px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .host_footer {
+    left: 845px;
+    top: 105px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .flavorxp_footer {
+    width: 900px;
+    left: 89px;
+    top: 79px;
+    position: absolute;
+    color: #F1C400;
+    font-size: 64px;
+    font-family: Outfit;
+    font-weight: 500;
+    word-wrap: break-word;
+  }
+  
+  .slogan_footer {
+    width: 274px;
+    left: 1047px;
+    top: 94px;
+    position: absolute;
+    text-align: right;
+    color: #F1C400;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .direitos_reservados {
+    left: 91px;
+    top: 932px;
+    position: absolute;
+    text-align: right;
+    color: white;
+    font-size: 13px;
+    font-family: Roboto;
+    font-weight: 100;
+    word-wrap: break-word;
+  }
+  
+  
+  /* Continue com o resto dos estilos, se necessário */
+  
