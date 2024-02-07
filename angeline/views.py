@@ -80,7 +80,12 @@ def perfil(request):
     else:
         form = CompleteCadastroForm(instance=perfil_usuario)
 
-    return render(request, 'angeline/perfil.html', {'form': form, 'perfil_usuario': perfil_usuario, 'form_preenchido': not created})
+    user = request.user
+
+    user_email = user.email if user else None
+
+    return render(request, 'angeline/perfil.html', {'form': form, 'perfil_usuario': perfil_usuario, 'form_preenchido': not created, 'user_email': user_email})
+
 
 
 
