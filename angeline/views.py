@@ -212,7 +212,7 @@ def editar_evento(request, evento_id):
         return redirect('angeline:home')
 
     if request.method == 'POST':
-        form = EventoForm(request.POST, instance=evento)
+        form = EventoForm(request.POST, request.FILES, instance=evento)
         if form.is_valid():
             form.save()
             return redirect('angeline:specific_page', evento_id=evento.id)
