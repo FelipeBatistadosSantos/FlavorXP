@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 from django.urls import path
 from django.contrib.auth.views import LoginView
 from .views import cadastro, CustomLoginView, home, host, perfil, CustomLogoutView, editar_perfil, editar_host, perfil_host, evento, specific_page, host_servico, agendamento, editar_evento, agendamentos, cancelar, excluir_evento
@@ -24,6 +25,11 @@ urlpatterns = [
     path('agendamentos', agendamentos, name='agendamentos'),
     path('cancelar/<int:agendamento_id>/cancelar/', cancelar, name='cancelar'),
     path('excluir_evento/<int:evento_id>/', excluir_evento, name='excluir_evento'),
+    path('reset-password/', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    path('reset-password/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+
 ]
 
 if settings.DEBUG:
