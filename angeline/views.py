@@ -37,11 +37,14 @@ def home(request):
     perfil_usuario = CompleteCadastro.objects.filter(usuario=request.user).first()
     eventos = Evento.objects.all()
 
-    if perfil_usuario:
-        return render(request, 'angeline/home.html', {'eventos': eventos,'perfil_usuario': perfil_usuario, 'form_preenchido': True})
+    if perfil_usuario: 
+        if perfil_usuario.is_complete():  
+            return render(request, 'angeline/home.html', {'eventos': eventos,'perfil_usuario': perfil_usuario, 'form_preenchido': True})
+        else:
+            return render(request, 'angeline/home.html', {'eventos': eventos,'form_preenchido': False})
     else:
-        
         return render(request, 'angeline/home.html', {'eventos': eventos,'form_preenchido': False})
+
 
     
 

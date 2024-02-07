@@ -77,11 +77,19 @@ class CompleteCadastro(models.Model):
         ('outros', 'Outros')
     ]
 
+    CIDADE_CHOICES =[
+        ('blumenau', 'Blumenau')
+    ]
+
+    ESTADO_CHOICES = [
+        ('sc', 'SC')
+    ]
+
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     cep = BRPostalCodeField()
     cpf = BRCPFField()
-    cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, blank=True)
-    estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, blank=True)
+    cidade = models.CharField('cidade', choices=CIDADE_CHOICES, default='Blumenau', max_length=20)
+    estado = models.CharField('estado', choices=ESTADO_CHOICES, default='SC',  max_length=20)
     telefone = PhoneNumberField(unique=True, null=False, blank=False)
     nascimento = models.DateField(null=True)
     sobre = models.TextField('sobre', default='')
@@ -92,6 +100,14 @@ class CompleteCadastro(models.Model):
     bebida = models.CharField('bebida',max_length=50)
     restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30, default='Nenhum')
     outra_restricao = models.CharField('outra_restricao', max_length=30, default='')
+
+    def is_complete(self):
+        if self.cep and self.cpf and self.cidade and self.estado and self.telefone and self.nascimento and self.profissao and self.hobbie and self.idioma and self.comidaf and self.bebida and self.restricao:
+            return True
+        else:
+            return False
+
+    
 
 
 class Host(models.Model):
