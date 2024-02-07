@@ -99,8 +99,6 @@ class EventoForm(forms.ModelForm):
         
     def __init__(self, *args, **kwargs):
         super(EventoForm, self).__init__(*args, **kwargs)
-<<<<<<< HEAD
-=======
 
 
 class AgendamentoForm(forms.ModelForm):
@@ -113,4 +111,3 @@ class AgendamentoForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['nomes_convidados'].widget = forms.Textarea(attrs={'rows': 3})
         self.fields['datas_nascimento_convidados'].widget = forms.Textarea(attrs={'rows': 3})
->>>>>>> origin/dev
