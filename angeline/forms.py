@@ -105,10 +105,22 @@ class EventoForm(forms.ModelForm):
 class AgendamentoForm(forms.ModelForm):
     class Meta:
         model = Agendamento
-        fields = ['quantidade_pessoas', 'nomes_convidados', 'datas_nascimento_convidados']
-
+        fields = ['quantidade_pessoas', 'nomes_convidados']
 
     def __init__(self, *args, **kwargs):
+        self.evento_id = kwargs.pop('evento_id', None)
         super().__init__(*args, **kwargs)
-        self.fields['nomes_convidados'].widget = forms.Textarea(attrs={'rows': 3})
-        self.fields['datas_nascimento_convidados'].widget = forms.Textarea(attrs={'rows': 3})
+        self.fields['quantidade_pessoas'].widget.attrs['min'] = 1  
+        self.fields['quantidade_pessoas'].widget.attrs['max'] = self.get_max_vagas() 
+    def get_max_vagas(self):
+        if self.evento_id:
+            evento = Evento.objects.get(pk=self.evento_id)
+            return evento.vagas_disponiveis
+        return 0
+
+    def clean_quantidade_pessoas(self):
+        quantidade_pessoas = self.cleaned_data['quantidade_pessoas']
+        max_vagas = self.get_max_vagas()
+        if quantidade_pessoas > max_vagas:
+            raise forms.ValidationError(f'Não há vagas suficientes disponíveis. Máximo de {max_vagas} vagas.')
+        return quantidade_pessoas

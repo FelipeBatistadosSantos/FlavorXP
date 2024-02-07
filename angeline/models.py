@@ -148,6 +148,12 @@ class Evento(models.Model):
     horario = models.TimeField('Horário', default=default_horario)
     valor_host = models.DecimalField('Valor Host', max_digits=10, decimal_places=2, default=10.0)
     valor_manutencao_site = models.DecimalField('Valor Manutenção do Site (%)', max_digits=5, decimal_places=2, default=0)
+    vagas_disponiveis = models.PositiveIntegerField('Vagas Disponíveis', editable=False, default=0)
+
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            self.vagas_disponiveis = self.max_convidados
+        super().save(*args, **kwargs)
 
     def valor_total_evento(self):
         return self.valor_host + (self.valor_host * (self.valor_manutencao_site / 100))
@@ -160,9 +166,15 @@ class Agendamento(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     evento = models.ForeignKey(Evento, on_delete=models.CASCADE)
     quantidade_pessoas = models.PositiveIntegerField()
-    nomes_convidados = models.CharField(blank=True, null=True, max_length=100) 
-    datas_nascimento_convidados = models.DateField(blank=True, null=True)
+    nomes_convidados = models.CharField(blank=True, null=True, max_length=100)
     valor_total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        evento = self.evento
+        if evento:
+            evento.vagas_disponiveis -= self.quantidade_pessoas
+            evento.save()
+        super().save(*args, **kwargs)
 
     def calcular_valor_total(self):
         if self.evento:

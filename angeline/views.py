@@ -196,17 +196,23 @@ def agendamento(request, evento_id):
     evento = Evento.objects.get(id=evento_id)
 
     if request.method == 'POST':
-        form = AgendamentoForm(request.POST)
+        form = AgendamentoForm(request.POST, evento_id=evento_id)
         if form.is_valid():
             agendamento = form.save(commit=False)
             agendamento.usuario = request.user
             agendamento.evento = evento
-            agendamento.save()
-            return redirect('angeline:agendamentos') 
+            
+            if agendamento.quantidade_pessoas <= evento.vagas_disponiveis:
+                agendamento.save()
+                return redirect('angeline:agendamentos') 
+            else:
+                form.add_error(None, 'Não há vagas suficientes disponíveis para este evento.')
+
     else:
-        form = AgendamentoForm()
+        form = AgendamentoForm(evento_id=evento_id)
 
     return render(request, 'angeline/agendamento.html', {'form': form, 'evento': evento})
+
 
 
 @login_required
