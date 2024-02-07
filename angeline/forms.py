@@ -56,7 +56,7 @@ class CompleteCadastroForm(forms.ModelForm):
         
     class Meta:
         model = CompleteCadastro
-        fields = ['nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao', 'outra_restricao', 'cpf', 'cep', 'cidade', 'estado', 'telefone']
+        fields = ['nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao','cpf', 'cep', 'cidade', 'estado', 'telefone']
 
         
    
@@ -87,12 +87,15 @@ class CustomDecimalField(forms.RegexField):
 class EventoForm(forms.ModelForm):
 
     valor_host = CustomDecimalField(label='Valor do Host')
+    restricao = forms.ChoiceField(label='Alimentos para alguma restrição? ', choices=Evento.RESTRICAO_CHOICES)
+
 
     class Meta:
         model = Evento
         fields = ['estilo','tema','fotos','descricao','cardapio','inclui_bebidas','bebidas_oferecidas','convidado_pode_trazer',
-                  'max_convidados','local','data','horario','valor_host',]
+                  'max_convidados','local','data','horario','valor_host','restricao']
         
+
         widgets = {
             'fotos': forms.FileInput(),
             'horario': forms.TimeInput(format='%H:%M', attrs={'type': 'time'}),

@@ -67,6 +67,13 @@ class CompleteCadastro(models.Model):
         ('lactose', 'Lactose'),
         ('vegano', 'Vegano'),
         ('vegetariano', 'Vegetariano'),
+        ('carneporco', 'Carne de porco'),
+        ('diabetes', 'Diabetes'),
+        ('nozes', 'Nozes'),
+        ('frutosmar','Frutos do mar'),
+        ('soja', 'Soja'),
+        ('kosher', 'Kosher'),
+        ('halal', 'Halal'),
         ('outros', 'Outros')
     ]
 
@@ -121,6 +128,22 @@ class Evento(models.Model):
 
     def default_horario():
         return timezone.now().time()
+    
+    RESTRICAO_CHOICES = [
+        ('nenhum', 'Nenhum'),
+        ('gluten', 'Glúten'),
+        ('lactose', 'Lactose'),
+        ('vegano', 'Vegano'),
+        ('vegetariano', 'Vegetariano'),
+        ('carneporco', 'Carne de porco'),
+        ('diabetes', 'Diabetes'),
+        ('nozes', 'Nozes'),
+        ('frutosmar','Frutos do mar'),
+        ('soja', 'Soja'),
+        ('kosher', 'Kosher'),
+        ('halal', 'Halal'),
+        ('outros', 'Outros')
+    ]
 
     ESTILO_CHOICES = [
             ('janta', 'Janta'),
@@ -149,6 +172,8 @@ class Evento(models.Model):
     valor_host = models.DecimalField('Valor Host', max_digits=10, decimal_places=2, default=10.0)
     valor_manutencao_site = models.DecimalField('Valor Manutenção do Site (%)', max_digits=5, decimal_places=2, default=0)
     vagas_disponiveis = models.PositiveIntegerField('Vagas Disponíveis', editable=False, default=0)
+    restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30, default='Nenhum')
+
 
     def save(self, *args, **kwargs):
         if self.pk is None:
