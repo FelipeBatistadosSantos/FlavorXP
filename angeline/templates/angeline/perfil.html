@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
+    <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
     
     <link rel="stylesheet" href="{% static 'angeline/perfil.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
@@ -14,7 +15,7 @@
 <body>
     <div class="container">
 
-            <div class="retangulo_nav" style="width: 100vw; height: 212px; left: 0px; top: 0px; position: absolute; background: #4E008E"></div>
+            <!-- <div class="retangulo_nav" style="width: 100vw; height: 212px; left: 0px; top: 0px; position: absolute; background: #4E008E"></div>
             <div class="ola_usuario" style="left: 89px; top: 226px; position: absolute; color: #4E008E; font-size: 64px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Olá Felipe</div>
             <div class="perfil_usuario" style="left: 89px; top: 182px; position: absolute; color: white; font-size: 24px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Perfil Usuário</div>
             <div class="perfil_host" style="left: 267px; top: 182px; position: absolute; color: white; font-size: 24px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Perfil  Host</div>
@@ -44,11 +45,13 @@
               <div class="" style="width: 274px; left: 1047px; top: 94px; position: absolute; text-align: right; color: #F1C400; font-size: 24px; font-family: Outfit; font-weight: 700; word-wrap: break-word">Conectando pessoas por meio da gastronomia </div>
             </div>
             <div class="" style="left: 91px; top: 932px; position: absolute; text-align: right; color: white; font-size: 13px; font-family: Roboto; font-weight: 100; word-wrap: break-word">© 2024 MyFood. Todos os direitos reservados.</div>
-        {% comment %} {% if form_preenchido %}
+         -->
+
+        {% if form_preenchido %}
         <div class="left">
             <h1>Seu Perfil</h1>
             <p>Usuario: {{ perfil_usuario.usuario }}</p>
-            <p>Email: {{ perfil_usuario.email }}</p>
+            <p>Email: {{ user_email }}</p>
             <p>Cpf: {{ perfil_usuario.cpf }}</p>
             <p>Cep: {{ perfil_usuario.cep }} </p>
             <p>Cidade: {{ perfil_usuario.cidade }} </p>
@@ -57,13 +60,14 @@
             <p>Nascimento: {{ perfil_usuario.nascimento }}</p>
             <p>Sobre: {{ perfil_usuario.sobre }}</p>
             <p>Profissão: {{ perfil_usuario.profissao }}</p>
-            <p>Hobbies: {{ perfil_usuario.hobbie }}</p>
+            <p>Hobbie: {{ perfil_usuario.hobbie }}</p>
             <p>Idiomas: {{ perfil_usuario.idioma }}</p>
             <p>Comida favorita: {{ perfil_usuario.comidaf }}</p>
             <p>Bebida favorita: {{ perfil_usuario.bebida }}</p>
             <p>Restrições alimentares: {{ perfil_usuario.restricao }}</p>
-
-            <a href="{% url 'angeline:perfil' %}?edit=1">Completar perfil</a>
+            <p><a href="{% url 'angeline:agendamentos' %}">Meus agendamentos</a></p>
+        
+            <a href="{% url 'angeline:perfil' %}?edit=1">Editar perfil</a>
             
             
             
@@ -95,7 +99,7 @@
         </div>
 
  
-        {% endif %} {% endcomment %}
+        {% endif %} 
 
     </div>
 </body>
