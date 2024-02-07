@@ -104,7 +104,7 @@ body{
   }
   
   .editar_perfil_convidado {
-    left: 1039px;
+    left: 76.3%;
     top: 56px;
     position: absolute;
     color: white;
@@ -148,7 +148,7 @@ body{
   }
 
   .cep_usuario {
-    left: 1022px;
+    left: 74%;
     top: 131px;
     position: absolute;
   }
@@ -171,7 +171,7 @@ body{
   
   .cidade_usuario {
     left: 91px;
-    top: 412px;
+    top: 50%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -182,7 +182,7 @@ body{
   
   .estado_usuario {
     left: 91px;
-    top: 456px;
+    top: 60%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -192,7 +192,7 @@ body{
   }
   
   .telefone_usuario {
-    left: 986px;
+    left: 68.8%;
     top: 81px;
     position: absolute;
     color: white;
@@ -204,7 +204,7 @@ body{
   
   .data_nascimento_usuario {
     left: 91px;
-    top: 500px;
+    top: 70%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -215,7 +215,7 @@ body{
   
   .idiomas {
     left: 722px;
-    top: 500px;
+    top: 70%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -226,7 +226,7 @@ body{
   
   .restricoes_alimentares {
     left: 722px;
-    top: 632px;
+    top: 100%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -237,7 +237,7 @@ body{
 
   .bebida_favorita {
     left: 722px;
-    top: 588px;
+    top: 90%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -248,7 +248,7 @@ body{
   
   .comida_favorita {
     left: 723px;
-    top: 544px;
+    top: 80%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -259,7 +259,7 @@ body{
   
   .profissao_usuario {
     left: 722px;
-    top: 412px;
+    top: 50%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -270,7 +270,7 @@ body{
   
   .sobre_usuario {
     left: 91px;
-    top: 544px;
+    top: 80%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -281,7 +281,7 @@ body{
   
   .hobbies {
     left: 722px;
-    top: 456px;
+    top: 60%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -303,7 +303,7 @@ body{
     width: 1440px;
     height: 239px;
     left: 0px;
-    top: 784px;
+    top: 1000px;
     position: absolute;
   }
   
@@ -350,7 +350,7 @@ body{
   }
   
   .flavorxp_footer {
-    width: 900px;
+    width: auto;
     left: 89px;
     top: 79px;
     position: absolute;
@@ -386,6 +386,24 @@ body{
     word-wrap: break-word;
   }
   
+  a{
+    text-decoration: none;
+    transition: color 0.3s ease; /* Adicionar transição suave */
+  }
   
-  /* Continue com o resto dos estilos, se necessário */
+  a:hover {
+      color: #F1C400; /* Mudar a cor ao passar o mouse */
+  }
   
+  .sobre_usuario {
+    max-width: 30%; /* Defina a largura máxima da div conforme necessário */
+    margin: 0 auto; /* Isso centraliza a div horizontalmente */
+    overflow: hidden; /* Isso oculta o conteúdo que ultrapassa o limite de largura */
+}
+
+.sobre_usuario p {
+    margin: 0; /* Isso remove as margens padrão do parágrafo */
+    overflow: hidden; /* Isso garante que o conteúdo excedente seja ocultado */
+    word-wrap: break-word; /* Isso permite que o texto seja quebrado em várias linhas se necessário */
+    display: block; /* Isso faz com que cada parágrafo seja exibido em um bloco separado, abaixo do anterior */
+}
