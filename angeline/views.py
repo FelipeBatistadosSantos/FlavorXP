@@ -185,7 +185,7 @@ def editar_evento(request):
     return render(request, 'angeline/home.html')
 
 
-def filtro_evento(request):
+def filtrar(request):
     if request.method == 'POST':
         filtro = request.POST.get('filtro')
         if len(filtro) > 2:

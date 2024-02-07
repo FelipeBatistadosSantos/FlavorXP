@@ -9,36 +9,25 @@
     <link rel="stylesheet" href="{% static 'angeline/style_home.css' %}">
     <title>FlavorXP</title>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-    <script>
-      $(document).ready(function () {
-        $("#buscar-btn").click(function () {
-          var filtroValue = $("#filtro-input").val();
-          var csrfToken = $('input[name=csrfmiddlewaretoken]').val();
-          $.ajax({
-            type: "POST",
-            url: "/angeline/filtro_evento/ ",  // Verifique o caminho correto para a sua view
-            data: {
-              filtro: filtroValue,
-              csrfmiddlewaretoken: csrfToken
-            },
-            success: function (data) {
-              console.log(data);
-            },
-            error: function (error) {
-              console.log(error);
-            }
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+    <input type="text" id="filtro" placeholder="Digite para filtrar">
+  
+      <script>
+          $(document).ready(function(){
+              $('#filtro').on('input', function(){
+                  var filtro = $(this).val().toLowerCase();
+                  $.ajax({
+                      url: 'angeline/templates/angeline/home.html',  // Update the URL to match your Django URL pattern
+                      method: 'GET',
+                      data: {filtro: filtro},
+                      success: function(response){
+                          $('#resultados').html(response); // Update the div with the filtered results
+                      }
+                  });
+              });
           });
-        });
-      });
       </script>
-      
-    
-    
-</head>
-
-<body>
     
     <nav style="width: 1440px; height: 125px; left: 0px; top: 0px; position: absolute">
         <div class="retangulo_nav"></div>
@@ -93,21 +82,22 @@
     </ul>
   </nav>
   <main>
-    <div class="feed-container">
-      {% for evento in eventos %}
-      <a href="{% url 'angeline:specific_page' evento_id=evento.id %}" class="feed-item">
-        {% if evento.fotos %}
-        <img src="{{ evento.fotos.url }}" alt="{{ evento.tema }}">
-        {% else %}
-        <p>Imagem não disponível</p>
-        {% endif %}
-        <h3>{{ evento.tema }}</h3>
-        <p>{{ evento.descricao }}</p>
-        <span>R$ {{ evento.valor_host }}</span>
-      </a>
-      {% endfor %}
+    <div id="resultados">
+      <div class="feed-container">
+        {% for evento in eventos %}
+        <a href="{% url 'angeline:specific_page' evento_id=evento.id %}" class="feed-item">
+          {% if evento.fotos %}
+          <img src="{{ evento.fotos.url }}" alt="{{ evento.tema }}">
+          {% else %}
+          <p>Imagem não disponível</p>
+          {% endif %}
+          <h3>{{ evento.tema }}</h3>
+          <p>{{ evento.descricao }}</p>
+          <span>R$ {{ evento.valor_host }}</span>
+        </a>
+        {% endfor %}
+      </div>
     </div>
-
   </main>
 
   <footer>
