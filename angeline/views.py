@@ -1,11 +1,10 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.contrib.auth import logout, authenticate, login as auth_login
 from django.contrib import messages
-from .models import CustomUser, CompleteCadastro,Host, Evento
-from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm, EventoForm
+from .models import CompleteCadastro,Host, Evento, Agendamento
+from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm, EventoForm, AgendamentoForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
-import json
 from django.views import View
 
 
@@ -33,9 +32,18 @@ class CustomLogoutView(LogoutView):
     next_page = 'main:base'
 
 
+@login_required
 def home(request):
+    perfil_usuario = CompleteCadastro.objects.filter(usuario=request.user).first()
     eventos = Evento.objects.all()
-    return render(request, 'angeline/home.html', {'eventos': eventos})
+
+    if perfil_usuario:
+        return render(request, 'angeline/home.html', {'eventos': eventos,'perfil_usuario': perfil_usuario, 'form_preenchido': True})
+    else:
+        
+        return render(request, 'angeline/home.html', {'eventos': eventos,'form_preenchido': False})
+
+    
 
 
 @login_required
@@ -50,7 +58,9 @@ def host(request):
 
 @login_required
 def perfil(request):
-    perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
+    perfil_usuario = CompleteCadastro.objects.filter(usuario=request.user).first()
+
+    created = False
 
     if 'edit' in request.GET:
         return redirect('angeline:editar_perfil')
@@ -58,14 +68,20 @@ def perfil(request):
     if request.method == 'POST':
         form = CompleteCadastroForm(request.POST, request.FILES, instance=perfil_usuario)
         if form.is_valid():
-            form.save()
-            
-            if created:
-                return redirect('angeline:perfil')
+            if not perfil_usuario:
+                perfil_usuario = form.save(commit=False)
+                perfil_usuario.usuario = request.user
+                perfil_usuario.save()
+                created = True
+            else:
+                form.save()
+
+            return redirect('angeline:perfil')
     else:
         form = CompleteCadastroForm(instance=perfil_usuario)
 
     return render(request, 'angeline/perfil.html', {'form': form, 'perfil_usuario': perfil_usuario, 'form_preenchido': not created})
+
 
 
 @login_required
@@ -88,18 +104,20 @@ def evento(request):
     perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
 
     if request.method == 'POST':
-        form = EventoForm(request.POST)
+        form = EventoForm(request.POST, request.FILES)  # Passa request.FILES para lidar com arquivos
         if form.is_valid():
             evento = form.save(commit=False)
-            evento.host = request.user
-            evento.save()
+            evento.host, created = Host.objects.get_or_create(usuario=request.user, defaults={'nome_empresa': 'Nome da Empresa Padrão'})
+            evento.save()  # Salva o evento primeiro para garantir que o ID seja gerado
+            form.save_m2m()  # Salva os muitos-para-muitos se houver
+            messages.success(request, 'Evento criado com sucesso!')
             return redirect('angeline:home') 
     else:
         form = EventoForm()
 
     eventos = Evento.objects.all()
 
-    return render(request, 'angeline/evento.html', {'form': form, 'perfil_usuario': perfil_usuario, 'eventos':eventos})
+    return render(request, 'angeline/evento.html', {'form': form, 'perfil_usuario': perfil_usuario, 'eventos': eventos})
 
 
 
@@ -133,7 +151,7 @@ def editar_host(request):
             request.session['host_descricao_local'] = host.descricao_local
 
             messages.success(request, 'Informações do host atualizadas com sucesso!')
-            return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
+            return render(request, 'angeline/perfil.html', {'form': form, 'host': host, 'form_preenchido': not created})
     else:
         form = HostForm(instance=host)
     return render(request, 'angeline/editar_host.html', {'form': form, 'host': host, 'form_preenchido': not created})
@@ -158,10 +176,69 @@ def perfil_host(request):
     return render(request, 'angeline/host.html', {'form': form, 'host': host, 'form_preenchido': not created})
 
 
-
+def host_servico(request, evento_id):
+    evento = get_object_or_404(Evento, id=evento_id)
+    
+    context = {
+        'evento': evento,
+    }
+    
+    return render(request, 'angeline/host_servico.html', context)
     
 
+@login_required
+def agendamento(request, evento_id):
+    evento = Evento.objects.get(id=evento_id)
+
+    if request.method == 'POST':
+        form = AgendamentoForm(request.POST)
+        if form.is_valid():
+            agendamento = form.save(commit=False)
+            agendamento.usuario = request.user
+            agendamento.evento = evento
+            agendamento.save()
+            return redirect('angeline:agendamentos') 
+    else:
+        form = AgendamentoForm()
+
+    return render(request, 'angeline/agendamento.html', {'form': form, 'evento': evento})
+
+
+@login_required
+def editar_evento(request, evento_id):
+    evento = get_object_or_404(Evento, id=evento_id)
+
+    if request.user != evento.host.usuario:
+        return redirect('angeline:home')
+
+    if request.method == 'POST':
+        form = EventoForm(request.POST, instance=evento)
+        if form.is_valid():
+            form.save()
+            return redirect('angeline:specific_page', evento_id=evento.id)
+    else:
+        form = EventoForm(instance=evento)
+
+    return render(request, 'angeline/editar_evento.html', {'form': form, 'evento': evento})
 
 
 
+def agendamentos(request):
+    agendamentos = Agendamento.objects.filter(usuario=request.user)
 
+    return render(request, 'angeline/agendamentos.html', {'agendamentos': agendamentos})
+
+
+@login_required
+def cancelar(request, agendamento_id):
+    agendamento = get_object_or_404(Agendamento, id=agendamento_id, usuario=request.user)
+    evento_id = agendamento.evento.id
+    agendamento.delete()
+    return redirect('angeline:agendamentos')
+
+
+@login_required
+def excluir_evento(request, evento_id):
+    evento = get_object_or_404(Evento, id=evento_id, host__usuario=request.user)
+    evento.delete() 
+    return redirect('angeline:home')

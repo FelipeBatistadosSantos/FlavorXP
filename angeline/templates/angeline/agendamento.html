@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Host</title>
+    <title>Agendamento</title>
 </head>
 <body>
-    <h1>{{ evento.host.nome_empresa }}</h1>
-    <p>{{ evento.host.area_gastronomia }}</p>
-    <p>{{ evento.host.frequencia_servicos }}</p>
-    <p>Avaliações: 5.0 </p>
-    <p>Eventos hosteados: 3</p>
-
+    <h1>Agendar Evento: {{ evento.tema }}</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Agendar</button>
+    </form>
     <a href="{% url 'angeline:specific_page' evento_id=evento.id %}">Voltar</a>
 </body>
 </html>

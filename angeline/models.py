@@ -110,6 +110,9 @@ class Host(models.Model):
     local_servico = models.CharField('Local de Serviço', max_length=100)
     descricao_local = models.TextField('Descrição do Local de Serviço')
 
+    def __str__(self):
+        return self.nome_empresa 
+
 
 class Evento(models.Model):
 
@@ -132,8 +135,8 @@ class Evento(models.Model):
     id = models.AutoField(primary_key=True)
     estilo = models.CharField('Estilo de Evento', max_length=30, choices=ESTILO_CHOICES, default='')
     tema = models.CharField('Tema da experiência', max_length=255, default='Sem tema')
-    fotos = models.ImageField('Fotos do Evento', upload_to='evento_fotos/', blank=True, null=True, max_length=255)
-    host = models.ForeignKey(User, on_delete=models.PROTECT, default='')
+    fotos = models.ImageField('Fotos do Evento', upload_to='media/', blank=True, null=True, max_length=255)
+    host = models.ForeignKey(Host, on_delete=models.PROTECT, default='')
     descricao = models.TextField('Descrição da experiência')
     cardapio = models.TextField('Cardápio', blank=True, null=True)
     inclui_bebidas = models.BooleanField('Inclui Bebidas?', default=False)
@@ -150,4 +153,25 @@ class Evento(models.Model):
         return self.valor_host + (self.valor_host * (self.valor_manutencao_site / 100))
 
     def __str__(self):
-        return f'{self.estilo} - {self.tema} por {self.host.username} em {self.local} em {self.data} às {self.horario}'
+        return f'{self.estilo} - {self.tema} por {self.host.nome_empresa} em {self.local} em {self.data} às {self.horario}'
+    
+
+class Agendamento(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    evento = models.ForeignKey(Evento, on_delete=models.CASCADE)
+    quantidade_pessoas = models.PositiveIntegerField()
+    nomes_convidados = models.CharField(blank=True, null=True, max_length=100) 
+    datas_nascimento_convidados = models.DateField(blank=True, null=True)
+    valor_total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+
+    def calcular_valor_total(self):
+        if self.evento:
+            return self.evento.valor_host * self.quantidade_pessoas
+        return 0
+
+    def save(self, *args, **kwargs):
+        self.valor_total = self.calcular_valor_total()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.usuario.username} - {self.evento.tema} - {self.quantidade_pessoas} pessoas'

@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
+    <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
     
     <link rel="stylesheet" href="{% static 'angeline/perfil.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
@@ -13,7 +14,7 @@
 
 <body>
     <div class="container">
-        {% if form_preenchido %}
+        <!-- {% if form_preenchido %}
             <div class="retangulo_nav"></div>
             <div class="ola_usuario">Olá {{ perfil_usuario.usuario }}</div>
             <div class="perfil_usuario">Perfil Usuário</div>
@@ -78,8 +79,8 @@
                 </div>
  
   
-            {% endif %}
-        <!-- {% if form_preenchido %}
+            {% endif %} -->
+    {% if form_preenchido %}
         <div class="left">
             <h1>Seu Perfil</h1>
             <p>Usuario: {{ perfil_usuario.usuario }}</p>
@@ -92,13 +93,14 @@
             <p>Nascimento: {{ perfil_usuario.nascimento }}</p>
             <p>Sobre: {{ perfil_usuario.sobre }}</p>
             <p>Profissão: {{ perfil_usuario.profissao }}</p>
-            <p>Hobbies: {{ perfil_usuario.hobbie }}</p>
+            <p>Hobbie: {{ perfil_usuario.hobbie }}</p>
             <p>Idiomas: {{ perfil_usuario.idioma }}</p>
             <p>Comida favorita: {{ perfil_usuario.comidaf }}</p>
             <p>Bebida favorita: {{ perfil_usuario.bebida }}</p>
             <p>Restrições alimentares: {{ perfil_usuario.restricao }}</p>
-
-            <a href="{% url 'angeline:perfil' %}?edit=1">Completar perfil</a>
+            <p><a href="{% url 'angeline:agendamentos' %}">Meus agendamentos</a></p>
+        
+            <a href="{% url 'angeline:perfil' %}?edit=1">Editar perfil</a>
             
             
             
@@ -115,24 +117,24 @@
                <button type="submit">Salvar</button>
            </form>
            <a href="{% url 'angeline:home' %}">Home</a>
-           {% endif %}
+    {% endif %}
             {% if request.user.host %}
-            <div class="right">
-            <h1>Detalhes do Host</h1>
-            <p>Nome da Empresa/Marca: {{ request.session.host_nome_empresa }}</p>
-            <p>Motivo: {{ request.session.host_motivo }}</p>
-            <p>Área Gastronômica: {{ request.session.host_get_area_gastronomia_display }}</p>
-            <p>Serviços Disponíveis: {{ request.session.host_servicos }}</p>
-            <p>Frequência de Serviços: {{ request.session.host_get_frequencia_servicos_display }}</p>
-            <p>Local de Serviço: {{ request.session.host_local_servico }}</p>
-            <p>Descrição do Local de Serviço: {{ request.session.host_descricao_local }}</p>
-            <a href="{%url 'angeline:editar_host' %}">Editar perfil Host</a>
-        </div>
+                <div class="right">
+                    <h1>Detalhes do Host</h1>
+                    <p>Nome da Empresa/Marca: {{ request.session.host_nome_empresa }}</p>
+                    <p>Motivo: {{ request.session.host_motivo }}</p>
+                    <p>Área Gastronômica: {{ request.session.host_get_area_gastronomia_display }}</p>
+                    <p>Serviços Disponíveis: {{ request.session.host_servicos }}</p>
+                    <p>Frequência de Serviços: {{ request.session.host_get_frequencia_servicos_display }}</p>
+                    <p>Local de Serviço: {{ request.session.host_local_servico }}</p>
+                    <p>Descrição do Local de Serviço: {{ request.session.host_descricao_local }}</p>
+                    <a href="{%url 'angeline:editar_host' %}">Editar perfil Host</a>
+                </div>
 
  
-        {% endif %}
+            {% endif %}
 
-    </div> -->
+    </div> 
 </body>
 
 </html>

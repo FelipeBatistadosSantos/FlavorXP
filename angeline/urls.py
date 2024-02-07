@@ -1,6 +1,8 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from django.contrib.auth.views import LoginView
-from .views import cadastro, CustomLoginView, home, host, perfil, CustomLogoutView, editar_perfil, editar_host, perfil_host, evento, specific_page
+from .views import cadastro, CustomLoginView, home, host, perfil, CustomLogoutView, editar_perfil, editar_host, perfil_host, evento, specific_page, host_servico, agendamento, editar_evento, agendamentos, cancelar, excluir_evento
 
 app_name = 'angeline'
 
@@ -16,5 +18,13 @@ urlpatterns = [
     path('perfil_host', perfil_host, name='perfil_host'),
     path('evento', evento, name='evento'),
     path('specific_page/<int:evento_id>/', specific_page, name='specific_page'),
-    
+    path('host_servico/<int:evento_id>/', host_servico, name='host_servico'),
+    path('agendamento/<int:evento_id>/', agendamento, name='agendamento'),
+    path('editar_evento/<int:evento_id>/', editar_evento, name='editar_evento'),
+    path('agendamentos', agendamentos, name='agendamentos'),
+    path('cancelar/<int:agendamento_id>/cancelar/', cancelar, name='cancelar'),
+    path('excluir_evento/<int:evento_id>/', excluir_evento, name='excluir_evento'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
