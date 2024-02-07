@@ -1,7 +1,26 @@
-<h2>Editar Evento</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Salvar Alterações</button>
-</form>
-<a href="{% url 'angeline:home' %}">Cancelar</a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="{% static 'angeline/bootstrap.css' %}">
+    <title>Editar Evento</title>
+</head>
+
+<body>
+    <h2>Editar Evento</h2>
+    
+    <img src="{{ evento.fotos.url }}" alt="Imagem do evento">
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar Alterações</button>
+    </form>
+
+    <a href="{% url 'angeline:home' %}">Cancelar</a>
+</body>
+
+</html>
