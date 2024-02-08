@@ -37,11 +37,14 @@ def home(request):
     perfil_usuario = CompleteCadastro.objects.filter(usuario=request.user).first()
     eventos = Evento.objects.all()
 
-    if perfil_usuario:
-        return render(request, 'angeline/home.html', {'eventos': eventos,'perfil_usuario': perfil_usuario, 'form_preenchido': True})
+    if perfil_usuario: 
+        if perfil_usuario.is_complete():  
+            return render(request, 'angeline/home.html', {'eventos': eventos,'perfil_usuario': perfil_usuario, 'form_preenchido': True})
+        else:
+            return render(request, 'angeline/home.html', {'eventos': eventos,'form_preenchido': False})
     else:
-        
         return render(request, 'angeline/home.html', {'eventos': eventos,'form_preenchido': False})
+
 
     
 
@@ -55,10 +58,14 @@ def host(request):
     else:
         return redirect('angeline:editar_host')
     
-
 @login_required
 def perfil(request):
     perfil_usuario = CompleteCadastro.objects.filter(usuario=request.user).first()
+
+    try:
+        host = request.user.host
+    except Host.DoesNotExist:
+        host = None
 
     created = False
 
@@ -80,11 +87,24 @@ def perfil(request):
     else:
         form = CompleteCadastroForm(instance=perfil_usuario)
 
-    user = request.user
+    user_email = request.user.email if request.user else None
 
-    user_email = user.email if user else None
+    return render(request, 'angeline/perfil.html', {'form': form, 'perfil_usuario': perfil_usuario, 'host': host, 'form_preenchido': not created, 'user_email': user_email})
 
-    return render(request, 'angeline/perfil.html', {'form': form, 'perfil_usuario': perfil_usuario, 'form_preenchido': not created, 'user_email': user_email})
+
+
+def completar_perfil(request):
+    if request.method == 'POST':
+        form = CompleteCadastroForm(request.POST)
+        if form.is_valid():
+            perfil = form.save(commit=False)
+            perfil.usuario = request.user  
+            perfil.save()
+            return redirect('angeline:perfil')
+    else:
+        form = CompleteCadastroForm()
+    
+    return render(request, 'angeline/completar_perfil.html', {'form': form})
 
 
 
@@ -109,12 +129,12 @@ def evento(request):
     perfil_usuario, created = CompleteCadastro.objects.get_or_create(usuario=request.user)
 
     if request.method == 'POST':
-        form = EventoForm(request.POST, request.FILES)  # Passa request.FILES para lidar com arquivos
+        form = EventoForm(request.POST, request.FILES) 
         if form.is_valid():
             evento = form.save(commit=False)
             evento.host, created = Host.objects.get_or_create(usuario=request.user, defaults={'nome_empresa': 'Nome da Empresa Padrão'})
-            evento.save()  # Salva o evento primeiro para garantir que o ID seja gerado
-            form.save_m2m()  # Salva os muitos-para-muitos se houver
+            evento.save()  
+            form.save_m2m()  
             messages.success(request, 'Evento criado com sucesso!')
             return redirect('angeline:home') 
     else:
@@ -137,29 +157,32 @@ def specific_page(request, evento_id):
     return render(request, 'angeline/specific_page.html', context)
 
 
+def criar_host(request):
+    if request.method == 'POST':
+        form = HostForm(request.POST)
+        if form.is_valid():
+            host = form.save(commit=False)
+            host.usuario = request.user
+            host.save()
+            return redirect('angeline:perfil')
+    else:
+        form = HostForm()
+    return render(request, 'angeline/criar_host.html', {'form': form})
+
 
 @login_required
 def editar_host(request):
     host, created = Host.objects.get_or_create(usuario=request.user)
-
     if request.method == 'POST':
         form = HostForm(request.POST, instance=host)
         if form.is_valid():
             form.save()
-
-            request.session['host_nome_empresa'] = host.nome_empresa
-            request.session['host_motivo'] = host.motivo
-            request.session['host_get_area_gastronomia_display'] = host.area_gastronomia
-            request.session['host_servicos'] = host.servicos
-            request.session['host_get_frequencia_servicos_display'] = host.frequencia_servicos
-            request.session['host_local_servico'] = host.local_servico
-            request.session['host_descricao_local'] = host.descricao_local
-
             messages.success(request, 'Informações do host atualizadas com sucesso!')
-            return render(request, 'angeline/perfil.html', {'form': form, 'host': host, 'form_preenchido': not created})
+            return redirect('angeline:perfil')  
     else:
         form = HostForm(instance=host)
     return render(request, 'angeline/editar_host.html', {'form': form, 'host': host, 'form_preenchido': not created})
+
 
 @login_required
 def perfil_host(request):
@@ -196,17 +219,23 @@ def agendamento(request, evento_id):
     evento = Evento.objects.get(id=evento_id)
 
     if request.method == 'POST':
-        form = AgendamentoForm(request.POST)
+        form = AgendamentoForm(request.POST, evento_id=evento_id)
         if form.is_valid():
             agendamento = form.save(commit=False)
             agendamento.usuario = request.user
             agendamento.evento = evento
-            agendamento.save()
-            return redirect('angeline:agendamentos') 
+            
+            if agendamento.quantidade_pessoas <= evento.vagas_disponiveis:
+                agendamento.save()
+                return redirect('angeline:agendamentos') 
+            else:
+                form.add_error(None, 'Não há vagas suficientes disponíveis para este evento.')
+
     else:
-        form = AgendamentoForm()
+        form = AgendamentoForm(evento_id=evento_id)
 
     return render(request, 'angeline/agendamento.html', {'form': form, 'evento': evento})
+
 
 
 @login_required

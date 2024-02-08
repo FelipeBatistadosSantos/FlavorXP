@@ -19,13 +19,13 @@
       {% if request.user.host %}
       <li class="nav-link-evento"><a href="{% url 'angeline:evento' %}">Criar Evento</a></li>
       {% else %}
-      <li class="nav-link-host"><a href="{% url 'angeline:host' %}">Seja Host</a></li>
+      <li class="nav-link-host"><a href="{% url 'angeline:criar_host' %}">Seja Host</a></li>
       {% endif %}
       {% if form_preenchido %}
       <li class="nav-link-perfil"><a href="{% url 'angeline:perfil' %}"><img class="perfil_usuario"
             src="angeline/static/img/male-profile.png" alt="Ícone Perfil"></a></li>
       {% else %}
-      <li class="nav-link-perfil"><a href="{% url 'angeline:perfil' %}">Complete seu perfil</a></li>
+      <li class="nav-link-perfil"><a href="{% url 'angeline:completar_perfil' %}">Complete seu perfil</a></li>
       {% endif %}
       <li class="nav-link-sair"><a href="{% url 'main:home_page' %}">Sair</a></li>
 
