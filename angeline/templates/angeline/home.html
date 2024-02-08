@@ -19,7 +19,7 @@
       {% if request.user.host %}
       <li class="nav-link-evento"><a href="{% url 'angeline:evento' %}">Criar Evento</a></li>
       {% else %}
-      <li class="nav-link-host"><a href="{% url 'angeline:host' %}">Seja Host</a></li>
+      <li class="nav-link-host"><a href="{% url 'angeline:criar_host' %}">Seja Host</a></li>
       {% endif %}
       {% if form_preenchido %}
       <li class="nav-link-perfil"><a href="{% url 'angeline:perfil' %}"><img class="perfil_usuario"

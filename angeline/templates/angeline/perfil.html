@@ -84,17 +84,15 @@
         {% if request.user.host %}
         <div class="right">
             <h1>Detalhes do Host</h1>
-            <p>Nome da Empresa/Marca: {{ request.session.host_nome_empresa }}</p>
-            <p>Motivo: {{ request.session.host_motivo }}</p>
-            <p>Área Gastronômica: {{ request.session.host_get_area_gastronomia_display }}</p>
-            <p>Serviços Disponíveis: {{ request.session.host_servicos }}</p>
-            <p>Frequência de Serviços: {{ request.session.host_get_frequencia_servicos_display }}</p>
-            <p>Local de Serviço: {{ request.session.host_local_servico }}</p>
-            <p>Descrição do Local de Serviço: {{ request.session.host_descricao_local }}</p>
-            <a href="{%url 'angeline:editar_host' %}">Editar perfil Host</a>
+            <p>Nome da Empresa/Marca: {{ host.nome_empresa }}</p>
+            <p>Motivo: {{ host.motivo }}</p>
+            <p>Área Gastronômica: {{ host.get_area_gastronomia_display }}</p>
+            <p>Serviços Disponíveis: {{ host.servicos }}</p>
+            <p>Frequência de Serviços: {{ host.get_frequencia_servicos_display }}</p>
+            <p>Local de Serviço: {{ host.local_servico }}</p>
+            <p>Descrição do Local de Serviço: {{ host.descricao_local }}</p>
+            <a href="{% url 'angeline:editar_host' %}">Editar perfil Host</a>
         </div>
-
-
         {% endif %}
 
     </div>
