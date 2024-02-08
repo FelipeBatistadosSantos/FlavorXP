@@ -25,15 +25,12 @@ urlpatterns = [
     path('agendamentos', agendamentos, name='agendamentos'),
     path('cancelar/<int:agendamento_id>/cancelar/', cancelar, name='cancelar'),
     path('excluir_evento/<int:evento_id>/', excluir_evento, name='excluir_evento'),
-<<<<<<< HEAD
     path('reset-password/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('reset-password/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-=======
     path('completar_perfil', completar_perfil, name='completar_perfil'),
     path('criar_host', criar_host, name='criar_host'),
->>>>>>> dev-luana
 
 ]
 
