@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
-    
+
     <link rel="stylesheet" href="{% static 'angeline/perfil.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
 </head>
@@ -15,7 +15,7 @@
 <body>
     <div class="container">
 
-            <!-- <div class="retangulo_nav" style="width: 100vw; height: 212px; left: 0px; top: 0px; position: absolute; background: #4E008E"></div>
+        <!-- <div class="retangulo_nav" style="width: 100vw; height: 212px; left: 0px; top: 0px; position: absolute; background: #4E008E"></div>
             <div class="ola_usuario" style="left: 89px; top: 226px; position: absolute; color: #4E008E; font-size: 64px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Olá Felipe</div>
             <div class="perfil_usuario" style="left: 89px; top: 182px; position: absolute; color: white; font-size: 24px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Perfil Usuário</div>
             <div class="perfil_host" style="left: 267px; top: 182px; position: absolute; color: white; font-size: 24px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Perfil  Host</div>
@@ -66,27 +66,23 @@
             <p>Bebida favorita: {{ perfil_usuario.bebida }}</p>
             <p>Restrições alimentares: {{ perfil_usuario.restricao }}</p>
             <p><a href="{% url 'angeline:agendamentos' %}">Meus agendamentos</a></p>
-        
+
             <a href="{% url 'angeline:perfil' %}?edit=1">Editar perfil</a>
-            
-            
-            
+
+
+
         </div>
-   
-        <a class="oi" href="{% url 'angeline:home' %}">Voltar para  Home</a>
-   
+
+        <a class="oi" href="{% url 'angeline:home' %}">Voltar para Home</a>
+
 
         {% else %}
-           <h1>Complete seu perfil</h1>
-           <form method="post" action="{% url 'angeline:perfil' %}">
-               {% csrf_token %}
-               {{ form.as_p }}
-               <button type="submit">Salvar</button>
-           </form>
-           <a href="{% url 'angeline:home' %}">Home</a>
-           {% endif %}
-            {% if request.user.host %}
-            <div class="right">
+        <h1>Complete Seu Perfil</h1>
+        <a href="{% url 'angeline:completar_perfil' %}">Completar perfil</a>
+        <a href="{% url 'angeline:home' %}">Voltar para Home</a>
+        {% endif %}
+        {% if request.user.host %}
+        <div class="right">
             <h1>Detalhes do Host</h1>
             <p>Nome da Empresa/Marca: {{ request.session.host_nome_empresa }}</p>
             <p>Motivo: {{ request.session.host_motivo }}</p>
@@ -98,8 +94,8 @@
             <a href="{%url 'angeline:editar_host' %}">Editar perfil Host</a>
         </div>
 
- 
-        {% endif %} 
+
+        {% endif %}
 
     </div>
 </body>

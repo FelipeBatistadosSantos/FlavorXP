@@ -90,6 +90,20 @@ def perfil(request):
     return render(request, 'angeline/perfil.html', {'form': form, 'perfil_usuario': perfil_usuario, 'form_preenchido': not created, 'user_email': user_email})
 
 
+def completar_perfil(request):
+    if request.method == 'POST':
+        form = CompleteCadastroForm(request.POST)
+        if form.is_valid():
+            perfil = form.save(commit=False)
+            perfil.usuario = request.user  
+            perfil.save()
+            return redirect('angeline:perfil')
+    else:
+        form = CompleteCadastroForm()
+    
+    return render(request, 'angeline/completar_perfil.html', {'form': form})
+
+
 
 
 @login_required

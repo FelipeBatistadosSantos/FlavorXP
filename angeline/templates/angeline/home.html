@@ -25,7 +25,7 @@
       <li class="nav-link-perfil"><a href="{% url 'angeline:perfil' %}"><img class="perfil_usuario"
             src="angeline/static/img/male-profile.png" alt="Ícone Perfil"></a></li>
       {% else %}
-      <li class="nav-link-perfil"><a href="{% url 'angeline:perfil' %}">Complete seu perfil</a></li>
+      <li class="nav-link-perfil"><a href="{% url 'angeline:completar_perfil' %}">Complete seu perfil</a></li>
       {% endif %}
       <li class="nav-link-sair"><a href="{% url 'main:home_page' %}">Sair</a></li>
 
