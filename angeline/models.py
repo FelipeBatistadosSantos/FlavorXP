@@ -67,24 +67,47 @@ class CompleteCadastro(models.Model):
         ('lactose', 'Lactose'),
         ('vegano', 'Vegano'),
         ('vegetariano', 'Vegetariano'),
+        ('carneporco', 'Carne de porco'),
+        ('diabetes', 'Diabetes'),
+        ('nozes', 'Nozes'),
+        ('frutosmar','Frutos do mar'),
+        ('soja', 'Soja'),
+        ('kosher', 'Kosher'),
+        ('halal', 'Halal'),
         ('outros', 'Outros')
+    ]
+
+    CIDADE_CHOICES =[
+        ('blumenau', 'Blumenau')
+    ]
+
+    ESTADO_CHOICES = [
+        ('sc', 'SC')
     ]
 
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     cep = BRPostalCodeField()
     cpf = BRCPFField()
-    cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, blank=True)
-    estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, blank=True)
+    cidade = models.CharField('cidade', choices=CIDADE_CHOICES, default='Blumenau', max_length=20)
+    estado = models.CharField('estado', choices=ESTADO_CHOICES, default='SC',  max_length=20)
     telefone = PhoneNumberField(unique=True, null=False, blank=False)
     nascimento = models.DateField(null=True)
     sobre = models.TextField('sobre', default='')
     profissao = models.CharField('profissao',max_length=50)
     hobbie = models.CharField('hobbie', max_length=50)
-    idioma = models.CharField('idioma', choices=IDIOMA_CHOICES, max_length=30)
+    idioma = models.CharField('idioma', choices=IDIOMA_CHOICES, max_length=30, default='Nenhum')
     comidaf = models.CharField('comida', max_length=50)
     bebida = models.CharField('bebida',max_length=50)
-    restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30)
+    restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30, default='Nenhum')
     outra_restricao = models.CharField('outra_restricao', max_length=30, default='')
+
+    def is_complete(self):
+        if self.cep and self.cpf and self.cidade and self.estado and self.telefone and self.nascimento and self.profissao and self.hobbie and self.idioma and self.comidaf and self.bebida and self.restricao:
+            return True
+        else:
+            return False
+
+    
 
 
 class Host(models.Model):
@@ -121,6 +144,22 @@ class Evento(models.Model):
 
     def default_horario():
         return timezone.now().time()
+    
+    RESTRICAO_CHOICES = [
+        ('nenhum', 'Nenhum'),
+        ('gluten', 'Glúten'),
+        ('lactose', 'Lactose'),
+        ('vegano', 'Vegano'),
+        ('vegetariano', 'Vegetariano'),
+        ('carneporco', 'Carne de porco'),
+        ('diabetes', 'Diabetes'),
+        ('nozes', 'Nozes'),
+        ('frutosmar','Frutos do mar'),
+        ('soja', 'Soja'),
+        ('kosher', 'Kosher'),
+        ('halal', 'Halal'),
+        ('outros', 'Outros')
+    ]
 
     ESTILO_CHOICES = [
             ('janta', 'Janta'),
@@ -148,6 +187,14 @@ class Evento(models.Model):
     horario = models.TimeField('Horário', default=default_horario)
     valor_host = models.DecimalField('Valor Host', max_digits=10, decimal_places=2, default=10.0)
     valor_manutencao_site = models.DecimalField('Valor Manutenção do Site (%)', max_digits=5, decimal_places=2, default=0)
+    vagas_disponiveis = models.PositiveIntegerField('Vagas Disponíveis', editable=False, default=0)
+    restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30, default='Nenhum')
+
+
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            self.vagas_disponiveis = self.max_convidados
+        super().save(*args, **kwargs)
 
     def valor_total_evento(self):
         return self.valor_host + (self.valor_host * (self.valor_manutencao_site / 100))
@@ -160,9 +207,15 @@ class Agendamento(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     evento = models.ForeignKey(Evento, on_delete=models.CASCADE)
     quantidade_pessoas = models.PositiveIntegerField()
-    nomes_convidados = models.CharField(blank=True, null=True, max_length=100) 
-    datas_nascimento_convidados = models.DateField(blank=True, null=True)
+    nomes_convidados = models.CharField(blank=True, null=True, max_length=100)
     valor_total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        evento = self.evento
+        if evento:
+            evento.vagas_disponiveis -= self.quantidade_pessoas
+            evento.save()
+        super().save(*args, **kwargs)
 
     def calcular_valor_total(self):
         if self.evento:

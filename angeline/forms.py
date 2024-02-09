@@ -56,7 +56,7 @@ class CompleteCadastroForm(forms.ModelForm):
         
     class Meta:
         model = CompleteCadastro
-        fields = ['nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao', 'outra_restricao', 'cpf', 'cep', 'cidade', 'estado', 'telefone']
+        fields = ['nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao','cpf', 'cep', 'cidade', 'estado', 'telefone']
 
         
    
@@ -87,12 +87,15 @@ class CustomDecimalField(forms.RegexField):
 class EventoForm(forms.ModelForm):
 
     valor_host = CustomDecimalField(label='Valor do Host')
+    restricao = forms.ChoiceField(label='Alimentos para alguma restrição? ', choices=Evento.RESTRICAO_CHOICES)
+
 
     class Meta:
         model = Evento
         fields = ['estilo','tema','fotos','descricao','cardapio','inclui_bebidas','bebidas_oferecidas','convidado_pode_trazer',
-                  'max_convidados','local','data','horario','valor_host',]
+                  'max_convidados','local','data','horario','valor_host','restricao']
         
+
         widgets = {
             'fotos': forms.FileInput(),
             'horario': forms.TimeInput(format='%H:%M', attrs={'type': 'time'}),
@@ -105,10 +108,22 @@ class EventoForm(forms.ModelForm):
 class AgendamentoForm(forms.ModelForm):
     class Meta:
         model = Agendamento
-        fields = ['quantidade_pessoas', 'nomes_convidados', 'datas_nascimento_convidados']
-
+        fields = ['quantidade_pessoas', 'nomes_convidados']
 
     def __init__(self, *args, **kwargs):
+        self.evento_id = kwargs.pop('evento_id', None)
         super().__init__(*args, **kwargs)
-        self.fields['nomes_convidados'].widget = forms.Textarea(attrs={'rows': 3})
-        self.fields['datas_nascimento_convidados'].widget = forms.Textarea(attrs={'rows': 3})
+        self.fields['quantidade_pessoas'].widget.attrs['min'] = 1  
+        self.fields['quantidade_pessoas'].widget.attrs['max'] = self.get_max_vagas() 
+    def get_max_vagas(self):
+        if self.evento_id:
+            evento = Evento.objects.get(pk=self.evento_id)
+            return evento.vagas_disponiveis
+        return 0
+
+    def clean_quantidade_pessoas(self):
+        quantidade_pessoas = self.cleaned_data['quantidade_pessoas']
+        max_vagas = self.get_max_vagas()
+        if quantidade_pessoas > max_vagas:
+            raise forms.ValidationError(f'Não há vagas suficientes disponíveis. Máximo de {max_vagas} vagas.')
+        return quantidade_pessoas
