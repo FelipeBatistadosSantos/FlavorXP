@@ -298,4 +298,13 @@ button:hover {
     word-wrap: break-word;
 }
 
+a{
+    text-decoration: none;
+    transition: color 0.3s ease; /* Adicionar transição suave */
+  }
+  
+  a:hover {
+      color: #4E008E; /* Mudar a cor ao passar o mouse */
+  }
+
 /* O restante do CSS foi omitido por brevidade. */
