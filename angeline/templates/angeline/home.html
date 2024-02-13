@@ -13,12 +13,16 @@
   </head>
     <input type="text" id="filtro" placeholder="Digite para filtrar">
   
-      <script>
+      <script>  
+        function teste(){
+          console.log('isvrwj');
+          $('#resultados').append('<div style="color: black;">oie</div>'); // Update the div with the filtered results
+          }
           $(document).ready(function(){
               $('#filtro').on('input', function(){
                   var filtro = $(this).val().toLowerCase();
                   $.ajax({
-                      url: 'angeline/templates/angeline/home.html',  // Update the URL to match your Django URL pattern
+                      url: 'angeline/templates/angeline/specific_page.html',  // Update the URL to match your Django URL pattern
                       method: 'GET',
                       data: {filtro: filtro},
                       success: function(response){
@@ -39,7 +43,7 @@
           </g>
         </svg>
         <input id="filtro-input" placeholder="Search" type="search" class="input">
-        <button id="buscar-btn" type="s">Buscar</button>
+        <a onclick="teste()">Buscar</a>
       </form>
         </div>
         
