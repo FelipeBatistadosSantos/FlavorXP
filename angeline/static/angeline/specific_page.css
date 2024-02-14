@@ -1,0 +1,453 @@
+.imagem_evento {
+    width: 1440px;
+    height: 1024px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+  }
+  
+  .gradiente_imagem {
+    width: 1440px;
+    height: 1024px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.67) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+  
+  .nome_do_evento {
+    left: 363px;
+    top: 416px;
+    position: absolute;
+    color: white;
+    font-size: 96px;
+    font-family: Outfit;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .estilo_da_experiencia {
+    left: 121px;
+    top: 1306px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 100;
+    word-wrap: break-word;
+  }
+
+  .quadrado_conteudo1 {
+    width: 194px;
+    height: 194px;
+    left: 121px;
+    top: 1331px;
+    position: absolute;
+    background: #F1C400;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
+  
+  .jantar {
+    left: 189px;
+    top: 1477px;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .nome_da_marca_oferece {
+    left: 75px;
+    top: 1133px;
+    position: absolute;
+  }
+  
+  .nome_da_marca {
+    color: black;
+    font-size: 64px;
+    font-family: Outfit;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .oferece {
+    color: #4E008E;
+    font-size: 64px;
+    font-family: Outfit;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .barra1 {
+    width: 1290px;
+    height: 0px;
+    left: 75px;
+    top: 1245px;
+    position: absolute;
+    border: 4px black solid;
+  }
+  
+  .barra2 {
+    width: 1290px;
+    height: 0px;
+    left: 75px;
+    top: 1920px;
+    position: absolute;
+    border: 4px black solid;
+  }
+  
+  .descricao {
+    width: 522px;
+    left: 121px;
+    top: 1609px;
+    position: absolute;
+  }
+  
+  .descricao_evento {
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .texto_descricao {
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
+  .barra3 {
+    width: 220px;
+    height: 0px;
+    left: 720px;
+    top: 1583px;
+    position: absolute;
+    transform: rotate(90deg);
+    transform-origin: 0 0;
+    border: 4px black solid;
+  }
+  
+  .icone_estilo_experiencia {
+    width: 90px;
+    height: 90px;
+    left: 166px;
+    top: 1380px;
+    position: absolute;
+  }
+  
+  .cardapio {
+    left: 777px;
+    top: 1574px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 100;
+    word-wrap: break-word;
+  }
+  
+  .quadrado_conteudo_roxo {
+    width: 194px;
+    height: 194px;
+    left: 777px;
+    top: 1599px;
+    position: absolute;
+    background: #4E008E;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
+  
+  .convidados {
+    left: 449px;
+    top: 1306px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 100;
+    word-wrap: break-word;
+  }
+  
+  .quadrado_conteudo2 {
+    width: 194px;
+    height: 194px;
+    left: 449px;
+    top: 1331px;
+    position: absolute;
+    background: #F1C400;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
+
+  .convidados {
+    left: 493px;
+    top: 1478px;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .numero_convidados {
+    width: 52px;
+    height: 96px;
+    left: 520px;
+    top: 1359px;
+    position: absolute;
+    color: black;
+    font-size: 96px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .incluso_restricao {
+    left: 1105px;
+    top: 1306px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 100;
+    word-wrap: break-word;
+  }
+  
+  .quadrado_conteudo3 {
+    width: 194px;
+    height: 194px;
+    left: 1105px;
+    top: 1331px;
+    position: absolute;
+    background: #F1C400;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
+  
+  .tipo_restricao {
+    left: 1170px;
+    top: 1478px;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .data_e_horario {
+    left: 777px;
+    top: 1306px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 100;
+    word-wrap: break-word;
+  }
+  
+  .quadrado_conteudo4 {
+    width: 194px;
+    height: 194px;
+    left: 777px;
+    top: 1331px;
+    position: absolute;
+    background: #F1C400;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
+  
+  .data {
+    left: 792px;
+    top: 1380px;
+    position: absolute;
+    color: black;
+    font-size: 16px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .as {
+    left: 863px;
+    top: 1423px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .horario {
+    left: 838px;
+    top: 1473px;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .icone_cardapio {
+    width: 60.27px;
+    height: 103.33px;
+    left: 844px;
+    top: 1632px;
+    position: absolute;
+    background: white;
+  }
+  
+  .acesse {
+    left: 842px;
+    top: 1747px;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 600;
+    word-wrap: break-word;
+  }
+  
+  .bebidas_oferecidas {
+    left: 1105px;
+    top: 1574px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 100;
+    word-wrap: break-word;
+  }
+  
+  .quadrado_conteudo_roxo2 {
+    width: 194px;
+    height: 194px;
+    left: 1105px;
+    top: 1599px;
+    position: absolute;
+    background: #4E008E;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
+  
+  .acesse2 {
+    left: 1170px;
+    top: 1747px;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    font-family: Outfit;
+    font-weight: 600;
+    word-wrap: break-word;
+  }
+
+  .localizacao {
+    left: 75px;
+    top: 1996px;
+    position: absolute;
+    color: black;
+    font-size: 48px;
+    font-family: Outfit;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .sombra {
+    width: 480px;
+    height: 586px;
+    left: 480px;
+    top: 2387px;
+    position: absolute;
+    background: white;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: 1px black solid;
+  }
+  
+  .descricao_do_evento_no_card_de_pagamento {
+    width: 429px;
+    left: 506px;
+    top: 2644px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 36px;
+    font-family: Outfit;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .local_localizacao {
+    width: 1290px;
+    height: 290px;
+    left: 75px;
+    top: 2076px;
+    position: absolute;
+  }
+  
+  .retangulo_degrade_pgto {
+    width: 454px;
+    height: 99px;
+    left: 493px;
+    top: 2414px;
+    position: absolute;
+    background: linear-gradient(94deg, #4E008E 0%, #4E008E 80%, #F1C400 100%);
+    border-radius: 10px;
+  }
+  
+  .valor_da_experiencia {
+    left: 531px;
+    top: 2439px;
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    font-family: Outfit;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .preco {
+    left: 581px;
+    top: 2538px;
+    position: absolute;
+    color: black;
+    font-size: 64px;
+    font-family: Outfit;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .botão_agendar {
+    width: 429px;
+    height: 73px;
+    left: 506px;
+    top: 2876px;
+    position: absolute;
+    background: black;
+    border-radius: 4px;
+  }
+  
+  .texto_agendar_pgto {
+    left: 639px;
+    top: 2888px;
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    font-family: Outfit;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+
+  body, html{
+    margin:auto;
+    overflow-x: hidden;
+  }

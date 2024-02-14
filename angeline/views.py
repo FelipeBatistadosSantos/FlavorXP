@@ -178,7 +178,7 @@ def editar_host(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Informações do host atualizadas com sucesso!')
-            return redirect('angeline:perfil')  
+            return redirect('angeline:host')  
     else:
         form = HostForm(instance=host)
     return render(request, 'angeline/editar_host.html', {'form': form, 'host': host, 'form_preenchido': not created})
