@@ -14,22 +14,19 @@
 <body>
 
     
-        <img class="imagem_evento" src="https://via.placeholder.com/1440x1024" />
+        <img class="imagem_evento" src="{{ evento.fotos.url }}" />
         <div class="gradiente_imagem"></div>
-        <div class="nome_do_evento">Nome do evento</div>
+        <div class="nome_do_evento">{{ evento.tema }}</div>
         <div class="estilo_da_experiencia">Estilo da experiência:</div>
         <div class="quadrado_conteudo1"></div>
-        <div class="jantar">Jantar</div>
+        <div class="jantar">{{ evento.estilo }}</div>
         <div class="nome_da_marca_oferece">
         <span class="nome_da_marca">Nome da marca </span>
         <span class="oferece">oferece:</span>
         </div>
         <div class="barra1"></div>
         <div class="barra2"></div>
-        <div class="descrição">
-        <span class="descricao_evento">Descrição: </span>
-        <span class="texto_descricao">Esta será uma experiência na qual oferecerá um jantar para os convidados no dia 8 de fevereiro de 2024 às 13:06h</span>
-        </div>
+        <div style="width: 522px"><span style="color: black; font-size: 24px; font-family: Outfit; font-weight: 700; word-wrap: break-word">Descrição: </span><span style="color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">{{ evento.descricao }}</span></div>
         <div class="barra3"></div>
         <img class="icone_estilo_experiencia" src="https://via.placeholder.com/90x90" />
         <div class="cardapio">Cardápio</div>
@@ -37,15 +34,15 @@
         <div class="convidados">Convidados:</div>
         <div class="quadrado_conteudo2"></div>
         <div class="convidados">Convidados</div>
-        <div class="numero_convidados">3</div>
+        <div class="numero_convidados">{{ evento.max_convidados }}</div>
         <div class="incluso_restricao">Incluso para restrição:</div>
         <div class="quadrado_conteudo3"></div>
-        <div class="tipo_restricao">Glútem</div>
+        <div class="tipo_restricao">{{ evento.restricao }}</div>
         <div class="data_e_horario">Data e Horário:</div>
         <div class="quadrado_conteudo4"></div>
-        <div class="data">8 de Fevereiro de 2024</div>
+        <div class="data">{{ evento.data }}</div>
         <div class="as">às</div>
-        <div class="horario">13:06h</div>
+        <div class="horario">{{ evento.horario }}h</div>
         <div class="icone_cardapio"></div>
         <div class="acesse">Acesse</div>
         <div class="bebidas_oferecidas">Bebidas oferecidas:</div>
@@ -54,11 +51,11 @@
 
         <div class="localizacao">Localização</div>
         <div class="sombra"></div>
-        <div class="descricao_do_evento_no_card_de_pagamento">Jantar para 3 convidados  no dia 8 de fevereiro às 13:06h</div>
+        <div class="descricao_do_evento_no_card_de_pagamento">Jantar para {{ evento.max_convidados }} convidados  no dia {{ evento.data }} às {{ evento.horario }}h</div>
         <img class="local_localizacao" src="https://via.placeholder.com/1290x290" />
         <div class="retangulo_degrade_pgto"></div>
         <div class="valor_da_experiencia">Valor da experiência</div>
-        <div class="preco">R$123,00</div>
+        <div class="preco">R${{ evento.valor_host }}</div>
         <div class="botão_agendar"></div>
         <div class="texto_agendar_pgto">Agendar</div>
 
