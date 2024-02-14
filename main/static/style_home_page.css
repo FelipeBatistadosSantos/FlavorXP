@@ -111,8 +111,25 @@ a {
     font-size: 56px;
     font-family: Outfit;
     font-weight: 500;
-    word-wrap: break-word"
+    word-wrap: break-word;
+    opacity: 0; /* Inicia com opacidade zero */
+    animation: appear 1.5s ease forwards;
+}
 
+@keyframes appear{
+    from {
+      opacity: 0;
+      transform: translateY(20px); /* Deslocamento inicial */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0); /* Sem deslocamento ao final */
+    }
+  }
+
+.frase_em_baixo_do_texto1{
+    opacity: 0; /* Inicia com opacidade zero */
+    animation: appear 1.5s ease forwards;
 }
 
 /*Efeitos da home*/

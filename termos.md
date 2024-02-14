@@ -234,3 +234,17 @@
     11.6.1 Uma “pessoa” ou “corporação” inclui uma referência a todas as pessoas físicas ou jurídicas, parcerias, empresas, governos ou departamentos de autoridades locais e outros órgãos e associações (sejam corporativos ou não incorporados);
     
     11.6.2 Um indivíduo inclui, quando apropriado, seus representantes pessoais;
+    
+    11.6.3 O singular inclui referência ao plural e vice-versa; 
+
+    11.6.4 Um gênero inclui cada gênero (feminino, masculino e neutro).
+
+**11.7** Estes Termos e Condições e os documentos mencionados nestes Termos e Condições (conforme atualizados de tempos em tempos em cada caso) constituem o acordo integral entre você e o FLAVORXP é o que rege nossas relações e substituem todos os outros acordos entre você e o FLAVORXP anteriores à data destes Termos e Condições, que deixará de produzir qualquer efeito posterior.
+
+**11.8** Se alguma disposição deste Termos e Condições for considerada ilegal ou inviável, no todo ou em parte, será considerada, como não fazendo parte destes Termos e Condições e a aplicabilidade do restante dos Termos e Condições não será afetada.
+
+**11.9** O FLAVORXP pode se comunicar com você enviando um e-mail para o seu endereço de e-mail registrado. Necessita apenas de apresentar prova de que o e-mail foi enviado, não sendo responsável por garantir que o recebe.
+
+**11.10** Não se pretende que um terceiro tenha qualquer direito de fazer cumprir estes Termos e Condições, exceto que o FLAVORXP possa confiar e fazer cumprir estes Termos e Condições.
+
+**11.11** Estes Termos e Condições serão regidos e interpretados de acordo com a lei, e o FLAVORXP e cada um de vocês concorda em enviar qualquer conflito, incluindo conflitos relacionadas a quaisquer obrigações não contratuais, que possam surgir de, sob ou em conexão com este acordo para com a lei.

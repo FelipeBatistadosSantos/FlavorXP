@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'angeline/host.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+</head>
+<body>
+    <div class="retangulo_nav"></div>
+    <div class="editar_perfil">Editar perfil</div>
+    <img class="circulo_foto" src="https://via.placeholder.com/156x156" />
+    <a class="perfil_usuario" href="{% url 'angeline:perfil' %}">Perfil Usuário</a>
+    <a class="perfil_host" href="{% url 'angeline:host' %}">Perfil Host</a>
+    <div class="perfil_host_titulo">
+        <span class="perfil_nav_host">Perfil</span>
+        <span class="host_nav">Host</span>
+        <span class="organizadora"></span>
+    </div>
+    <div class="ola_usuario">Olá Felipe</div>
+    <div class="email_usuario">felipebs779@gmail.com</div>
+    <div class="motivo">Motivo: {{ host.motivo }}</div>
+    <div class="area_gastronomica">Área Gastronômica: {{ host.area_gastronomia }}</div>
+    <div class="local_servico_desc">Descrição do Local de Serviço: {{ host.descricao_local }}</div>
+    <div class="frequencia_servico">Frequência de Serviços: {{ host.frequencia_servicos }}</div>
+    <div class="servicos_disponiveis">Serviços Disponíveis: {{ host.servicos }}</div>
+    <div class="local_servico">Local de Serviços: {{ host.local_servico }}</div>
+    <div class="editar_perfil">Editar Perfil</div>
+    <div class="fundo">
+        <div class="retangulo_footer"></div>
+        <a class="home_footer" href="{% url 'angeline:home' %}">Home</a>
+        <a class="host" href="{% url 'angeline:host' %}">Host</a>
+        <div class="logo_footer">FlavorXP</div>
+        <div class="slogan_footer">Conectando pessoas por meio da gastronomia</div>
+        <div class="direitos_reservados_footer">© 2024 MyFood. Todos os direitos reservados.</div>
+    </div>
+</body>
+</html>

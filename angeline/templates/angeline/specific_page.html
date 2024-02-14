@@ -26,7 +26,8 @@
     <p>Localização: {{ evento.local }}</p>
     <p>Data: {{ evento.data }}</p>
     <p>Horário: {{ evento.horario }}</p>
-    <p>Valor: R$: {{ evento.valor_host }}</p>
+    <p>Valor: {{ evento.valor_host }}</p>
+    <p>Incluso para alguma restrição: {{ evento.restricao }}</p>
 
     {% if request.user.host and evento.host.usuario == request.user %}
     <a href="{% url 'angeline:editar_evento' evento_id=evento.id %}">Editar evento</a>

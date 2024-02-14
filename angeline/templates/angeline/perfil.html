@@ -7,101 +7,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
-    
+
     <link rel="stylesheet" href="{% static 'angeline/perfil.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
 </head>
 
 <body>
     <div class="container">
-
-            <!-- <div class="retangulo_nav" style="width: 100vw; height: 212px; left: 0px; top: 0px; position: absolute; background: #4E008E"></div>
-            <div class="ola_usuario" style="left: 89px; top: 226px; position: absolute; color: #4E008E; font-size: 64px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Olá Felipe</div>
-            <div class="perfil_usuario" style="left: 89px; top: 182px; position: absolute; color: white; font-size: 24px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Perfil Usuário</div>
-            <div class="perfil_host" style="left: 267px; top: 182px; position: absolute; color: white; font-size: 24px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Perfil  Host</div>
-            <div class="titulo_perfil_host" style="left: 89px; top: 37px; position: absolute"><span class="span_perfil" style="color: white; font-size: 48px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Perfil</span><span class="espaco_perfil_usuario" style="color: black; font-size: 48px; font-family: Outfit; font-weight: 600; word-wrap: break-word"> </span><span class="usuario_titulo" style="color: #F1C400; font-size: 48px; font-family: Outfit; font-weight: 600; word-wrap: break-word">Usuário</span></div>
-            <div class="editar_perfil_convidado" style="left: 1039px; top: 56px; position: absolute; color: white; font-size: 20px; font-family: Outfit; font-weight: 400; word-wrap: break-word">Editar perfil</div>
-            <div class="email_usuario" style="left: 91px; top: 297px; position: absolute; color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">felipebs779@gmail.com</div>
-            <div class="cpf_usuario" style="left: 973px; top: 106px; position: absolute"><span class="cpf" style="color: white; font-size: 20px; font-family: Outfit; font-weight: 400; word-wrap: break-word">CPF:</span><span class="numero_cpf" style="color: white; font-size: 20px; font-family: Outfit; font-weight: 200; word-wrap: break-word"> 123.456.789-11</span></div>
-            <div class="cep_usuario" style="left: 1022px; top: 131px; position: absolute"><span class="cep" style="color: white; font-size: 20px; font-family: Outfit; font-weight: 400; word-wrap: break-word">CEP:</span><span class="numero_cep" style="color: white; font-size: 20px; font-family: Outfit; font-weight: 200; word-wrap: break-word">8809832</span></div>
-            <div class="cidade_usuario" style="left: 91px; top: 412px; position: absolute; color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Cidade: Blumenau</div>
-            <div class="estado_usuario" style="left: 91px; top: 456px; position: absolute; color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Estado: SC</div>
-            <div class="telefone_usuario"style="left: 986px; top: 81px; position: absolute; color: white; font-size: 20px; font-family: Outfit; font-weight: 200; word-wrap: break-word">+55 (47) 989111610</div>
-            <div class="data_nascimento_usuario" style="left: 91px; top: 500px; position: absolute; color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Nascimento: 18/05/2005</div>
-            <div class="idiomas" style="left: 722px; top: 500px; position: absolute; color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Idiomas:</div>
-            <div class="restricoes_alimentares" style="left: 722px; top: 632px; position: absolute; color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Restrições Alimentares:</div>
-            <div class="bebida_favorita" style="left: 722px; top: 588px; position: absolute; color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Bebida Favorita:</div>
-            <div class="comida_favorita" style="left: 723px; top: 544px; position: absolute; color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Comida Favorita:</div>
-            <div class="profissao_usuario" style="left: 722px; top: 412px; position: absolute; color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Profissão:</div>
-            <div class="sobre_usuario" style="left: 91px; top: 544px; position: absolute; color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Sobre:</div>
-            <div class="hobbies" style="left: 722px; top: 456px; position: absolute; color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Hobbies:</div>
-            <img class="imagem_" style="width: 156px; height: 156px; left: 1165px; top: 19px; position: absolute; border-radius: 9999px" src="https://via.placeholder.com/156x156" />
-            <div class="" style="width: 1440px; height: 239px; left: 0px; top: 784px; position: absolute">
-              <div class="" style="width: 100vw; height: 239px; left: 0px; top: 0px; position: absolute; background: #4E008E"></div>
-              <div class="" style="left: 539px; top: 105px; position: absolute; color: white; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Editar Perfil</div>
-              <div class="" style="left: 722px; top: 103px; position: absolute; color: white; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Home</div>
-              <div class="" style="left: 845px; top: 105px; position: absolute; color: white; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">Host</div>
-              <div class="" style="width:900px; left: 89px; top: 79px; position: absolute; color: #F1C400; font-size: 64px; font-family: Outfit; font-weight: 500; word-wrap: break-word">FlavorXP</div>
-              <div class="" style="width: 274px; left: 1047px; top: 94px; position: absolute; text-align: right; color: #F1C400; font-size: 24px; font-family: Outfit; font-weight: 700; word-wrap: break-word">Conectando pessoas por meio da gastronomia </div>
-            </div>
-            <div class="" style="left: 91px; top: 932px; position: absolute; text-align: right; color: white; font-size: 13px; font-family: Roboto; font-weight: 100; word-wrap: break-word">© 2024 MyFood. Todos os direitos reservados.</div>
-         -->
-
         {% if form_preenchido %}
-        <div class="left">
-            <h1>Seu Perfil</h1>
-            <p>Usuario: {{ perfil_usuario.usuario }}</p>
-            <p>Email: {{ user_email }}</p>
-            <p>Cpf: {{ perfil_usuario.cpf }}</p>
-            <p>Cep: {{ perfil_usuario.cep }} </p>
-            <p>Cidade: {{ perfil_usuario.cidade }} </p>
-            <p>Estado: {{ perfil_usuario.estado }}</p>
-            <p>Telefone: {{ perfil_usuario.telefone }}</p>
-            <p>Nascimento: {{ perfil_usuario.nascimento }}</p>
-            <p>Sobre: {{ perfil_usuario.sobre }}</p>
-            <p>Profissão: {{ perfil_usuario.profissao }}</p>
-            <p>Hobbie: {{ perfil_usuario.hobbie }}</p>
-            <p>Idiomas: {{ perfil_usuario.idioma }}</p>
-            <p>Comida favorita: {{ perfil_usuario.comidaf }}</p>
-            <p>Bebida favorita: {{ perfil_usuario.bebida }}</p>
-            <p>Restrições alimentares: {{ perfil_usuario.restricao }}</p>
-            <p><a href="{% url 'angeline:agendamentos' %}">Meus agendamentos</a></p>
-        
-            <a href="{% url 'angeline:perfil' %}?edit=1">Editar perfil</a>
-            
-            
-            
-        </div>
-   
-        <a class="oi" href="{% url 'angeline:home' %}">Voltar para  Home</a>
-   
+            <div class="retangulo_nav"></div>
+            <div class="ola_usuario">Olá {{ perfil_usuario.usuario }}</div>
+            <a class="perfil_usuario" href="{% url 'angeline:perfil' %}">Perfil Usuário</a>
+            {% if form_preenchido %}
+                <a class="perfil_host" href="{% url 'angeline:host' %}">Perfil Host</a>
+            {% else %}
+                <a class="perfil_host" href="{% url 'angeline:editar_host' %}">Perfil Host</a>
+            {% endif %}
 
-        {% else %}
-           <h1>Complete seu perfil</h1>
-           <form method="post" action="{% url 'angeline:perfil' %}">
-               {% csrf_token %}
-               {{ form.as_p }}
-               <button type="submit">Salvar</button>
-           </form>
-           <a href="{% url 'angeline:home' %}">Home</a>
-           {% endif %}
-            {% if request.user.host %}
-            <div class="right">
-            <h1>Detalhes do Host</h1>
-            <p>Nome da Empresa/Marca: {{ request.session.host_nome_empresa }}</p>
-            <p>Motivo: {{ request.session.host_motivo }}</p>
-            <p>Área Gastronômica: {{ request.session.host_get_area_gastronomia_display }}</p>
-            <p>Serviços Disponíveis: {{ request.session.host_servicos }}</p>
-            <p>Frequência de Serviços: {{ request.session.host_get_frequencia_servicos_display }}</p>
-            <p>Local de Serviço: {{ request.session.host_local_servico }}</p>
-            <p>Descrição do Local de Serviço: {{ request.session.host_descricao_local }}</p>
-            <a href="{%url 'angeline:editar_host' %}">Editar perfil Host</a>
-        </div>
+            <div class="titulo_perfil_host">
+                <span class="span_perfil">Perfil</span>
+                <span class="espaco_perfil_usuario"> </span>
+                <span class="usuario_titulo">Usuário</span>
+            </div>
+            <div>
+            <a class="editar_perfil_convidado" href="{% url 'angeline:editar_perfil' %}">Editar perfil</a>
+            <div class="email_usuario">{{ perfil_usuario.email }}</div>
+            <div class="cpf_usuario">
+                <span class="cpf">CPF: {{ perfil_usuario.cpf }}</span>  
+            </div>
+            <div class="cep_usuario">
+                <span class="cep">CEP:</span>
+                <span class="numero_cep">{{ perfil_usuario.cep }}</span>
+            </div>  
+            <div class="cidade_usuario">Cidade: {{ perfil_usuario.cidade }}</div>
+            <div class="estado_usuario">Estado: {{ perfil_usuario.estado }}</div>
+            <div class="telefone_usuario">Telefone: {{ perfil_usuario.telefone }}</div>
+            <div class="data_nascimento_usuario">Nascimento: {{ perfil_usuario.nascimento }}</div>
+            <div class="idiomas">Idiomas: {{ perfil_usuario.idioma }}</div>
+            <div class="restricoes_alimentares">Restrições Alimentares: {{ perfil_usuario.restricao }}</div>
+            <div class="bebida_favorita">Bebida Favorita: {{ perfil_usuario.bebida }}</div>
+            <div class="comida_favorita">Comida Favorita: {{ perfil_usuario.comidaf }}</div>
+            <div class="profissao_usuario">Profissão: {{ perfil_usuario.profissao }}</div>
+            <container>
+                <div class="sobre_usuario">Sobre: {{ perfil_usuario.sobre }}</div>
+            </container>
+            <div class="hobbies">Hobbies: {{ perfil_usuario.hobbie }}</div>
+            <img class="imagem_usuario" src="https://via.placeholder.com/156x156" />
+            <div class="footer_retangulo">
+                <div class="footer_retangulo2"></div>
+                <a class="editar_perfil" href="{% url 'angeline:editar_perfil' %}">Editar Perfil</a>
+                <a class="home_footer" href="{% url 'angeline:home' %}">Home</a>
+                <a class="host_footer" href="{% url 'angeline:host' %}">Host</a>
+                <div class="flavorxp_footer">FlavorXP</div>
+                <div class="slogan_footer">Conectando pessoas por meio da gastronomia</div>
+            </div>
+            <div class="direitos_reservados">© 2024 MyFood. Todos os direitos reservados.</div>
 
- 
-        {% endif %} 
+            {% else %}
+                <h1>Complete seu perfil</h1>
+                <form method="post" action="{% url 'angeline:perfil' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Salvar</button>
+                </form>
+                <a href="{% url 'angeline:home' %}">Home</a>
+        {% endif %}
 
-    </div>
+    </div> 
 </body>
 
 </html>
