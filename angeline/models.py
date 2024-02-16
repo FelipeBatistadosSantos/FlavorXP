@@ -88,6 +88,7 @@ class CompleteCadastro(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     cep = BRPostalCodeField()
     cpf = BRCPFField()
+    foto = models.ImageField('foto-perfil', upload_to='media/', blank=True, null=True, max_length=255)
     cidade = models.CharField('cidade', choices=CIDADE_CHOICES, default='Blumenau', max_length=20)
     estado = models.CharField('estado', choices=ESTADO_CHOICES, default='SC',  max_length=20)
     telefone = PhoneNumberField(unique=True, null=False, blank=False)
@@ -99,7 +100,7 @@ class CompleteCadastro(models.Model):
     comidaf = models.CharField('comida', max_length=50)
     bebida = models.CharField('bebida',max_length=50)
     restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30, default='Nenhum')
-    outra_restricao = models.CharField('outra_restricao', max_length=30, default='')
+
 
     def is_complete(self):
         if self.cep and self.cpf and self.cidade and self.estado and self.telefone and self.nascimento and self.profissao and self.hobbie and self.idioma and self.comidaf and self.bebida and self.restricao:

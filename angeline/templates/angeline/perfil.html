@@ -52,8 +52,8 @@
                 <div class="sobre_usuario">Sobre: {{ perfil_usuario.sobre }}</div>
             </container>
             <div class="hobbies">Hobbies: {{ perfil_usuario.hobbie }}</div>
-            <img class="imagem_usuario" src="https://via.placeholder.com/156x156" />
-            <div class="footer_retangulo">
+            <img class='imagem_usuario'  src="{{ form.instance.foto.url }}" alt="Foto de Perfil">
+                <div class="footer_retangulo">
                 <div class="footer_retangulo2"></div>
                 <a class="editar_perfil" href="{% url 'angeline:editar_perfil' %}">Editar Perfil</a>
                 <a class="home_footer" href="{% url 'angeline:home' %}">Home</a>
