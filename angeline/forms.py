@@ -11,6 +11,7 @@ from django.utils import timezone
 from localflavor.br.forms import BRZipCodeField, BRCPFField
 from phonenumber_field.modelfields import PhoneNumberField
 import json
+from geopy.geocoders import Nominatim
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -103,8 +104,27 @@ class EventoForm(forms.ModelForm):
         
     def __init__(self, *args, **kwargs):
         super(EventoForm, self).__init__(*args, **kwargs)
+        
+    # importing geopy library and Nominatim class
+    
 
+    @staticmethod
+    def geo(address):
+        loc = Nominatim(user_agent="Geopy Library")
+        location = loc.geocode(address)
+        if location:
+            print(location.address)
+            print("Latitude = ", location.latitude)
+            print("Longitude = ", location.longitude)
+        else:
+            print("Endereço não encontrado.")
 
+    def clean(self):
+        cleaned_data = super().clean()
+        address = cleaned_data.get("local")
+        self.geo(address)
+        return cleaned_data
+    
 class AgendamentoForm(forms.ModelForm):
     class Meta:
         model = Agendamento
