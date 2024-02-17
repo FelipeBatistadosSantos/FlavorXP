@@ -562,14 +562,13 @@ a {
 }
 
 #instagram_footer {
-    width: 39.03px;
-    height: 35.43px;
-    left: 700.74px;
-    top: 44.02px;
-    position: absolute;
-    transform: rotate(1.14deg);
-    transform-origin: 0 0;
-    background: #E5E5E5
+    font-size: 41px; 
+    margin: auto;
+    color: #D9D9D9;
+}
+
+a{
+    cursor: pointer;
 }
 
 #background_footer {

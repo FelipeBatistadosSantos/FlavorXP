@@ -1,102 +1,109 @@
-/* body */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; /* Alteado para 100vh para uma altura mais precisa */
-    background-color: #ffffff;
-  }
-  
-  /* .container */
-  .container {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 800px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    text-align: left;
-    color: #000000;
-  }
-  
-  /* h1 */
-  .container h1 {
-    color: #F1C400;
-    margin-bottom: 20px;
-  }
-  
-  /* .formulario */
-  .formulario p {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  /* label */
-  label {
-    text-align: center;
-    padding: 8px;
-  }
-  
-  /* input */
-  input[type='text'], input[type='password'], textarea {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  /* button */
-  button {
-    background-color: #4E008E;
-    color: #F1C400;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #7a10d2;
-  }
-  
-  /* textarea */
-  textarea {
-    height: 100px;
-    resize:none ; /* Não permita redimensionamento */
-  }
-  
-  /* input[type='text'] */
-  input[type='text'] {
-    width: calc(75% - 20px); /* Leve em conta o padding */
-  }
-  
-  /* .button-group */
-  .button-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  /* button */
-  .btn {
-    width: 48%;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Alterado para 100vh para uma altura mais precisa */
+  background-color: #ffffff;
+}
 
+.container {
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  width: 500px;
+  min-height: 300px;
+  text-align: left;
+  color: #000000;
+  overflow: auto;
+  justify-content: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
 
-  /* Estilizando o campo select */
+h1 {
+  font-family: Outfit;
+  color: black;
+}
+
+h2 {
+  color: #F1C400;
+  margin-bottom: 20px;
+  background-color: #4E008E;
+  width: 100px;
+  text-align: center;
+  font-family: Outfit;
+  font-size: x-large;
+  padding-left: 10px;
+  padding-right: 107px;
+}
+
+h3 {
+  margin-left: 80px;
+  font-size: xx-large;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario p {
+  display: flex;
+  justify-content: space-between;
+}
+
+label {
+  text-align: center;
+  padding: 8px;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 10px; /* Removido o margin-bottom extra */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; /* Alterado para ocupar 100% da largura */
+}
+
+button {
+  width: 100%;
+  background-color: #4E008E;
+  color: #F1C400;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s; /* Adicionado efeito de transição */
+}
+
+button:hover {
+  transform: scaleY(1.125);
+  background-color: #7a10d2;
+}
+
+textarea {
+  height: 50px;
+  width: 100%; /* Alterado para ocupar 100% da largura */
+}
+
+.local_servico {
+  height: 9000px;
+}
+
+input[type='text'] {
+  width: 100%; /* Alterado para ocupar 100% da largura */
+}
+
+/* Estilizando o campo select */
 select {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: calc(30% - 16px); /* Ajuste do comprimento do select */
+    width: 100%; /* Alterado para ocupar 100% da largura */
     -webkit-appearance: none; /* Remove a aparência padrão do navegador */
     -moz-appearance: none;
     appearance: none;

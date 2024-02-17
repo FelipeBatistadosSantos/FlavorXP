@@ -13,10 +13,7 @@ body {
       .container {
           background-color: #ffffff;
           border-radius: 30px;
-          border-width: 1px;
-          border-style: solid;
-          border-color: black;
-          box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
           padding: 20px;
           width: 500px;
           min-height: 300px; 
@@ -25,6 +22,10 @@ body {
           overflow: auto; 
           justify-content: center;
           
+      }
+
+      h1{
+        font-family: Outfit;
       }
       
       h2 {
