@@ -15,30 +15,30 @@
 <body>
     <div class="container">
         {% if form_preenchido %}
-            <div class="retangulo_nav"></div>
-            <div class="ola_usuario">Olá {{ perfil_usuario.usuario }}</div>
-            <a class="perfil_usuario" href="{% url 'angeline:perfil' %}">Perfil Usuário</a>
-            {% if form_preenchido %}
-                <a class="perfil_host" href="{% url 'angeline:host' %}">Perfil Host</a>
-            {% else %}
-                <a class="perfil_host" href="{% url 'angeline:editar_host' %}">Perfil Host</a>
-            {% endif %}
+        <div class="retangulo_nav"></div>
+        <div class="ola_usuario">Olá {{ perfil_usuario.usuario }}</div>
+        <a class="perfil_usuario" href="{% url 'angeline:perfil' %}">Perfil Usuário</a>
+        {% if form_preenchido %}
+        <a class="perfil_host" href="{% url 'angeline:host' %}">Perfil Host</a>
+        {% else %}
+        <a class="perfil_host" href="{% url 'angeline:editar_host' %}">Perfil Host</a>
+        {% endif %}
 
-            <div class="titulo_perfil_host">
-                <span class="span_perfil">Perfil</span>
-                <span class="espaco_perfil_usuario"> </span>
-                <span class="usuario_titulo">Usuário</span>
-            </div>
-            <div>
+        <div class="titulo_perfil_host">
+            <span class="span_perfil">Perfil</span>
+            <span class="espaco_perfil_usuario"> </span>
+            <span class="usuario_titulo">Usuário</span>
+        </div>
+        <div>
             <a class="editar_perfil_convidado" href="{% url 'angeline:editar_perfil' %}">Editar perfil</a>
             <!-- <div class="email_usuario">{{ user.email }}</div> -->  
             <div class="cpf_usuario">
-                <span class="cpf">CPF: {{ perfil_usuario.cpf }}</span>  
+                <span class="cpf">CPF: {{ perfil_usuario.cpf }}</span>
             </div>
             <div class="cep_usuario">
                 <span class="cep">CEP:</span>
                 <span class="numero_cep">{{ perfil_usuario.cep }}</span>
-            </div>  
+            </div>
             <div class="cidade_usuario">Cidade: {{ perfil_usuario.cidade }}</div>
             <div class="estado_usuario">Estado: {{ perfil_usuario.estado }}</div>
             <div class="telefone_usuario">Telefone: {{ perfil_usuario.telefone }}</div>
@@ -52,7 +52,13 @@
                 <div class="sobre_usuario">Sobre: {{ perfil_usuario.sobre }}</div>
             </container>
             <div class="hobbies">Hobbies: {{ perfil_usuario.hobbie }}</div>
-            <img class="imagem_usuario" src="https://via.placeholder.com/156x156" />
+            {% if form.instance.foto %}
+            {% with foto_url=form.instance.foto.url %}
+            <img class='imagem_usuario' src="{{ foto_url }}" alt="Foto de Perfil">
+            {% endwith %}
+            {% else %}
+            <img class='imagem_usuario' src="angeline/static/img/default-user.png" alt="Foto de Perfil">
+            {% endif %}
             <div class="footer_retangulo">
                 <div class="footer_retangulo2"></div>
                 <a class="editar_perfil" href="{% url 'angeline:editar_perfil' %}">Editar Perfil</a>
@@ -64,16 +70,16 @@
             <div class="direitos_reservados">© 2024 MyFood. Todos os direitos reservados.</div>
 
             {% else %}
-                <h1>Complete seu perfil</h1>
-                <form method="post" action="{% url 'angeline:perfil' %}">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Salvar</button>
-                </form>
-                <a href="{% url 'angeline:home' %}">Home</a>
-        {% endif %}
+            <h1>Complete seu perfil</h1>
+            <form method="post" action="{% url 'angeline:perfil' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Salvar</button>
+            </form>
+            <a href="{% url 'angeline:home' %}">Home</a>
+            {% endif %}
 
-    </div> 
+        </div>
 </body>
 
 </html>

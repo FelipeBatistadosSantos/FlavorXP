@@ -52,12 +52,11 @@ class CompleteCadastroForm(forms.ModelForm):
     cpf = BRCPFField()
     cep = BRZipCodeField()
     telefone = PhoneNumberField()
-    outra_restricao = forms.CharField(label='Informe ')
-
+    
         
     class Meta:
         model = CompleteCadastro
-        fields = ['nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao','cpf', 'cep', 'cidade', 'estado', 'telefone']
+        fields = ['foto','nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao','cpf', 'cep', 'cidade', 'estado', 'telefone']
 
         
    
