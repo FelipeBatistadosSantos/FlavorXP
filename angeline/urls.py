@@ -1,3 +1,4 @@
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -25,13 +26,10 @@ urlpatterns = [
     path('agendamentos', agendamentos, name='agendamentos'),
     path('cancelar/<int:agendamento_id>/cancelar/', cancelar, name='cancelar'),
     path('excluir_evento/<int:evento_id>/', excluir_evento, name='excluir_evento'),
-    path('reset-password/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('reset-password/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-    path('completar_perfil', completar_perfil, name='completar_perfil'),
-    path('criar_host', criar_host, name='criar_host'),
-
+    path('reset-password/', auth_views.PasswordResetView.as_view(template_name='registration/password_reset.html'), name='password_reset'),
+    path('reset-password/done/', auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
 ]
 
 if settings.DEBUG:
