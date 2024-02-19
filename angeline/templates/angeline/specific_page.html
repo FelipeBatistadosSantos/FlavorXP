@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"  href="{% static 'angeline/specific_page.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Document</title>
 </head>
@@ -18,7 +19,7 @@
         <div class="gradiente_imagem"></div>
         <div class="nome_do_evento">{{ evento.tema }}</div>
         <div class="estilo_da_experiencia">Estilo da experiência:</div>
-        <div class="quadrado_conteudo1"></div>
+        <div style="z-index: -1;" class="quadrado_conteudo1"></div>
         <div class="jantar">{{ evento.estilo }}</div>
         <div class="nome_da_marca_oferece">
         <span class="nome_da_marca">{{ evento.host }} </span>
@@ -28,7 +29,7 @@
         <div class="barra2"></div>
         <div style="width: 522px"><span style="color: black; font-size: 24px; font-family: Outfit; font-weight: 700; word-wrap: break-word">Descrição: </span><span style="color: black; font-size: 24px; font-family: Outfit; font-weight: 200; word-wrap: break-word">{{ evento.descricao }}</span></div>
         <div class="barra3"></div>
-        <img class="icone_estilo_experiencia" src="https://via.placeholder.com/90x90" />
+        <i style="font-size: 100px; margin-top: 98.5%; margin-left: 12.3%; overflow: hidden; position: absolute;" class="fa-solid fa-utensils"></i>
         <div class="cardapio">Cardápio</div>
         <div class="quadrado_conteudo_roxo"></div>
         <div class="convidados">Convidados:</div>
