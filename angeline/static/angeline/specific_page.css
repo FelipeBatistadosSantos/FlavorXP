@@ -94,7 +94,7 @@
 }
 
 .barra1 {
-  width: 1290px;
+  width: 1260px;
   height: 0px;
   left: 75px;
   top: 1245px;
@@ -103,7 +103,7 @@
 }
 
 .barra2 {
-  width: 1290px;
+  width: 1260px;
   height: 0px;
   left: 75px;
   top: 1920px;
@@ -280,7 +280,7 @@
 }
 
 .tipo_restricao {
-  left: 1170px;
+  left: 1179px;
   top: 1478px;
   position: absolute;
   color: white;
@@ -423,6 +423,8 @@
   
 }
 
+
+
 .descricao_do_evento_no_card_de_pagamento {
   width: 429px;
   left: 506px;
@@ -436,12 +438,34 @@
   word-wrap: break-word;
 }
 
+.iframe-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  z-index: 9999; /* ensure it appears on top of other content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+iframe {
+  width: 80%;
+  height: 80%;
+  border: none;
+  border-radius: 10px;
+}
+
+
 .local_localizacao {
-  width: 1290px;
+  width: 1260px;
   height: 290px;
   left: 75px;
   top: 2076px;
   position: absolute;
+  
 }
 
 .retangulo_degrade_pgto {
