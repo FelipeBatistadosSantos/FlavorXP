@@ -16,15 +16,16 @@
   }
   
   .nome_do_evento {
-    left: 363px;
-    top: 416px;
     position: absolute;
     color: white;
-    font-size: 96px;
+    font-size: 110px;
     font-family: Outfit;
     font-weight: 700;
     word-wrap: break-word;
-  }
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+}
   
   .estilo_da_experiencia {
     left: 121px;
