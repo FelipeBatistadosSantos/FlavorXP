@@ -12,7 +12,7 @@
 
 <body>
 
-  <nav style="width: 1440px; height: 125px; left: 0px; top: 0px; position: absolute">
+  <nav style="width: 100%; height: 10%; left: 0; top: 0; position: fixed; background-color: #4E008E;">
     <div class="retangulo_nav"></div>
     <div class="logo">FlavorXP</div>
     <ul>
@@ -28,9 +28,9 @@
       <li class="nav-link-perfil"><a href="{% url 'angeline:completar_perfil' %}">Complete seu perfil</a></li>
       {% endif %}
       <li class="nav-link-sair"><a href="{% url 'main:home_page' %}">Sair</a></li>
-
     </ul>
-  </nav>
+</nav>
+
   <main>
     <div class="feed-container">
       {% for evento in eventos %}

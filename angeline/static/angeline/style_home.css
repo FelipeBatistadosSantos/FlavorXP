@@ -46,7 +46,7 @@ section {
 }
 
 .logo {
-    left: 188px;
+    left: 80px;
     top: 22px;
     position: absolute;
     color: #F1C400;
@@ -99,8 +99,8 @@ ul {
     margin: 0;
     padding: 0;
     position: absolute;
-    top: 50%;
-    right: 2%;
+    top: 70%;
+    right: 80px;
     display: flex;
     justify-content: space-between;
     color: white; 
