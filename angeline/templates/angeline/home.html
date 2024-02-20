@@ -41,7 +41,7 @@
         <p>Imagem não disponível</p>
         {% endif %}
         <h3>{{ evento.tema }}</h3>
-        <p>{{ evento.descricao }}</p>
+        <p class="descricao">{{ evento.descricao }}</p>
         <span>R$ {{ evento.valor_host }}</span>
       </a>
       {% endfor %}
@@ -61,6 +61,20 @@
       <div id="slogan_footer" style="">Conectando pessoas por meio da gastronomia </div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var descricoes = document.querySelectorAll('.descricao');
+      var maxLength = 100; // Defina o número máximo de caracteres
+      for (var i = 0; i < descricoes.length; i++) {
+        var descricao = descricoes[i].textContent;
+        if (descricao.length > maxLength) {
+          descricoes[i].textContent = descricao.substring(0, maxLength) + '...';
+        }
+      }
+    });
+  </script>
+  
 
 </body>
 
