@@ -7,67 +7,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
+
     <link rel="stylesheet" href="{% static 'angeline/perfil.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
 </head>
 
 <body>
     <div class="container">
-
-
         {% if form_preenchido %}
-        <div class="left">
-            <h1>Seu Perfil</h1>
-            <p>Usuario: {{ perfil_usuario.usuario }}</p>
-            <p>Email: {{ perfil_usuario.email }}</p>
-            <p>Cpf: {{ perfil_usuario.cpf }}</p>
-            <p>Cep: {{ perfil_usuario.cep }} </p>
-            <p>Cidade: {{ perfil_usuario.cidade }} </p>
-            <p>Estado: {{ perfil_usuario.estado }}</p>
-            <p>Telefone: {{ perfil_usuario.telefone }}</p>
-            <p>Nascimento: {{ perfil_usuario.nascimento }}</p>
-            <p>Sobre: {{ perfil_usuario.sobre }}</p>
-            <p>Profissão: {{ perfil_usuario.profissao }}</p>
-            <p>Hobbies: {{ perfil_usuario.hobbie }}</p>
-            <p>Idiomas: {{ perfil_usuario.idioma }}</p>
-            <p>Comida favorita: {{ perfil_usuario.comidaf }}</p>
-            <p>Bebida favorita: {{ perfil_usuario.bebida }}</p>
-            <p>Restrições alimentares: {{ perfil_usuario.restricao }}</p>
-
-            <a href="{% url 'angeline:perfil' %}?edit=1">Completar perfil</a>
-            
-            
-            
-        </div>
-   
-        <a class="oi" href="{% url 'angeline:home' %}">Voltar para  Home</a>
-   
-
+        <div class="retangulo_nav"></div>
+        <div class="ola_usuario">Olá {{ perfil_usuario.usuario }}</div>
+        <a class="perfil_usuario" href="{% url 'angeline:perfil' %}">Perfil Usuário</a>
+        {% if form_preenchido %}
+        <a class="perfil_host" href="{% url 'angeline:host' %}">Perfil Host</a>
         {% else %}
-           <h1>Complete seu perfil</h1>
-           <form method="post" action="{% url 'angeline:perfil' %}">
-               {% csrf_token %}
-               {{ form.as_p }}
-               <button type="submit">Salvar</button>
-           </form>
-           <a href="{% url 'angeline:home' %}">Home</a>
-           {% endif %}
-            {% if request.user.host %}
-            <div class="right">
-            <h1>Detalhes do Host</h1>
-            <p>Nome da Empresa/Marca: {{ request.session.host_nome_empresa }}</p>
-            <p>Motivo: {{ request.session.host_motivo }}</p>
-            <p>Área Gastronômica: {{ request.session.host_get_area_gastronomia_display }}</p>
-            <p>Serviços Disponíveis: {{ request.session.host_servicos }}</p>
-            <p>Frequência de Serviços: {{ request.session.host_get_frequencia_servicos_display }}</p>
-            <p>Local de Serviço: {{ request.session.host_local_servico }}</p>
-            <p>Descrição do Local de Serviço: {{ request.session.host_descricao_local }}</p>
-            <a href="{%url 'angeline:editar_host' %}">Editar perfil Host</a>
-        </div>
-
- 
+        <a class="perfil_host" href="{% url 'angeline:editar_host' %}">Perfil Host</a>
         {% endif %}
 
-    </div>
+        <nav>
+            <div class="titulo_perfil_host">
+              <span class="span_perfil">Perfil</span>
+              <span class="espaco_perfil_usuario"> </span>
+              <span class="usuario_titulo">Usuário</span>
+            </div>
+            <ul class="perfil_list">
+              <li><a class="editar_perfil_convidado" href="{% url 'angeline:editar_perfil' %}">Editar perfil</a></li>
+              <!-- <li><div class="email_usuario">{{ user.email }}</div></li> -->
+              <li class="cpf_usuario"><span class="cpf">CPF: {{ perfil_usuario.cpf }}</span></li>
+              <li class="cep_usuario"><span class="cep">CEP:</span> <span class="numero_cep">{{ perfil_usuario.cep }}</span></li>
+              <li class="telefone_usuario">Telefone: {{ perfil_usuario.telefone }}</li>
+            </ul>
+          </nav>
+          
+          
+            <div class="cidade_usuario">Cidade: {{ perfil_usuario.cidade }}</div>
+            <div class="estado_usuario">Estado: {{ perfil_usuario.estado }}</div>
+            
+            <div class="data_nascimento_usuario">Nascimento: {{ perfil_usuario.nascimento }}</div>
+            <div class="idiomas">Idiomas: {{ perfil_usuario.idioma }}</div>
+            <div class="restricoes_alimentares">Restrições Alimentares: {{ perfil_usuario.restricao }}</div>
+            <div class="bebida_favorita">Bebida Favorita: {{ perfil_usuario.bebida }}</div>
+            <div class="comida_favorita">Comida Favorita: {{ perfil_usuario.comidaf }}</div>
+            <div class="profissao_usuario">Profissão: {{ perfil_usuario.profissao }}</div>
+            <container>
+                <div class="sobre_usuario">Sobre: {{ perfil_usuario.sobre }}</div>
+            </container>
+            <div class="hobbies">Hobbies: {{ perfil_usuario.hobbie }}</div>
+            {% if form.instance.foto %}
+            {% with foto_url=form.instance.foto.url %}
+            <img class='imagem_usuario' src="{{ foto_url }}" alt="Foto de Perfil">
+            {% endwith %}
+            {% else %}
+            <img class='imagem_usuario' src="angeline/static/img/default-user.png" alt="Foto de Perfil">
+            {% endif %}
+            <div class="footer_retangulo">
+                <div class="footer_retangulo2"></div>
+                <a class="editar_perfil" href="{% url 'angeline:editar_perfil' %}">Editar Perfil</a>
+                <a class="home_footer" href="{% url 'angeline:home' %}">Home</a>
+                <a class="host_footer" href="{% url 'angeline:host' %}">Host</a>
+                <div class="flavorxp_footer">FlavorXP</div>
+                <div class="slogan_footer">Conectando pessoas por meio da gastronomia</div>
+            </div>
+            <div class="direitos_reservados">© 2024 MyFood. Todos os direitos reservados.</div>
+
+            {% else %}
+            <h1>Complete seu perfil</h1>
+            <form method="post" action="{% url 'angeline:perfil' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Salvar</button>
+            </form>
+            <a href="{% url 'angeline:home' %}">Home</a>
+            {% endif %}
+
+        </div>
 </body>
 
 </html>

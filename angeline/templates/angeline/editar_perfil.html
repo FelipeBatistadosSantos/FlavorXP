@@ -9,6 +9,8 @@
     <title>Editar Perfil</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'angeline/editar_perfil.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
 </head>
 
 <body>
@@ -16,11 +18,30 @@
 
         <h1>Editar Perfil</h1>
 
-        <form method="post" action="{% url 'angeline:editar_perfil' %}">
+        <form method="post" action="{% url 'angeline:editar_perfil' %}" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Salvar</button>
         </form>
+        <body>
+        
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    
+                    const clearCheckbox = document.getElementById("foto-clear_id");
+                    const fotoInput = document.getElementById("id_foto");
+        
+                    
+                    clearCheckbox.addEventListener("change", function () {
+                        
+                        if (clearCheckbox.checked) {
+                           
+                            fotoInput.value = "";
+                        }
+                    });
+                });
+            </script>
 
     </div>
 </body>

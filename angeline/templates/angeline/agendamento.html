@@ -1,11 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>agendamento</title>
+    <link rel="stylesheet"  href="{% static 'angeline/bootstrap.css' %}">
+
+    <title>Agendamento</title>
 </head>
 <body>
-    <H4>Futura página de agendamento de serviço</H4>
+    <h1>Agendar Evento: {{ evento.tema }}</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Agendar</button>
+    </form>
+    <a href="{% url 'angeline:specific_page' evento_id=evento.id %}">Voltar</a>
 </body>
 </html>

@@ -70,32 +70,48 @@ class CompleteCadastro(models.Model):
         ('lactose', 'Lactose'),
         ('vegano', 'Vegano'),
         ('vegetariano', 'Vegetariano'),
+        ('carneporco', 'Carne de porco'),
+        ('diabetes', 'Diabetes'),
+        ('nozes', 'Nozes'),
+        ('frutosmar','Frutos do mar'),
+        ('soja', 'Soja'),
+        ('kosher', 'Kosher'),
+        ('halal', 'Halal'),
         ('outros', 'Outros')
+    ]
+
+    CIDADE_CHOICES =[
+        ('blumenau', 'Blumenau')
+    ]
+
+    ESTADO_CHOICES = [
+        ('sc', 'SC')
     ]
 
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     cep = BRPostalCodeField()
     cpf = BRCPFField()
-    cidade = models.ForeignKey(Cidade, on_delete=models.SET_NULL, null=True, blank=True)
-    estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, blank=True)
+    foto = models.ImageField('foto-perfil', upload_to='media/', blank=True, null=True, max_length=255)
+    cidade = models.CharField('cidade', choices=CIDADE_CHOICES, default='Blumenau', max_length=20)
+    estado = models.CharField('estado', choices=ESTADO_CHOICES, default='SC',  max_length=20)
     telefone = PhoneNumberField(unique=True, null=False, blank=False)
     nascimento = models.DateField(null=True)
     sobre = models.TextField('sobre', default='')
     profissao = models.CharField('profissao',max_length=50)
     hobbie = models.CharField('hobbie', max_length=50)
-    idioma = models.CharField('idioma', choices=IDIOMA_CHOICES, max_length=30)
+    idioma = models.CharField('idioma', choices=IDIOMA_CHOICES, max_length=30, default='Nenhum')
     comidaf = models.CharField('comida', max_length=50)
     bebida = models.CharField('bebida',max_length=50)
-    restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30)
+    restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30, default='Nenhum')
 
-class Cidades(models.Model):
-    nome = models.CharField(max_length=100)
-    evento = models.CharField(max_length=100)
-    nacionalidade = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.nome
-    outra_restricao = models.CharField('outra_restricao', max_length=30, default='')
+    def is_complete(self):
+        if self.cep and self.cpf and self.cidade and self.estado and self.telefone and self.nascimento and self.profissao and self.hobbie and self.idioma and self.comidaf and self.bebida and self.restricao:
+            return True
+        else:
+            return False
+
+    
 
 
 class Host(models.Model):
@@ -121,6 +137,9 @@ class Host(models.Model):
     local_servico = models.CharField('Local de Serviço', max_length=100)
     descricao_local = models.TextField('Descrição do Local de Serviço')
 
+    def __str__(self):
+        return self.nome_empresa 
+
 
 class Evento(models.Model):
 
@@ -129,6 +148,22 @@ class Evento(models.Model):
 
     def default_horario():
         return timezone.now().time()
+    
+    RESTRICAO_CHOICES = [
+        ('nenhum', 'Nenhum'),
+        ('gluten', 'Glúten'),
+        ('lactose', 'Lactose'),
+        ('vegano', 'Vegano'),
+        ('vegetariano', 'Vegetariano'),
+        ('carneporco', 'Carne de porco'),
+        ('diabetes', 'Diabetes'),
+        ('nozes', 'Nozes'),
+        ('frutosmar','Frutos do mar'),
+        ('soja', 'Soja'),
+        ('kosher', 'Kosher'),
+        ('halal', 'Halal'),
+        ('outros', 'Outros')
+    ]
 
     ESTILO_CHOICES = [
             ('janta', 'Janta'),
@@ -143,9 +178,9 @@ class Evento(models.Model):
     id = models.AutoField(primary_key=True)
     estilo = models.CharField('Estilo de Evento', max_length=30, choices=ESTILO_CHOICES, default='')
     tema = models.CharField('Tema da experiência', max_length=255, default='Sem tema')
-    fotos = models.ImageField('Fotos do Evento', upload_to='evento_fotos/', blank=True, null=True, max_length=255)
-    host = models.ForeignKey(User, on_delete=models.PROTECT, default='')
-    descricao = models.TextField('Descrição da experiência')
+    fotos = models.ImageField('Fotos do Evento', upload_to='media/', blank=True, null=True, max_length=255)
+    host = models.ForeignKey(Host, on_delete=models.PROTECT, default='')
+    descricao = models.TextField('Descrição da experiência', max_length=518)
     cardapio = models.TextField('Cardápio', blank=True, null=True)
     inclui_bebidas = models.BooleanField('Inclui Bebidas?', default=False)
     bebidas_oferecidas = models.CharField('Bebidas Oferecidas', max_length=255, blank=True, null=True)
@@ -156,9 +191,45 @@ class Evento(models.Model):
     horario = models.TimeField('Horário', default=default_horario)
     valor_host = models.DecimalField('Valor Host', max_digits=10, decimal_places=2, default=10.0)
     valor_manutencao_site = models.DecimalField('Valor Manutenção do Site (%)', max_digits=5, decimal_places=2, default=0)
+    vagas_disponiveis = models.PositiveIntegerField('Vagas Disponíveis', editable=False, default=0)
+    restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30, default='Nenhum')
+
+
+    def save(self, *args, **kwargs):
+        if self.pk is None:
+            self.vagas_disponiveis = self.max_convidados
+        super().save(*args, **kwargs)
 
     def valor_total_evento(self):
         return self.valor_host + (self.valor_host * (self.valor_manutencao_site / 100))
 
     def __str__(self):
         return f'{self.estilo} - {self.tema} por {self.host.username} em {self.local} em {self.data} às {self.horario}'
+        return f'{self.estilo} - {self.tema} por {self.host.nome_empresa} em {self.local} em {self.data} às {self.horario}'
+    
+
+class Agendamento(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    evento = models.ForeignKey(Evento, on_delete=models.CASCADE)
+    quantidade_pessoas = models.PositiveIntegerField()
+    nomes_convidados = models.CharField(blank=True, null=True, max_length=100)
+    valor_total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        evento = self.evento
+        if evento:
+            evento.vagas_disponiveis -= self.quantidade_pessoas
+            evento.save()
+        super().save(*args, **kwargs)
+
+    def calcular_valor_total(self):
+        if self.evento:
+            return self.evento.valor_host * self.quantidade_pessoas
+        return 0
+
+    def save(self, *args, **kwargs):
+        self.valor_total = self.calcular_valor_total()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.usuario.username} - {self.evento.tema} - {self.quantidade_pessoas} pessoas'

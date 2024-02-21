@@ -15,7 +15,7 @@ section {
 
 
 .nav{
-    position: relative;
+    position: center;
     display: flex;
 }
 
@@ -27,6 +27,7 @@ section {
     position: absolute;
     background: #F1C400;
 }
+
 
 .retangulo_nav {
     width: 100vw;
@@ -40,7 +41,7 @@ section {
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
 
 }
 
@@ -140,8 +141,8 @@ ul {
     margin: 0;
     padding: 0;
     position: absolute;
-    top: 50%;
-    right: 2%;
+    top: 70%;
+    right: 80px;
     display: flex;
     justify-content: space-between;
     color: white; 

@@ -12,14 +12,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   
-      <script>  
-        document.getElementByID("filtro-input").addEventListener("keyup", function(event)) {
-          if (event.key === "Enter") {
-            var searchTerm = this.value;
-            console.log("Texto pesquisado: " + searchTerm); 
-          }
-        }
-      </script>
+  <script>
+    $(document).ready(function () {
+        $("#searchInput").on("input", function () {
+            var searchTerm = $(this).val().toLowerCase();
+
+            $(".retangulo").each(function () {
+                var title = $(this).find(".tema_evento1").text().toLowerCase();
+                
+
+                if (title.includes(searchTerm)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+  </script>
     
     <nav style="width: 1440px; height: 125px; left: 0px; top: 0px; position: absolute">
         <div class="retangulo_nav"></div>
@@ -54,41 +64,40 @@
 
 <body>
 
-  <nav style="width: 1440px; height: 125px; left: 0px; top: 0px; position: absolute">
+  <nav style="width: 100%; height: 10%; left: 0; top: 0; position: fixed; background-color: #4E008E;">
     <div class="retangulo_nav"></div>
     <div class="logo">FlavorXP</div>
     <ul>
       {% if request.user.host %}
       <li class="nav-link-evento"><a href="{% url 'angeline:evento' %}">Criar Evento</a></li>
       {% else %}
-      <li class="nav-link-host"><a href="{% url 'angeline:host' %}">Seja Host</a></li>
+      <li class="nav-link-host"><a href="{% url 'angeline:criar_host' %}">Seja Host</a></li>
       {% endif %}
       {% if form_preenchido %}
       <li class="nav-link-perfil"><a href="{% url 'angeline:perfil' %}"><img class="perfil_usuario"
             src="angeline/static/img/male-profile.png" alt="Ícone Perfil"></a></li>
       {% else %}
-      <li class="nav-link-perfil"><a href="{% url 'angeline:perfil' %}">Complete seu perfil</a></li>
+      <li class="nav-link-perfil"><a href="{% url 'angeline:completar_perfil' %}">Complete seu perfil</a></li>
       {% endif %}
       <li class="nav-link-sair"><a href="{% url 'main:home_page' %}">Sair</a></li>
-
     </ul>
-  </nav>
+</nav>
+
   <main>
-    <div id="resultados">
-      <div class="feed-container">
-        {% for evento in eventos %}
-        <a href="{% url 'angeline:specific_page' evento_id=evento.id %}" class="feed-item">
-          {% if evento.fotos %}
-          <img src="{{ evento.fotos.url }}" alt="{{ evento.tema }}">
-          {% else %}
-          <p>Imagem não disponível</p>
-          {% endif %}
-          <h3>{{ evento.tema }}</h3>
-          <p>{{ evento.descricao }}</p>
-          <span>R$ {{ evento.valor_host }}</span>
-        </a>
-        {% endfor %}
-      </div>
+    <div class="feed-container">
+      {% for evento in eventos %}
+      <a href="{% url 'angeline:specific_page' evento_id=evento.id %}" class="feed-item">
+        {% if evento.fotos %}
+        <img src="{{ evento.fotos.url }}" alt="{{ evento.tema }}">
+        {% else %}
+        <p>Imagem não disponível</p>
+        {% endif %}
+        <h3 class="tema_evento1">{{ evento.tema }}</h3>
+        <p class="descricao">{{ evento.descricao }}</p>
+        <span>R$ {{ evento.valor_host }}</span>
+      </a>
+      {% endfor %}
+
     </div>
   </main>
 
@@ -103,6 +112,20 @@
       <div id="slogan_footer">Conectando pessoas por meio da gastronomia </div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var descricoes = document.querySelectorAll('.descricao');
+      var maxLength = 100; // Defina o número máximo de caracteres
+      for (var i = 0; i < descricoes.length; i++) {
+        var descricao = descricoes[i].textContent;
+        if (descricao.length > maxLength) {
+          descricoes[i].textContent = descricao.substring(0, maxLength) + '...';
+        }
+      }
+    });
+  </script>
+  
 
 </body>
 

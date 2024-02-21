@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    width: 500px;
+    min-height: 300px;
+    text-align: left;
+    color: #000000;
+    overflow: auto;
+    justify-content: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+h1 {
+    font-family: Outfit;
+}
+
+h2 {
+    color: #F1C400;
+    margin-bottom: 20px;
+    background-color: #4E008E;
+    width: 100px;
+    text-align: center;
+    font-family: Outfit;
+    font-size: x-large;
+    padding-left: 10px;
+    padding-right: 107px;
+}
+
+h3 {
+    margin-left: 80px;
+    font-size: xx-large;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario p {
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    text-align: center;
+    padding: 8px;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    background-color: #4E008E;
+    color: #F1C400;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scaleY(1.125);
+    background-color: #7a10d2;
+}
+
+textarea {
+    height: 50px;
+    width: 100%;
+}
+
+/* Integração Bootstrap */
+select,
+input[type="file"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+select:hover,
+select:focus,
+input[type="file"]:hover {
+    border-color: #7a10d2;
+}
+
+input[type="file"] {
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+input[type="file"]:hover {
+    background-color: #eaeaea;
+}
+
+input[type="file"]:focus {
+    outline: none;
+    border-color: #7a10d2;
+}

@@ -3,12 +3,15 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
-from .models import CustomUser, CompleteCadastro, Host, Evento
+from .models import CustomUser, CompleteCadastro, Host, Evento, Agendamento
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as __
+import datetime
 from django.utils import timezone
 from localflavor.br.forms import BRZipCodeField, BRCPFField
 from phonenumber_field.modelfields import PhoneNumberField
 import json
+from geopy.geocoders import Nominatim
 
 class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
@@ -58,13 +61,11 @@ class CompleteCadastroForm(forms.ModelForm):
     cpf = BRCPFField()
     cep = BRZipCodeField()
     telefone = PhoneNumberField()
-    outra_restricao = forms.CharField(label='Informe ')
-
+    
         
     class Meta:
         model = CompleteCadastro
-        fields = ['nascimento','sobre','profissao','hobbie','idioma','comidaf','bebida','restricao', 'cpf','cep','cidade','estado','telefone']
-        fields = ['nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao', 'outra_restricao', 'cpf', 'cep', 'cidade', 'estado', 'telefone']
+        fields = ['foto','nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao','cpf', 'cep', 'cidade', 'estado', 'telefone']
 
         
    
@@ -95,15 +96,62 @@ class CustomDecimalField(forms.RegexField):
 class EventoForm(forms.ModelForm):
 
     valor_host = CustomDecimalField(label='Valor do Host')
+    restricao = forms.ChoiceField(label='Alimentos para alguma restrição? ', choices=Evento.RESTRICAO_CHOICES)
+
 
     class Meta:
         model = Evento
-        fields = ['estilo','tema','fotos','host','descricao','cardapio','inclui_bebidas','bebidas_oferecidas','convidado_pode_trazer',
-                  'max_convidados','local','data','horario','valor_host',]
+        fields = ['estilo','tema','fotos','descricao','cardapio','inclui_bebidas','bebidas_oferecidas','convidado_pode_trazer',
+                  'max_convidados','local','data','horario','valor_host','restricao']
         
+
         widgets = {
+            'fotos': forms.FileInput(),
             'horario': forms.TimeInput(format='%H:%M', attrs={'type': 'time'}),
         }
         
     def __init__(self, *args, **kwargs):
         super(EventoForm, self).__init__(*args, **kwargs)
+        
+    # importing geopy library and Nominatim class
+    
+
+    @staticmethod
+    def geo(address):
+        loc = Nominatim(user_agent="Geopy Library")
+        location = loc.geocode(address)
+        if location:
+            print(location.address)
+            print("Latitude = ", location.latitude)
+            print("Longitude = ", location.longitude)
+        else:
+            print("Endereço não encontrado.")
+
+    def clean(self):
+        cleaned_data = super().clean()
+        address = cleaned_data.get("local")
+        self.geo(address)
+        return cleaned_data
+    
+class AgendamentoForm(forms.ModelForm):
+    class Meta:
+        model = Agendamento
+        fields = ['quantidade_pessoas', 'nomes_convidados']
+
+    def __init__(self, *args, **kwargs):
+        self.evento_id = kwargs.pop('evento_id', None)
+        super().__init__(*args, **kwargs)
+        self.fields['quantidade_pessoas'].widget.attrs['min'] = 1  
+        self.fields['quantidade_pessoas'].widget.attrs['max'] = self.get_max_vagas() 
+    def get_max_vagas(self):
+        if self.evento_id:
+            evento = Evento.objects.get(pk=self.evento_id)
+            return evento.vagas_disponiveis
+        return 0
+
+    def clean_quantidade_pessoas(self):
+        quantidade_pessoas = self.cleaned_data['quantidade_pessoas']
+        max_vagas = self.get_max_vagas()
+        if quantidade_pessoas > max_vagas:
+            raise forms.ValidationError(f'Não há vagas suficientes disponíveis. Máximo de {max_vagas} vagas.')
+        return quantidade_pessoas

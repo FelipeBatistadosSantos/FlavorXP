@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Seu Perfil</title>
+    <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'angeline/completa.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Complete Seu Perfil</h1>
+        <form method="post" action="{% url 'angeline:completar_perfil' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Salvar</button>
+        </form>
+        <a href="{% url 'angeline:home' %}">Voltar para Home</a>
+    </div>
+    <script src="{% static 'angeline/perfil.js' %}"></script>
+</body>
+
+</html>
