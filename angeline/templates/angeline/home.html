@@ -11,26 +11,14 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
-    <input type="text" id="filtro" placeholder="Digite para filtrar">
   
       <script>  
-        function teste(){
-          console.log('isvrwj');
-          $('#resultados').append('<div style="color: black;">oie</div>'); // Update the div with the filtered results
+        document.getElementByID("filtro-input").addEventListener("keyup", function(event)) {
+          if (event.key === "Enter") {
+            var searchTerm = this.value;
+            console.log("Texto pesquisado: " + searchTerm); 
           }
-          $(document).ready(function(){
-              $('#filtro').on('input', function(){
-                  var filtro = $(this).val().toLowerCase();
-                  $.ajax({
-                      url: 'angeline/templates/angeline/specific_page.html',  // Update the URL to match your Django URL pattern
-                      method: 'GET',
-                      data: {filtro: filtro},
-                      success: function(response){
-                          $('#resultados').html(response); // Update the div with the filtered results
-                      }
-                  });
-              });
-          });
+        }
       </script>
     
     <nav style="width: 1440px; height: 125px; left: 0px; top: 0px; position: absolute">
@@ -43,7 +31,7 @@
           </g>
         </svg>
         <input id="filtro-input" placeholder="Search" type="search" class="input">
-        <a onclick="teste()">Buscar</a>
+        <a onclick="teste()" >Buscar</a>
       </form>
         </div>
         
