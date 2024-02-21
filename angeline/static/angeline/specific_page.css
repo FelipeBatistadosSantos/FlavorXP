@@ -6,6 +6,16 @@
   position: absolute;
 }
 
+.link_nome_host {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link_nome_host, .nome_da_marca:hover {
+  color:rgb(54, 54, 54)
+  
+}
+
 .gradiente_imagem {
   width: 100vw;
   height: 1024px;
