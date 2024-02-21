@@ -1,32 +1,3 @@
-/* CSS
-.container {
-          display: flex;
-          justify-content: space-between;
-      }
-      
-      .container .left {
-          float: left;
-          width: 50%;
-      }
-      
-      .container .right {
-          float: right;
-          width: 50%;
-      }
-      .oi {
-        color: #1f42a3; /* Cor do link */
-        /* text-decoration: none; /* Remove o sublinhado 
-        font-size: 20px; /* Tamanho da fonte 
-        margin-left: 100px;
-        margin-right: 200px;
-        word-wrap:none; 
-        
-    }
-    
-    .oi:hover {
-        color: #0056b3;
-    } */
-    
 body{
     margin:0 ;
 }
@@ -77,6 +48,7 @@ body{
     font-family: Outfit;
     font-weight: 600;
     word-wrap: break-word;
+    white-space: nowrap;
   }
   
   .titulo_perfil_host {
@@ -412,4 +384,145 @@ body{
     overflow: hidden; /* Isso garante que o conteúdo excedente seja ocultado */
     word-wrap: break-word; /* Isso permite que o texto seja quebrado em várias linhas se necessário */
     display: block; /* Isso faz com que cada parágrafo seja exibido em um bloco separado, abaixo do anterior */
+}
+
+@media screen and (max-width: 460px) {
+  
+  .titulo_perfil_host {
+    left: 68px;
+    top: 37px;
+    position: absolute;
+  }
+  
+  .titulo_perfil_host .span_perfil {
+    font-size: 48px;
+  }
+  
+  
+  .titulo_perfil_host .usuario_titulo {
+    font-size: 48px;
+  }
+
+  .editar_perfil_convidado {
+    left: 660px;
+    top: 75px;
+    font-size: 22px;
+    white-space: nowrap;
+  }
+
+  .telefone_usuario {
+    left: 540px;
+    top: 100px;
+    font-size: 20px;
+    white-space: nowrap;
+
+  }
+
+  .cpf_usuario {
+    left: 616px;
+    top: 125px;
+    font-size: 20px;
+    white-space: nowrap;
+
+  }
+
+  .cep_usuario {
+    left: 635px;
+    top: 150px;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .imagem_usuario {
+    left: 800px;
+  }
+
+  .slogan_footer {
+    left: 675px;
+    top: 110px;
+  }
+
+  .host_footer{
+    visibility: hidden;
+  }
+
+  .direitos_reservados{
+    visibility: hidden;
+  }
+
+  .home_footer{
+    visibility: hidden;
+  }
+
+  .ola_usuario {
+    white-space: nowrap;
+  }
+
+  .cidade_usuario {
+    top: 60%;
+  }
+
+  .estado_usuario {
+    top: 65%;
+  }
+
+  .data_nascimento_usuario {
+    white-space: nowrap;
+  }
+
+  .sobre_usuario {
+    top: 75%;
+    white-space: nowrap;
+  }
+
+  .profissao_usuario {
+    top: 80%;
+    left: 91px;
+  }
+
+  .hobbies {
+    left: 91px;
+    top: 85%;
+  }
+
+  .idioma {
+    
+  }
+
+
+
+  .retangulo_nav {
+    width: 1000%;
+    height: 212px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: #4E008E;
+  }
+
+  
+  .footer_retangulo2 {
+    width: 1000%;
+    height: 100px;
+    left: 0px;
+    top: 100%;
+    position: absolute;
+    background: #4E008E;
+  }
+
+  .footer_retangulo {
+    height: 100px;
+    top: 1340px;
+  }
+
+  .flavorxp_footer {
+    left: 70px;
+    top: 100px;
+  }
+
+.editar_perfil {
+    color: #4E008E;
+    visibility: hidden;
+  }
+
 }
