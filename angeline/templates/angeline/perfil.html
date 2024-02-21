@@ -24,24 +24,25 @@
         <a class="perfil_host" href="{% url 'angeline:editar_host' %}">Perfil Host</a>
         {% endif %}
 
-        <div class="titulo_perfil_host">
-            <span class="span_perfil">Perfil</span>
-            <span class="espaco_perfil_usuario"> </span>
-            <span class="usuario_titulo">Usuário</span>
-        </div>
-        <div>
-            <a class="editar_perfil_convidado" href="{% url 'angeline:editar_perfil' %}">Editar perfil</a>
-            <!-- <div class="email_usuario">{{ user.email }}</div> -->  
-            <div class="cpf_usuario">
-                <span class="cpf">CPF: {{ perfil_usuario.cpf }}</span>
+        <nav>
+            <div class="titulo_perfil_host">
+              <span class="span_perfil">Perfil</span>
+              <span class="espaco_perfil_usuario"> </span>
+              <span class="usuario_titulo">Usuário</span>
             </div>
-            <div class="cep_usuario">
-                <span class="cep">CEP:</span>
-                <span class="numero_cep">{{ perfil_usuario.cep }}</span>
-            </div>
+            <ul class="perfil_list">
+              <li><a class="editar_perfil_convidado" href="{% url 'angeline:editar_perfil' %}">Editar perfil</a></li>
+              <!-- <li><div class="email_usuario">{{ user.email }}</div></li> -->
+              <li class="cpf_usuario"><span class="cpf">CPF: {{ perfil_usuario.cpf }}</span></li>
+              <li class="cep_usuario"><span class="cep">CEP:</span> <span class="numero_cep">{{ perfil_usuario.cep }}</span></li>
+              <li class="telefone_usuario">Telefone: {{ perfil_usuario.telefone }}</li>
+            </ul>
+          </nav>
+          
+          
             <div class="cidade_usuario">Cidade: {{ perfil_usuario.cidade }}</div>
             <div class="estado_usuario">Estado: {{ perfil_usuario.estado }}</div>
-            <div class="telefone_usuario">Telefone: {{ perfil_usuario.telefone }}</div>
+            
             <div class="data_nascimento_usuario">Nascimento: {{ perfil_usuario.nascimento }}</div>
             <div class="idiomas">Idiomas: {{ perfil_usuario.idioma }}</div>
             <div class="restricoes_alimentares">Restrições Alimentares: {{ perfil_usuario.restricao }}</div>
