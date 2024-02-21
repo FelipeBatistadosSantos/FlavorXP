@@ -22,7 +22,7 @@
         <div style="z-index: -1;" class="quadrado_conteudo1"></div>
         <div class="jantar">{{ evento.estilo }}</div>
         <div class="nome_da_marca_oferece">
-        <span class="nome_da_marca">{{ evento.host }} </span>
+        <a class="link_nome_host" href="{% url 'angeline:host_servico' evento_id=evento.id %}"><span class="nome_da_marca">{{ evento.host }} </span></a>
         <span class="oferece">oferece:</span>
         </div>
         <div class="barra1"></div>
