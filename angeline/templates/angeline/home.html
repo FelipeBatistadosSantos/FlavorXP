@@ -14,21 +14,22 @@
   
   <script>
     $(document).ready(function () {
-        $("#searchInput").on("input", function () {
-            var searchTerm = $(this).val().toLowerCase();
+            $("#filtro-input").on("input", function () {
+                var searchTerm = $(this).val().toLowerCase();
 
-            $(".retangulo").each(function () {
-                var title = $(this).find(".tema_evento1").text().toLowerCase();
-                
+                $(".feed-item").each(function () {
+                    var title = $(this).find(".tema_evento1").text().toLowerCase();
+                    var descricao = $(this).find(".descricao").text().toLowerCase();
+                    var preco = $(this).find(".evento_valor_feed").text().toLowerCase();
 
-                if (title.includes(searchTerm)) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
+                    if (title.includes(searchTerm) || descricao.includes(searchTerm) || (preco.includes(searchTerm))){
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
             });
         });
-    });
   </script>
     
     <nav style="width: 1440px; height: 125px; left: 0px; top: 0px; position: absolute">
@@ -94,7 +95,7 @@
         {% endif %}
         <h3 class="tema_evento1">{{ evento.tema }}</h3>
         <p class="descricao">{{ evento.descricao }}</p>
-        <span>R$ {{ evento.valor_host }}</span>
+        <span class="evento_valor_feed">R$ {{ evento.valor_host }}</span>
       </a>
       {% endfor %}
 
