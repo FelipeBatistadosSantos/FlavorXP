@@ -41,27 +41,6 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
 *Agora, o projeto estará acessível em **http://127.0.0.1:8000/.** Você concluiu a instalação com sucesso e está pronto para começar a desenvolver no **FlavorXP**.*
 
-<!-- 
-## ⚙️ Executando os testes
-
-Explicar como executar os testes automatizados para este sistema.
-
-### 🔩 Analise os testes de ponta a ponta
-
-Explique que eles verificam esses testes e porquê.
-
-```
-Dar exemplos
-```
-
-### ⌨️ E testes de estilo de codificação
-
-Explique que eles verificam esses testes e porquê.
-
-```
-Dar exemplos
-``` -->
-
 ## 🛠️ Construído com
 
 Ferramentas utilizadas para a criação do nosso projeto
@@ -78,10 +57,6 @@ Ferramentas utilizadas para a criação do nosso projeto
 ## 🖇️ Termos e condições
 
 Por favor, leia o **[termos.md](termos.md)** para obter detalhes sobre o nosso código de conduta.
-
-<!-- ## 📌 Versão
-
-Nós usamos [SemVer](http://semver.org/) para controle de versão. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto).  -->
 
 ## ✒️ Autores
 

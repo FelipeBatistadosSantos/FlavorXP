@@ -1,0 +1,146 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Alterado para 100vh para uma altura mais precisa */
+  background-color: #ffffff;
+}
+
+.container {
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  width: 500px;
+  min-height: 300px;
+  text-align: left;
+  color: #000000;
+  overflow: auto;
+  justify-content: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+h1 {
+  font-family: Outfit;
+  color: black;
+}
+
+h2 {
+  color: #F1C400;
+  margin-bottom: 20px;
+  background-color: #4E008E;
+  width: 100px;
+  text-align: center;
+  font-family: Outfit;
+  font-size: x-large;
+  padding-left: 10px;
+  padding-right: 107px;
+}
+
+h3 {
+  margin-left: 80px;
+  font-size: xx-large;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario p {
+  display: flex;
+  justify-content: space-between;
+}
+
+label {
+  text-align: center;
+  padding: 8px;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 10px; /* Removido o margin-bottom extra */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; /* Alterado para ocupar 100% da largura */
+}
+
+button {
+  width: 100%;
+  background-color: #4E008E;
+  color: #F1C400;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s; /* Adicionado efeito de transição */
+}
+
+button:hover {
+  transform: scaleY(1.125);
+  background-color: #7a10d2;
+}
+
+textarea {
+  height: 50px;
+  width: 100%; /* Alterado para ocupar 100% da largura */
+}
+
+.local_servico {
+  height: 9000px;
+}
+
+input[type='text'] {
+  width: 100%; /* Alterado para ocupar 100% da largura */
+}
+
+/* Estilizando o campo select */
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; /* Alterado para ocupar 100% da largura */
+    -webkit-appearance: none; /* Remove a aparência padrão do navegador */
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="#000" d="M9.993 17.988l7.428-9.426c.386-.49.386-1.203 0-1.694a1.15 1.15 0 0 0-1.696 0L9.983 13.274 3.567 6.868c-.473-.58-1.3-.614-1.8-.054a1.3 1.3 0 0 0-.054 1.796L9.993 17.988z"/></svg>'); /* Ícone de seta personalizado */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+/* Quando o campo select é hover ou focado */
+select:hover, select:focus {
+    border-color: #7a10d2;
+}
+
+/* Estilo básico para input[type="file"] */
+input[type="file"] {
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Estilo quando o mouse passa por cima */
+input[type="file"]:hover {
+    background-color: #eaeaea;
+}
+
+/* Estilo quando o input[type="file"] está focado */
+input[type="file"]:focus {
+    outline: none;
+    border-color: #7a10d2;
+}
+

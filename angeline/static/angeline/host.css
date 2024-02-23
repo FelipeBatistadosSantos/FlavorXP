@@ -118,10 +118,15 @@ button:hover {
 .perfil_host_titulo .perfil_nav_host,
 .perfil_host_titulo .host_nav,
 .perfil_host_titulo .organizadora {
+    color: #4E008E;
     font-size: 48px;
     font-family: Outfit;
     font-weight: 600;
     word-wrap: break-word;
+}
+
+.host_nav{
+    color: #4E008E;
 }
 
 .ola_usuario {

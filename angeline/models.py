@@ -34,6 +34,10 @@ class Estado(models.Model):
     codigo = models.IntegerField(primary_key=True)
     nome = models.CharField(max_length=50)
     sigla = models.CharField(max_length=2)
+    
+    def __str__(self):
+        return self.nome
+
 
 class Cidade(models.Model):
     codigo_uf = models.IntegerField()
@@ -41,6 +45,9 @@ class Cidade(models.Model):
     nome = models.CharField(max_length=50)
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE, default='')    
     
+    
+    def has_perm(self, perm, obj=None):
+        return True
     
 class CompleteCadastro(models.Model):
 
@@ -80,6 +87,7 @@ class CompleteCadastro(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     cep = BRPostalCodeField()
     cpf = BRCPFField()
+    foto = models.ImageField('foto-perfil', upload_to='media/', blank=True, null=True, max_length=255)
     cidade = models.CharField('cidade', choices=CIDADE_CHOICES, default='Blumenau', max_length=20)
     estado = models.CharField('estado', choices=ESTADO_CHOICES, default='SC',  max_length=20)
     telefone = PhoneNumberField(unique=True, null=False, blank=False)
@@ -91,7 +99,7 @@ class CompleteCadastro(models.Model):
     comidaf = models.CharField('comida', max_length=50)
     bebida = models.CharField('bebida',max_length=50)
     restricao = models.CharField('restricao', choices=RESTRICAO_CHOICES, max_length=30, default='Nenhum')
-    outra_restricao = models.CharField('outra_restricao', max_length=30, default='')
+
 
     def is_complete(self):
         if self.cep and self.cpf and self.cidade and self.estado and self.telefone and self.nascimento and self.profissao and self.hobbie and self.idioma and self.comidaf and self.bebida and self.restricao:
@@ -168,7 +176,7 @@ class Evento(models.Model):
     tema = models.CharField('Tema da experiência', max_length=255, default='Sem tema')
     fotos = models.ImageField('Fotos do Evento', upload_to='media/', blank=True, null=True, max_length=255)
     host = models.ForeignKey(Host, on_delete=models.PROTECT, default='')
-    descricao = models.TextField('Descrição da experiência')
+    descricao = models.TextField('Descrição da experiência', max_length=518)
     cardapio = models.TextField('Cardápio', blank=True, null=True)
     inclui_bebidas = models.BooleanField('Inclui Bebidas?', default=False)
     bebidas_oferecidas = models.CharField('Bebidas Oferecidas', max_length=255, blank=True, null=True)
@@ -192,6 +200,7 @@ class Evento(models.Model):
         return self.valor_host + (self.valor_host * (self.valor_manutencao_site / 100))
 
     def __str__(self):
+        return f'{self.estilo} - {self.tema} por {self.host.username} em {self.local} em {self.data} às {self.horario}'
         return f'{self.estilo} - {self.tema} por {self.host.nome_empresa} em {self.local} em {self.data} às {self.horario}'
     
 

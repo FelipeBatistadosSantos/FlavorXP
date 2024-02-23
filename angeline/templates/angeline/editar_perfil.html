@@ -9,6 +9,8 @@
     <title>Editar Perfil</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'angeline/editar_perfil.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
 </head>
 
 <body>
@@ -21,6 +23,25 @@
             {{ form.as_p }}
             <button type="submit">Salvar</button>
         </form>
+        <body>
+        
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    
+                    const clearCheckbox = document.getElementById("foto-clear_id");
+                    const fotoInput = document.getElementById("id_foto");
+        
+                    
+                    clearCheckbox.addEventListener("change", function () {
+                        
+                        if (clearCheckbox.checked) {
+                           
+                            fotoInput.value = "";
+                        }
+                    });
+                });
+            </script>
 
     </div>
 </body>
