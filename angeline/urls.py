@@ -16,6 +16,7 @@ urlpatterns = [
     path('perfil', perfil, name='perfil'),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('editar_perfil', editar_perfil, name='editar_perfil'),
+    # path('filtrar_eventos/', filtrar, name='filtro_evento'),
     path('editar_host', editar_host, name='editar_host'),
     path('perfil_host', perfil_host, name='perfil_host'),
     path('evento', evento, name='evento'),
