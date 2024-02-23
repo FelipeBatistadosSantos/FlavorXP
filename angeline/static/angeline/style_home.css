@@ -45,6 +45,11 @@ section {
 
 }
 
+.descricao {
+    word-wrap: break-word;
+    max-width: 200px;
+  }
+
 
 .group {
     display: flex;
