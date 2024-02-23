@@ -91,7 +91,7 @@ class CompleteCadastro(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     cep = BRPostalCodeField()
     cpf = BRCPFField()
-    foto = models.ImageField('foto-perfil', upload_to='media/', blank=True, null=True, max_length=255)
+    foto = models.ImageField('foto-perfil', upload_to='media/', blank=False, null=True, max_length=255)
     cidade = models.CharField('cidade', choices=CIDADE_CHOICES, default='Blumenau', max_length=20)
     estado = models.CharField('estado', choices=ESTADO_CHOICES, default='SC',  max_length=20)
     telefone = PhoneNumberField(unique=True, null=False, blank=False)
@@ -128,6 +128,8 @@ class Host(models.Model):
         ('mensal', 'Mensalmente'),
         ('ocasional', 'Ocasionalmente'),
     ]
+
+    foto = models.ImageField('foto-host', upload_to='media/', blank=False, null=True, max_length=255)
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     nome_empresa = models.CharField('Nome da Empresa/Marca/Apelido', max_length=100)
     motivo = models.TextField('Motivo para ser um host')
@@ -139,6 +141,7 @@ class Host(models.Model):
 
     def __str__(self):
         return self.nome_empresa 
+
 
 
 class Evento(models.Model):
@@ -168,17 +171,17 @@ class Evento(models.Model):
     ESTILO_CHOICES = [
             ('janta', 'Janta'),
             ('almoco', 'Almoço'),
-            ('city_tour_gastronomico', 'City Tour Gastronômico'),
+            ('city tour gastronomico', 'City Tour Gastronômico'),
             ('harmonizacao', 'Harmonização'),
-            ('workshop_gastronomico', 'Workshop Gastronômico'),
-            ('aula_pratica', 'Aula prática de Cozinha'),
+            ('workshop gastronomico', 'Workshop Gastronômico'),
+            ('aula pratica', 'Aula prática de Cozinha'),
             ('outro', 'Outro'),
         ]
 
     id = models.AutoField(primary_key=True)
     estilo = models.CharField('Estilo de Evento', max_length=30, choices=ESTILO_CHOICES, default='')
     tema = models.CharField('Tema da experiência', max_length=255, default='Sem tema')
-    fotos = models.ImageField('Fotos do Evento', upload_to='media/', blank=True, null=True, max_length=255)
+    fotos = models.ImageField('Fotos do Evento', upload_to='media/', blank=False, null=True, max_length=255)
     host = models.ForeignKey(Host, on_delete=models.PROTECT, default='')
     descricao = models.TextField('Descrição da experiência', max_length=518)
     cardapio = models.TextField('Cardápio', blank=True, null=True)
@@ -205,8 +208,7 @@ class Evento(models.Model):
 
     def __str__(self):
         return f'{self.estilo} - {self.tema} por {self.host.username} em {self.local} em {self.data} às {self.horario}'
-        return f'{self.estilo} - {self.tema} por {self.host.nome_empresa} em {self.local} em {self.data} às {self.horario}'
-    
+        
 
 class Agendamento(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
