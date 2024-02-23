@@ -99,7 +99,7 @@ ul {
     margin: 0;
     padding: 0;
     position: absolute;
-    top: 70%;
+    top: 85%;
     right: 80px;
     display: flex;
     justify-content: space-between;
@@ -243,14 +243,9 @@ body {
 }
 
 #instagram_footer {
-    width: 39.03px;
-    height: 35.43px;
-    left: 700.74px;
-    top: 44.02px;
-    position: absolute;
-    transform: rotate(1.14deg);
-    transform-origin: 0 0;
-    background: #E5E5E5
+    font-size: 41px; 
+    margin: auto;
+    color: #D9D9D9;
 }
 
 #background_footer {
@@ -298,14 +293,12 @@ body {
 }
 
 #instagram_footer {
-    width: 39.03px;
-    height: 35.43px;
     left: 700.74px;
     top: 44.02px;
     position: absolute;
     transform: rotate(1.14deg);
     transform-origin: 0 0;
-    background: #E5E5E5
+    
 }
 
 #slogan_footer {
