@@ -120,11 +120,19 @@
         var descricao = descricoes[i].textContent;
         if (descricao.length > maxLength) {
           descricoes[i].textContent = descricao.substring(0, maxLength) + '...';
+          
         }
       }
     });
     
   </script>
+
+  <style>
+    .descricao {
+      word-wrap: break-word; /* Adiciona quebra de linha após 20 caracteres */
+      max-width: 200px; /* Define uma largura máxima para as descrições */
+    }
+  </style>
   
 
 </body>
