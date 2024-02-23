@@ -1,3 +1,4 @@
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -15,6 +16,7 @@ urlpatterns = [
     path('perfil', perfil, name='perfil'),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('editar_perfil', editar_perfil, name='editar_perfil'),
+    # path('filtrar_eventos/', filtrar, name='filtro_evento'),
     path('editar_host', editar_host, name='editar_host'),
     path('perfil_host', perfil_host, name='perfil_host'),
     path('evento', evento, name='evento'),
@@ -25,13 +27,12 @@ urlpatterns = [
     path('agendamentos', agendamentos, name='agendamentos'),
     path('cancelar/<int:agendamento_id>/cancelar/', cancelar, name='cancelar'),
     path('excluir_evento/<int:evento_id>/', excluir_evento, name='excluir_evento'),
-    path('reset-password/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('reset-password/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-    path('completar_perfil', completar_perfil, name='completar_perfil'),
+    path('reset-password/', auth_views.PasswordResetView.as_view(template_name='registration/password_reset.html'), name='password_reset'),
+    path('reset-password/done/', auth_views.PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
     path('criar_host', criar_host, name='criar_host'),
-
+    path('completar_perfil', completar_perfil, name='completar_perfil')
 ]
 
 if settings.DEBUG:

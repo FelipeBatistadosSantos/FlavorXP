@@ -1,5 +1,10 @@
 from django.contrib import admin
+
+# Register your models here.
+
+
 from .models import CustomUser, Host, Cidade, Estado, Evento, CompleteCadastro
+
 
 # Register your models here.
 admin.site.register(CustomUser)

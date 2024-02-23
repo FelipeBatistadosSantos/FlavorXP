@@ -50,6 +50,9 @@ class Cidade(models.Model):
         return self.nome
 
     
+    def has_perm(self, perm, obj=None):
+        return True
+    
 class CompleteCadastro(models.Model):
 
     IDIOMA_CHOICES = [
@@ -201,6 +204,7 @@ class Evento(models.Model):
         return self.valor_host + (self.valor_host * (self.valor_manutencao_site / 100))
 
     def __str__(self):
+        return f'{self.estilo} - {self.tema} por {self.host.username} em {self.local} em {self.data} às {self.horario}'
         return f'{self.estilo} - {self.tema} por {self.host.nome_empresa} em {self.local} em {self.data} às {self.horario}'
     
 

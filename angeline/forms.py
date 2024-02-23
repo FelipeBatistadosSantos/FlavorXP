@@ -13,7 +13,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 import json
 from geopy.geocoders import Nominatim
 
-
 class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
@@ -35,6 +34,16 @@ class CustomUserLoginForm(AuthenticationForm):
         model = CustomUser
         fields = ['email', 'password']
 
+    def clean_confirmar_senha(self):
+        senha = self.cleaned_data.get('senha')
+        confirmar_senha = self.cleaned_data.get('confirmar_senha')
+
+        if senha and confirmar_senha and senha != confirmar_senha:
+            raise forms.ValidationError('As senhas não coincidem.')
+
+        return confirmar_senha
+
+    
 
 class DateInput(forms.DateInput):
     input_type = 'text'
