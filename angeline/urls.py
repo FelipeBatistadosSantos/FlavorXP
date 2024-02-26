@@ -4,11 +4,7 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.urls import path
 from django.contrib.auth.views import LoginView
-<<<<<<< HEAD
-from .views import cadastro, CustomLoginView, home, host, perfil, CustomLogoutView, editar_perfil, editar_host, perfil_host, evento, specific_page, host_servico, agendamento, editar_evento, agendamentos, cancelar, excluir_evento, completar_perfil, criar_host, cardapio
-=======
-from .views import cadastro, CustomLoginView, home, host, perfil, CustomLogoutView, editar_perfil, editar_host, perfil_host, evento, specific_page, host_servico, agendar_evento, editar_evento, cancelar, excluir_evento, completar_perfil, criar_host, lista_reservas, gerenciamento
->>>>>>> dev-luana
+from .views import cadastro, CustomLoginView, home, host, perfil, CustomLogoutView, editar_perfil, editar_host, perfil_host, evento, specific_page, host_servico, agendar_evento, editar_evento, cancelar, excluir_evento, completar_perfil, criar_host, lista_reservas, gerenciamento, cardapio
 
 app_name = 'angeline'
 
@@ -36,11 +32,8 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
     path('criar_host', criar_host, name='criar_host'),
     path('completar_perfil', completar_perfil, name='completar_perfil'),
-<<<<<<< HEAD
-    path('cardapio', cardapio, name='cardapio')
-=======
+    path('cardapio', cardapio, name='cardapio'),
     path('gerenciamento', gerenciamento, name='gerenciamento'),
->>>>>>> dev-luana
 ]
 
 if settings.DEBUG:

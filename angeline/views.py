@@ -273,14 +273,12 @@ def cancelar(request, agendamento_id):
 def excluir_evento(request, evento_id):
     evento = get_object_or_404(Evento, id=evento_id, host__usuario=request.user)
     evento.delete() 
-<<<<<<< HEAD
     return redirect('angeline:home')
 
 
 
 def cardapio(request):
     return render(request, 'angeline/cardapio.html')
-=======
     return redirect('angeline:gerenciamento')
 
 
@@ -288,4 +286,3 @@ def cardapio(request):
 def gerenciamento(request):
     eventos = Evento.objects.filter(host=request.user.host)
     return render(request, 'angeline/gerenciamento.html', {'eventos': eventos})
->>>>>>> dev-luana
