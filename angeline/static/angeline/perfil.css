@@ -1,6 +1,6 @@
 body{
     margin:0 ;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .fa-solid, .fa-house{
@@ -393,8 +393,4 @@ body{
     overflow: hidden; /* Isso garante que o conteúdo excedente seja ocultado */
     word-wrap: break-word; /* Isso permite que o texto seja quebrado em várias linhas se necessário */
     display: block; /* Isso faz com que cada parágrafo seja exibido em um bloco separado, abaixo do anterior */
-}
-
-.container-info {
-  
 }
