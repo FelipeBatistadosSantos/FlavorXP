@@ -72,20 +72,20 @@
 }
 
 .jantar {
-  left: 189px;
-  top: 1477px;
-  position: absolute;
-  color: white;
   font-size: 20px;
   font-family: Outfit;
-  font-weight: 400;
-  word-wrap: break-word;
+  position: absolute;
+  bottom: 22px;
+  left: 16%;
+  color: white;
 }
+
 
 .nome_da_marca_oferece {
   left: 75px;
   top: 1133px;
   position: absolute;
+  
 }
 
 .nome_da_marca {
