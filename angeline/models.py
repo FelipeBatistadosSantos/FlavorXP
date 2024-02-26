@@ -91,12 +91,12 @@ class CompleteCadastro(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     cep = BRPostalCodeField()
     cpf = BRCPFField()
-    foto = models.ImageField('foto-perfil', upload_to='media/', blank=False, null=True, max_length=255)
+    foto = models.ImageField('foto-perfil', upload_to='media/', blank=True, null=True)
     cidade = models.CharField('cidade', choices=CIDADE_CHOICES, default='Blumenau', max_length=20)
     estado = models.CharField('estado', choices=ESTADO_CHOICES, default='SC',  max_length=20)
     telefone = PhoneNumberField(unique=True, null=False, blank=False)
     nascimento = models.DateField(null=True)
-    sobre = models.TextField('sobre', default='')
+    sobre = models.TextField('sobre', default='', max_length=359)
     profissao = models.CharField('profissao',max_length=50)
     hobbie = models.CharField('hobbie', max_length=50)
     idioma = models.CharField('idioma', choices=IDIOMA_CHOICES, max_length=30, default='Nenhum')
@@ -106,7 +106,7 @@ class CompleteCadastro(models.Model):
 
 
     def is_complete(self):
-        if self.cep and self.cpf and self.cidade and self.estado and self.telefone and self.nascimento and self.profissao and self.hobbie and self.idioma and self.comidaf and self.bebida and self.restricao:
+        if self.foto and self.cep and self.cpf and self.cidade and self.estado and self.telefone and self.nascimento and self.profissao and self.hobbie and self.idioma and self.comidaf and self.bebida and self.restricao:
             return True
         else:
             return False

@@ -213,7 +213,7 @@ body{
   
   .restricoes_alimentares {
     left: 722px;
-    top: 100%;
+    top: 88%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -257,7 +257,7 @@ body{
   
   .sobre_usuario {
     left: 91px;
-    top: 100%;
+    top: 88%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -293,6 +293,17 @@ body{
     top: 1000px;
     position: absolute;
   }
+
+  .linha_vertical {
+    position: absolute;
+    width: 4px; 
+    height: 80%; 
+    background-color: black; 
+    left: 46%; 
+    top: 360px;
+    transform: translateX(-50%); 
+    position: absolute;
+}
   
   .footer_retangulo2 {
     width: 100vw;
