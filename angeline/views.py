@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
+from django.http import HttpResponseRedirect
 from django.contrib.auth import logout, authenticate, login as auth_login
 from django.contrib import messages
-from .models import CompleteCadastro,Host, Evento, Agendamento
+from .models import CompleteCadastro,Host, Evento, Reserva
 from .forms import CustomUserCreationForm, CustomUserLoginForm, CompleteCadastroForm, HostForm, EventoForm, AgendamentoForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
@@ -216,30 +217,6 @@ def host_servico(request, evento_id):
     
 
 @login_required
-def agendamento(request, evento_id):
-    evento = Evento.objects.get(id=evento_id)
-
-    if request.method == 'POST':
-        form = AgendamentoForm(request.POST, evento_id=evento_id)
-        if form.is_valid():
-            agendamento = form.save(commit=False)
-            agendamento.usuario = request.user
-            agendamento.evento = evento
-            
-            if agendamento.quantidade_pessoas <= evento.vagas_disponiveis:
-                agendamento.save()
-                return redirect('angeline:agendamentos') 
-            else:
-                form.add_error(None, 'Não há vagas suficientes disponíveis para este evento.')
-
-    else:
-        form = AgendamentoForm(evento_id=evento_id)
-
-    return render(request, 'angeline/agendamento.html', {'form': form, 'evento': evento})
-
-
-
-@login_required
 def editar_evento(request, evento_id):
     evento = get_object_or_404(Evento, id=evento_id)
 
@@ -258,22 +235,48 @@ def editar_evento(request, evento_id):
 
 
 
-def agendamentos(request):
-    agendamentos = Agendamento.objects.filter(usuario=request.user)
+@login_required
+def agendar_evento(request, evento_id):
+    evento = get_object_or_404(Evento, pk=evento_id)
+    
+    if request.method == 'POST':
+        form = AgendamentoForm(request.POST)
+        
+        if form.is_valid():
+            reserva = form.save(commit=False)
+            reserva.usuario = request.user
+            reserva.evento = evento
+            reserva.save()
+            
+            return redirect('angeline:lista_reservas')
+    else:
+        form = AgendamentoForm()
+    
+    return render(request, 'angeline/agendar_evento.html', {'form': form, 'evento': evento})
 
-    return render(request, 'angeline/agendamentos.html', {'agendamentos': agendamentos})
+@login_required
+def lista_reservas(request):
+    reservas = Reserva.objects.filter(usuario=request.user)
+    return render(request, 'angeline/lista_reservas.html', {'reservas': reservas})
 
 
 @login_required
 def cancelar(request, agendamento_id):
-    agendamento = get_object_or_404(Agendamento, id=agendamento_id, usuario=request.user)
-    evento_id = agendamento.evento.id
-    agendamento.delete()
-    return redirect('angeline:agendamentos')
+    reserva = get_object_or_404(Reserva, id=agendamento_id, usuario=request.user)
+    evento = reserva.evento
+    reserva.delete()
+    
+    return redirect('angeline:lista_reservas')
 
 
 @login_required
 def excluir_evento(request, evento_id):
     evento = get_object_or_404(Evento, id=evento_id, host__usuario=request.user)
     evento.delete() 
-    return redirect('angeline:home')
+    return redirect('angeline:gerenciamento')
+
+
+@login_required
+def gerenciamento(request):
+    eventos = Evento.objects.filter(host=request.user.host)
+    return render(request, 'angeline/gerenciamento.html', {'eventos': eventos})

@@ -33,7 +33,17 @@
     <div class="frequencia_servico">Frequência de Serviços: {{ host.frequencia_servicos }}</div>
     <div class="servicos_disponiveis">Serviços Disponíveis: {{ host.servicos }}</div>
     <div class="local_servico">Local de Serviços: {{ host.local_servico }}</div>
+    <div class="reservas"><a href="{% url 'angeline:gerenciamento' %}">Seus eventos</a></div>
     
+    {% if form.instance.foto %}
+    {% with foto_url=form.instance.foto.url %}
+        <img class='imagem_usuario' src="{{ foto_url }}" alt="Foto de Perfil">
+    {% endwith %}
+    {% else %}
+        <img class='imagem_usuario' src="angeline/static/img/default-user.png" alt="Foto de Perfil">
+    {% endif %}
+
+
     <div class="fundo">
         <div class="retangulo_footer"></div>
         <a class="home_footer" href="{% url 'angeline:home' %}">Home</a>

@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
-from .models import CustomUser, CompleteCadastro, Host, Evento, Agendamento
+from .models import CustomUser, CompleteCadastro, Host, Evento, Reserva
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import gettext as __
 import datetime
@@ -68,8 +68,6 @@ class CompleteCadastroForm(forms.ModelForm):
         fields = ['foto','nascimento', 'sobre', 'profissao', 'hobbie', 'idioma', 'comidaf', 'bebida', 'restricao','cpf', 'cep', 'cidade', 'estado', 'telefone']
 
         
-   
-        
     def clean_nascimento(self):
         nascimento = self.cleaned_data.get('nascimento')
 
@@ -78,10 +76,13 @@ class CompleteCadastroForm(forms.ModelForm):
 
         return nascimento
 
+
 class HostForm(forms.ModelForm):
     class Meta:
         model = Host
-        fields = ['nome_empresa', 'motivo', 'area_gastronomia', 'servicos', 'frequencia_servicos', 'local_servico', 'descricao_local']
+        fields = ['foto','nome_empresa', 'motivo', 'area_gastronomia', 'servicos', 'frequencia_servicos', 'local_servico', 'descricao_local']
+
+
 
 
 class CustomDecimalField(forms.RegexField):
@@ -133,25 +134,12 @@ class EventoForm(forms.ModelForm):
         self.geo(address)
         return cleaned_data
     
+    
 class AgendamentoForm(forms.ModelForm):
     class Meta:
-        model = Agendamento
-        fields = ['quantidade_pessoas', 'nomes_convidados']
-
-    def __init__(self, *args, **kwargs):
-        self.evento_id = kwargs.pop('evento_id', None)
-        super().__init__(*args, **kwargs)
-        self.fields['quantidade_pessoas'].widget.attrs['min'] = 1  
-        self.fields['quantidade_pessoas'].widget.attrs['max'] = self.get_max_vagas() 
-    def get_max_vagas(self):
-        if self.evento_id:
-            evento = Evento.objects.get(pk=self.evento_id)
-            return evento.vagas_disponiveis
-        return 0
-
-    def clean_quantidade_pessoas(self):
-        quantidade_pessoas = self.cleaned_data['quantidade_pessoas']
-        max_vagas = self.get_max_vagas()
-        if quantidade_pessoas > max_vagas:
-            raise forms.ValidationError(f'Não há vagas suficientes disponíveis. Máximo de {max_vagas} vagas.')
-        return quantidade_pessoas
+        model = Reserva
+        fields = ['quantidade_pessoas', 'nomes_pessoas']
+        widgets = {
+            'quantidade_pessoas': forms.NumberInput(attrs={'min': 1}),
+            'nomes_pessoas': forms.TextInput(attrs={'placeholder': 'Nomes separados por vírgula'}),
+        }

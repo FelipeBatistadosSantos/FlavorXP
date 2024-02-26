@@ -129,7 +129,7 @@ class Host(models.Model):
         ('ocasional', 'Ocasionalmente'),
     ]
 
-    foto = models.ImageField('foto-host', upload_to='media/', blank=False, null=True, max_length=255)
+    foto = models.ImageField('Foto host', upload_to='media/', blank=False, null=True, max_length=255)
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     nome_empresa = models.CharField('Nome da Empresa/Marca/Apelido', max_length=100)
     motivo = models.TextField('Motivo para ser um host')
@@ -210,28 +210,9 @@ class Evento(models.Model):
         return f'{self.estilo} - {self.tema} por {self.host.username} em {self.local} em {self.data} às {self.horario}'
         
 
-class Agendamento(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+class Reserva(models.Model):
     evento = models.ForeignKey(Evento, on_delete=models.CASCADE)
-    quantidade_pessoas = models.PositiveIntegerField()
-    nomes_convidados = models.CharField(blank=True, null=True, max_length=100)
-    valor_total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-
-    def save(self, *args, **kwargs):
-        evento = self.evento
-        if evento:
-            evento.vagas_disponiveis -= self.quantidade_pessoas
-            evento.save()
-        super().save(*args, **kwargs)
-
-    def calcular_valor_total(self):
-        if self.evento:
-            return self.evento.valor_host * self.quantidade_pessoas
-        return 0
-
-    def save(self, *args, **kwargs):
-        self.valor_total = self.calcular_valor_total()
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return f'{self.usuario.username} - {self.evento.tema} - {self.quantidade_pessoas} pessoas'
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    quantidade_pessoas = models.PositiveIntegerField(default=1)
+    nomes_pessoas = models.CharField(max_length=255)
+    data_agendamento = models.DateTimeField(auto_now_add=True)
