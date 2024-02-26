@@ -1,21 +1,22 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  href="{% static 'angeline/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'angeline/host_serviço.css' %}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'angeline/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'angeline/host_serviço.css' %}" />
 
     <title>Host</title>
-</head>
-<body>
+  </head>
+
+  <body class="center-content">
     <h1>{{ evento.host.nome_empresa }}</h1>
     <p>{{ evento.host.area_gastronomia }}</p>
     <p>{{ evento.host.frequencia_servicos }}</p>
-    <p>Avaliações: 5.0 </p>
+    <p>Avaliações: 5.0</p>
     <p>Eventos hosteados: 3</p>
 
     <a href="{% url 'angeline:specific_page' evento_id=evento.id %}">Voltar</a>
-</body>
+  </body>
 </html>
