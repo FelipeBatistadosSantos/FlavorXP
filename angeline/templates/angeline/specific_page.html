@@ -13,8 +13,6 @@
 </head>
 
 <body>
-
-    
         <img class="imagem_evento" src="{{ evento.fotos.url }}" />
         <div class="gradiente_imagem"></div>
         <div class="nome_do_evento">{{ evento.tema }}</div>
@@ -32,7 +30,7 @@
         <div class="barra3"></div>
         <i class="fa-solid fa-utensils"></i>
         <div class="cardapio">Cardápio</div>
-        <div class="quadrado_conteudo_roxo"></div>
+        <a href="{% url 'angeline:cardapio' %}"><div class="quadrado_conteudo_roxo"></div></a>
         <div class="convidados1">Convidados:</div>
         <div class="quadrado_conteudo2"></div>
         <div class="convidados">Convidados</div>

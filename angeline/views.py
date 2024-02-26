@@ -277,3 +277,8 @@ def excluir_evento(request, evento_id):
     evento = get_object_or_404(Evento, id=evento_id, host__usuario=request.user)
     evento.delete() 
     return redirect('angeline:home')
+
+
+
+def cardapio(request):
+    return render(request, 'angeline/cardapio.html')
