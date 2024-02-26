@@ -58,6 +58,7 @@ def host(request):
     else:
         return redirect('angeline:editar_host')
     
+    
 @login_required
 def perfil(request):
     perfil_usuario = CompleteCadastro.objects.filter(usuario=request.user).first()

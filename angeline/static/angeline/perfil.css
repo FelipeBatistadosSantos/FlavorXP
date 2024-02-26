@@ -1,34 +1,11 @@
-/* CSS
-.container {
-          display: flex;
-          justify-content: space-between;
-      }
-      
-      .container .left {
-          float: left;
-          width: 50%;
-      }
-      
-      .container .right {
-          float: right;
-          width: 50%;
-      }
-      .oi {
-        color: #1f42a3; /* Cor do link */
-        /* text-decoration: none; /* Remove o sublinhado 
-        font-size: 20px; /* Tamanho da fonte 
-        margin-left: 100px;
-        margin-right: 200px;
-        word-wrap:none; 
-        
-    }
-    
-    .oi:hover {
-        color: #0056b3;
-    } */
-    
 body{
     margin:0 ;
+    overflow: hidden;
+}
+
+.fa-solid, .fa-house{
+  font-size: 50px;
+  color: #F1C400;
 }
 
 
@@ -39,11 +16,16 @@ body{
     top: 0px;
     position: absolute;
     background: #4E008E;
+    
   }
 
   .perfil_list {
     list-style: none;
     padding: 0;
+    position: absolute;
+    left: 66%;
+    white-space: nowrap;
+    top: 5px;
   }
   
   .ola_usuario {
@@ -77,6 +59,7 @@ body{
     font-family: Outfit;
     font-weight: 600;
     word-wrap: break-word;
+    white-space: nowrap;
   }
   
   .titulo_perfil_host {
@@ -110,8 +93,8 @@ body{
   }
   
   .editar_perfil_convidado {
-    left: 76.3%;
-    top: 56px;
+    left: 87.3%;
+    top: 27%;
     position: absolute;
     color: white;
     font-size: 20px;
@@ -121,18 +104,17 @@ body{
   }
   
   .email_usuario {
-    left: 91px;
-    top: 297px;
+    left: 68.8;
+    top: 55px;
     position: absolute;
-    color: black;
-    font-size: 24px;
+    color: white;
+    font-size: 20px;
     font-family: Outfit;
     font-weight: 200;
     word-wrap: break-word;
   }
   
   .cpf_usuario {
-    left: 973px;
     top: 106px;
     position: absolute;
   }
@@ -154,7 +136,6 @@ body{
   }
 
   .cep_usuario {
-    left: 74%;
     top: 131px;
     position: absolute;
   }
@@ -177,7 +158,7 @@ body{
   
   .cidade_usuario {
     left: 91px;
-    top: 50%;
+    top: 56%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -188,7 +169,7 @@ body{
   
   .estado_usuario {
     left: 91px;
-    top: 60%;
+    top: 64%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -210,7 +191,7 @@ body{
   
   .data_nascimento_usuario {
     left: 91px;
-    top: 70%;
+    top: 72%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -221,7 +202,7 @@ body{
   
   .idiomas {
     left: 722px;
-    top: 70%;
+    top: 64%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -243,7 +224,7 @@ body{
 
   .bebida_favorita {
     left: 722px;
-    top: 90%;
+    top: 72%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -264,17 +245,6 @@ body{
   }
   
   .profissao_usuario {
-    left: 722px;
-    top: 50%;
-    position: absolute;
-    color: black;
-    font-size: 24px;
-    font-family: Outfit;
-    font-weight: 200;
-    word-wrap: break-word;
-  }
-  
-  .sobre_usuario {
     left: 91px;
     top: 80%;
     position: absolute;
@@ -285,9 +255,20 @@ body{
     word-wrap: break-word;
   }
   
+  .sobre_usuario {
+    left: 91px;
+    top: 100%;
+    position: absolute;
+    color: black;
+    font-size: 24px;
+    font-family: Outfit;
+    font-weight: 200;
+    word-wrap: break-word;
+  }
+  
   .hobbies {
     left: 722px;
-    top: 60%;
+    top: 56%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -412,4 +393,8 @@ body{
     overflow: hidden; /* Isso garante que o conteúdo excedente seja ocultado */
     word-wrap: break-word; /* Isso permite que o texto seja quebrado em várias linhas se necessário */
     display: block; /* Isso faz com que cada parágrafo seja exibido em um bloco separado, abaixo do anterior */
+}
+
+.container-info {
+  
 }
