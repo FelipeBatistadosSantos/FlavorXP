@@ -97,7 +97,7 @@ def perfil(request):
 
 def completar_perfil(request):
     if request.method == 'POST':
-        form = CompleteCadastroForm(request.POST)
+        form = CompleteCadastroForm(request.POST, request.FILES)
         if form.is_valid():
             perfil = form.save(commit=False)
             perfil.usuario = request.user  
@@ -176,7 +176,7 @@ def criar_host(request):
 def editar_host(request):
     host, created = Host.objects.get_or_create(usuario=request.user)
     if request.method == 'POST':
-        form = HostForm(request.POST, instance=host)
+        form = HostForm(request.POST, request.FILES, instance=host)
         if form.is_valid():
             form.save()
             messages.success(request, 'Informações do host atualizadas com sucesso!')

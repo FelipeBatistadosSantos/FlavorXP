@@ -106,7 +106,7 @@ class CompleteCadastro(models.Model):
 
 
     def is_complete(self):
-        if self.cep and self.cpf and self.cidade and self.estado and self.telefone and self.nascimento and self.profissao and self.hobbie and self.idioma and self.comidaf and self.bebida and self.restricao:
+        if self.foto and self.cep and self.cpf and self.cidade and self.estado and self.telefone and self.nascimento and self.profissao and self.hobbie and self.idioma and self.comidaf and self.bebida and self.restricao:
             return True
         else:
             return False
@@ -133,11 +133,12 @@ class Host(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     nome_empresa = models.CharField('Nome da Empresa/Marca/Apelido', max_length=100)
     motivo = models.TextField('Motivo para ser um host')
-    area_gastronomia = models.CharField('Profissional da Área ou Amante da Gastronomia', max_length=20, choices=AREA_GASTRONOMIA_CHOICES)
+    area_gastronomia = models.CharField('Profissional da Área ou Amante da Gastronomia', max_length=20, choices=AREA_GASTRONOMIA_CHOICES, default='Amante da Gastronomia')
     servicos = models.TextField('Serviços Disponíveis')
-    frequencia_servicos = models.CharField('Frequência de Disponibilização de Serviços', max_length=20, choices=FREQUENCIA_CHOICES)
+    frequencia_servicos = models.CharField('Frequência de Disponibilização de Serviços', max_length=20, choices=FREQUENCIA_CHOICES, default='Diariamente')
     local_servico = models.CharField('Local de Serviço', max_length=100)
     descricao_local = models.TextField('Descrição do Local de Serviço')
+    email_corp = models.EmailField('Email corporativo', max_length=100)
 
     def __str__(self):
         return self.nome_empresa 

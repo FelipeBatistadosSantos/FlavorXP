@@ -14,14 +14,13 @@
 <body>
     <div class="container">
         <h1>Editar Host</h1>
-        <form method="post" action="{% url 'angeline:editar_host' %}">
+        <form method="post" action="{% url 'angeline:editar_host' %}" enctype="multipart/form-data">
             {% csrf_token %}
-            
             {{ form.as_p }}
-
-
+        
             <button type="submit">Salvar</button>
         </form>
+        
     </div>
 </body>
 

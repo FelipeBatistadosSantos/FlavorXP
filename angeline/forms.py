@@ -77,11 +77,15 @@ class CompleteCadastroForm(forms.ModelForm):
         return nascimento
 
 
-class HostForm(forms.ModelForm):
+class HostForm(forms.ModelForm):    
     class Meta:
         model = Host
-        fields = ['foto','nome_empresa', 'motivo', 'area_gastronomia', 'servicos', 'frequencia_servicos', 'local_servico', 'descricao_local']
+        fields = ['foto','nome_empresa', 'email_corp','motivo', 'area_gastronomia', 'servicos', 'frequencia_servicos', 'local_servico', 'descricao_local']
 
+    widgets = {
+            'email_corp': forms.EmailInput(attrs={'placeholder': 'Deixe em branco caso não tenha'}),
+        }
+    
 
 
 
@@ -134,7 +138,7 @@ class EventoForm(forms.ModelForm):
         self.geo(address)
         return cleaned_data
     
-    
+
 class AgendamentoForm(forms.ModelForm):
     class Meta:
         model = Reserva
