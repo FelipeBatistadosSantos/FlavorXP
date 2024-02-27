@@ -147,3 +147,5 @@ class AgendamentoForm(forms.ModelForm):
             'quantidade_pessoas': forms.NumberInput(attrs={'min': 1}),
             'nomes_pessoas': forms.TextInput(attrs={'placeholder': 'Nomes separados por vírgula'}),
         }
+
+    
