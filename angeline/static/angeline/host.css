@@ -4,7 +4,7 @@ body {
 
 
 .retangulo_nav {
-    width: 1440px;
+    width: 1440vw;
     height: 212px;
     left: 0px;
     top: 0px;
@@ -15,7 +15,7 @@ body {
 .circulo_foto {
     width: 156px;
     height: 156px;
-    left: 1165px;
+    left: 1325px;
     top: 19px;
     position: absolute;
     border-radius: 9999px;
@@ -83,7 +83,7 @@ body {
 }
 
 .email_usuario {
-    left: 55%;
+    left: 49%;
     top: 50%;
     position: absolute;
     color: black;
@@ -157,7 +157,7 @@ body {
 }
 
 .retangulo_footer {
-    width: 1440px;
+    width: 1440vw;
     height: 239px;
     left: 0px;
     top: 0px;
@@ -235,9 +235,9 @@ body {
 }
 
 .editar_perfil {
-    left: 87.3%;
-    top: 27%;
-    position: absolute;
+    left: 88%;
+    top: 24%;
+    position: fixed;
     color: black;
     font-size: 20px;
     font-family: Outfit;
@@ -281,8 +281,10 @@ a{
   .imagem_usuario {
     width: 156px;
     height: 156px;
-    left: 1165px;
+    left: 1325px;
     top: 19px;
-    position: absolute;
+    position: fixed;
     border-radius: 9999px;
   }
+
+  

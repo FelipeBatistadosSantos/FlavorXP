@@ -541,10 +541,15 @@ iframe {
   font-weight: 700;
   word-wrap: break-word;
   background-color: black;
+  
 }
 
 body,
 html {
   margin: auto;
   overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
 }

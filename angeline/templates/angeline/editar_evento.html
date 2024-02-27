@@ -5,23 +5,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  href="{% static 'angeline/bootstrap.css' %}">
+    <link rel="stylesheet"  href="{% static 'angeline/editar_evento.css' %}">
     
     <title>Editar Evento</title>
 </head>
 
 <body>
-    <h2>Editar Evento</h2>
-    
-    <img src="{{ evento.fotos.url }}" alt="Imagem do evento">
-    
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Salvar Alterações</button>
-    </form>
+    <div class="container">
+        <h2 class="titulo">Editar Evento</h2>
+        
+        <img class="imagem" src="{{ evento.fotos.url }}" alt="Imagem do evento">
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="butao" type="submit">Salvar Alterações</button>
+        </form>
 
-    <a href="{% url 'angeline:home' %}">Cancelar</a>
+        <a class="voltar"  href="{% url 'angeline:home' %}">Cancelar</a>
+
+    </div>
 </body>
 
 </html>

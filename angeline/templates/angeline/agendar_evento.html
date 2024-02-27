@@ -5,19 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"  href="{% static 'angeline/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'angeline/agendar.css' %}">
+
 
     <title>Agendamento</title>
 </head>
 <body>
-    <h2>Agendar Evento: {{ evento.nome }}</h2>
+    <div class="container">
+        <h2 class="titulo">Agendar Evento: {{ evento.tema }}</h2>
 
-    <form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Agendar">
-    </form>
+        <form action="" method="post" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value=" Agendar " class="butao">
+        </form>
 
+        <div class="voltar"><a href="{% url 'angeline:specific_page' evento_id=evento.id %}">Voltar</a></div> 
 
-    <a href="{% url 'angeline:specific_page' evento_id=evento.id %}">Voltar</a>
+    </div>
+
+    
 </body>
 </html>
