@@ -15,7 +15,7 @@ body {
 .circulo_foto {
     width: 156px;
     height: 156px;
-    left: 1165px;
+    left: 1100px;
     top: 19px;
     position: absolute;
     border-radius: 9999px;
@@ -235,9 +235,9 @@ body {
 }
 
 .editar_perfil {
-    left: 87.3%;
-    top: 27%;
-    position: absolute;
+    left: 88%;
+    top: 28%;
+    position: fixed;
     color: black;
     font-size: 20px;
     font-family: Outfit;
@@ -281,8 +281,10 @@ a{
   .imagem_usuario {
     width: 156px;
     height: 156px;
-    left: 1165px;
+    left: 1100px;
     top: 19px;
-    position: absolute;
+    position: fixed;
     border-radius: 9999px;
   }
+
+  
