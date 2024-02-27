@@ -6,21 +6,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"  href="{% static 'angeline/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'angeline/lista_reserva.css' %}">
+    <link rel="stylesheet" href="{% static 'angeline/agendar.css' %}">
     <title>Agendamentos</title>
 </head>
 <body>
 
     <div class="container">
-        <h2>Suas Reservas</h2>
+        <h2 class="titulo">Suas Reservas</h2>
 
         {% for reserva in reservas %}
-        <p>Evento: {{ reserva.evento.tema }}</p>
-        <p>Pessoas: {{ reserva.quantidade_pessoas }}</p>
-        <p>Nomes: {{ reserva.nomes_pessoas }}</p>
+        <p>Evento: {{ reserva.evento.tema }} - Pessoas: {{ reserva.quantidade_pessoas }} - Nomes: {{ reserva.nomes_pessoas }}</p>
         <form action="{% url 'angeline:cancelar' reserva.id %}" method="post">
             {% csrf_token %}
-            <button type="submit">Cancelar</button>
+            <button type="submit" class="butao">Cancelar</button>
         </form>
         {% empty %}
         <p>Você não tem nenhuma reserva.</p>
@@ -28,7 +26,7 @@
 
 
 
-        <a href="{% url 'angeline:perfil' %}">Voltar</a>
+        <a class="voltar" href="{% url 'angeline:perfil' %}">Voltar</a>
     </div>
 
 </body>

@@ -1,25 +1,96 @@
 body {
-    font-family: Outfit;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh; 
-    background-color: #ffffff;
+  font-family: Outfit;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; 
+  background-color: #ffffff;
 }
 
 
 .container {
-    border-radius: 30px;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
-    padding: 30px;
-    width: 700px;
-    min-height: 400px;
-    text-align: left;
-    color: #000000;
-    overflow: auto;
-    justify-content: center;
-    margin-top: 2%;
-    margin-bottom: 2%;
-  }
+  border-radius: 30px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  padding: 30px;
+  width: 700px;
+  min-height: 400px;
+  text-align: left;
+  color: #000000;
+  overflow: auto;
+  justify-content: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.titulo {
+  color: #4E008E;
+  text-align: center;
+}
+
+.voltar {
+  text-decoration: none;
+  color: #F1C400;
+  font-size: 20px;
+  margin-left: 90%;
+
+}
+
+.voltar a {
+  color: #4E008E;
+  text-decoration: none;
+}
+
+.voltar a:hover{
+  color: #F1C400;
+  cursor: pointer;
+}
+
+.formulario {
+  font-size: 20px;
+  margin-top: 100px;
+}
+
+
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formulario p {
+  display: flex;
+  justify-content: space-between;
+}
+
+label {
+  text-align: center;
+  padding: 8px;
+  font-size: 20px;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; 
+}
+
+.butao {
+  width: 20%;
+  background-color: #4E008E;
+  color: #F1C400;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.butao:hover {
+  transform: scaleY(1.125);
+  background-color: #7a10d2;
+  
+}
