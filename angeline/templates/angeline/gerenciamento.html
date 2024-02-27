@@ -12,7 +12,8 @@
     <h1 class="titulo">Seus eventos</h1>
 
     {% for evento in eventos %}
-        <p class="evento">{{ evento.tema }} - {{ evento.descricao }}</p>
+        <p class="evento"><a href="{% url 'angeline:specific_page' evento.id %}">{{ evento.tema }}</a></p>
+        <p>{{ evento.descricao }}</p>
         <div><a class="specific"  href="{% url 'angeline:specific_page' evento.id %}">Detalhes do Evento</a></div>
         <div><a class="editar" href="{% url 'angeline:editar_evento' evento.id %}">Editar</a></div>
         <form action="{% url 'angeline:excluir_evento' evento.id %}" method="post">

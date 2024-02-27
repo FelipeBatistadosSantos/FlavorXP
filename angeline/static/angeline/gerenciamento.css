@@ -119,3 +119,17 @@ form {
     color: #000000;
     font-family: Outfit;
   }
+
+  .evento:hover{
+    cursor: pointer;
+    color: #F1C400;
+  }
+
+  a:-webkit-any-link {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #F1C400;
+}
