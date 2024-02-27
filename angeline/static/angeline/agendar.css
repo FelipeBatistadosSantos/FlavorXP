@@ -14,7 +14,7 @@ body {
     border-radius: 30px;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
     padding: 30px;
-    width: 1000px;
+    width: 700px;
     min-height: 400px;
     text-align: left;
     color: #000000;
@@ -48,79 +48,57 @@ body {
 }
 
 .formulario {
-  font-size: 20px;
-  margin-top: 100px;
+    font-size: 20px;
+    margin-top: 100px;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Alinha itens à esquerda */
+    display: flex;
+    flex-direction: column;
 }
 
 .formulario p {
-  display: inline-block;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Adicionado para espaçamento uniforme entre cada linha */
 }
 
 label {
-  text-align: right; /* Alinha texto do label à direita */
-  padding: 8px;
-  font-size: 20px;
-  margin: 3px 2px 3px;
-  width: 30%; /* Define largura do label */
-  color: #4E008E; /* Cor do label */
+    text-align: right; /* Alinhado à direita */
+    padding: 8px;
+    font-size: 20px;
+    margin-left: 20px; /* Espaçamento entre o rótulo e o campo de entrada */
+    width: 200px; /* Largura do rótulo */
 }
 
 input {
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 60%; /* Define largura do input */
-  margin-left: 0px;
-}
-
-.butao {
-  width: 100%;
-  background-color: #4E008E;
-  color: #F1C400;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: transform 0.3s, background-color 0.3s; /* Adicionado efeito de transição */
-}
-
-.butao:hover {
-  transform: scaleY(1.125);
-  background-color: #7a10d2;
-}
-
-.imagem {
-  width: 250px;
-  height: 200px;
+    padding: 8px;
+    margin-left: 20px; /* Espaçamento entre o campo de entrada e o rótulo */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 60%; /* Largura uniforme */
 }
 
 textarea {
-  max-width: 60%;
-  max-height: 40px;
-  min-width: 60%;
-  min-height: 40px;
-  margin-left: 200px;
+    max-width: 60%;
+    max-height: 40px;
+    min-width: 60%;
+    min-height: 40px;
+    margin-left: 20px; /* Espaçamento entre o campo de entrada e o rótulo */
 }
 
-input[type="checkbox" i] {
-  padding: 0%;
-  width: 5%;
-  margin-left: 0px;
+.butao {
+    width: 100%;
+    background-color: #4E008E;
+    color: #F1C400;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
-#id_cardapio {
-  margin-bottom: 1px;
-}
-
-p {
-  display: inline-flex;
-  white-space: nowrap;
+.butao:hover {
+    transform: scaleY(1.125);
+    background-color: #7a10d2;
 }
