@@ -1,19 +1,35 @@
-<h1>Seus eventos</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'angeline/gerenciamento.css' %}">
+    <title>Gerenciamento</title>
+</head>
+<body>
+    <div class="container">
+    <h1 class="titulo">Seus eventos</h1>
 
-{% for evento in eventos %}
-    <h2>{{ evento.tema }}</h2> 
-    <p>{{ evento.descricao }}</p>
-    <div class="specific"><a href="{% url 'angeline:specific_page' evento.id %}">Detalhes do Evento</a></div>
-    <div class="editar"><a href="{% url 'angeline:editar_evento' evento.id %}">Editar</a></div>
-    <form action="{% url 'angeline:excluir_evento' evento.id %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Excluir Evento</button>
-    </form>
+    {% for evento in eventos %}
+        <p class="evento">{{ evento.tema }} - {{ evento.descricao }}</p>
+        <div><a class="specific"  href="{% url 'angeline:specific_page' evento.id %}">Detalhes do Evento</a></div>
+        <div><a class="editar" href="{% url 'angeline:editar_evento' evento.id %}">Editar</a></div>
+        <form action="{% url 'angeline:excluir_evento' evento.id %}" method="post">
+            {% csrf_token %}
+            <button class="butao" type="submit">Excluir Evento</button>
+        </form>
 
-
-
-{% empty %}
-    <p>Você ainda não criou nenhum evento.</p>
-{% endfor %}
+    {% empty %}
+        <p>Você ainda não criou nenhum evento.</p>
+    {% endfor %}
 
     <div class="voltar"><a href="{% url 'angeline:host' %}">Voltar</a></div>
+
+    </div>
+</body>
+</html>
+
+
+
+

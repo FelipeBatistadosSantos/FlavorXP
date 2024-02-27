@@ -93,8 +93,8 @@ body{
   }
   
   .editar_perfil_convidado {
-    left: 87.3%;
-    top: 27%;
+    left: 88%;
+    top: 24%;
     position: absolute;
     color: white;
     font-size: 20px;
@@ -300,7 +300,7 @@ body{
   .imagem_usuario {
     width: 156px;
     height: 156px;
-    left: 1100px;
+    left: 1325px;
     top: 19px;
     position: absolute;
     border-radius: 9999px;
