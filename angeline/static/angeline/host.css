@@ -83,8 +83,8 @@ body {
 }
 
 .email_usuario {
-    left: 91px;
-    top: 48%;
+    left: 55%;
+    top: 50%;
     position: absolute;
     color: black;
     font-size: 20px;
@@ -225,7 +225,7 @@ body {
 
 .local_servico {
     left: 754px;
-    top: 495px;
+    top: 80%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -236,7 +236,7 @@ body {
 
 .editar_perfil {
     left: 87.3%;
-    top: 29%;
+    top: 27%;
     position: absolute;
     color: black;
     font-size: 20px;
@@ -251,10 +251,38 @@ a{
   }
   
   a:hover {
-    color: #4E008E; /* Mudar a cor ao passar o mouse */
+    color: #4E008E; 
   }
 
   .fa-solid, .fa-house{
     font-size: 50px;
     color: #4E008E;
+  }
+
+  .reservas{
+    z-index: 2;
+    font-size: 24px;
+    position: absolute;
+    top: 48%;
+    left: 91px;
+    color: black;
+    font-family: Outfit;
+  } 
+
+ .reservas a {
+    color: #F1C400;
+    text-decoration: none;
+  }
+
+  .reservas a:hover {
+    color: #4E008E;
+  }
+
+  .imagem_usuario {
+    width: 156px;
+    height: 156px;
+    left: 1165px;
+    top: 19px;
+    position: absolute;
+    border-radius: 9999px;
   }

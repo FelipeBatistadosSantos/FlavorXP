@@ -59,7 +59,7 @@
         <div class="valor_da_experiencia">Valor da experiência</div>
         <div class="preco">R${{ evento.valor_host }}</div>
         <div class="botão_agendar"></div>
-        <div class="texto_agendar_pgto">Agendar</div>
+        <div class="texto_agendar_pgto"><a href="{% url 'angeline:agendar_evento' evento_id=evento.id %}">Agendar</a></div>
 
 
     <!-- <h1>{{ evento.tema }}</h1>

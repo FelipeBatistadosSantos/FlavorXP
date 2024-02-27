@@ -51,6 +51,8 @@
             <div class="bebida_favorita">Bebida Favorita: {{ perfil_usuario.bebida }}</div>
             <div class="comida_favorita">Comida Favorita: {{ perfil_usuario.comidaf }}</div>
             <div class="profissao_usuario">Profissão: {{ perfil_usuario.profissao }}</div>
+            <div class="reservas"><a href="{% url 'angeline:lista_reservas' %}">Suas reservas</a></div>
+          
             <container>
                 <div class="sobre_usuario">Sobre: {{ perfil_usuario.sobre }}</div>
             </container>
