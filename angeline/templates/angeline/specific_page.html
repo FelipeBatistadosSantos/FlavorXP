@@ -62,31 +62,7 @@
         <div class="texto_agendar_pgto"><a href="{% url 'angeline:agendar_evento' evento_id=evento.id %}">Agendar</a></div>
 
 
-    <!-- <h1>{{ evento.tema }}</h1>
-    <p>Estilo {{ evento.estilo }}</p>
-    
-    <img src="{{ evento.fotos.url }}" alt="Foto do evento">
-    
-    <a href="{% url 'angeline:host_servico' evento.id %}">
-        <p>{{ evento.host }}</p>
-    </a>
-    <p>Descrição: {{ evento.descricao }}</p>
-    <p>Cardápio: {{ evento.cardapio }}</p>
-    <p>Bebidas oferecidas: {{ evento.bebidas_oferecidas }}</p>
-    <p>Lotação máxima: {{ evento.max_convidados }}</p>
-    <p>Localização: {{ evento.local }}</p>
-    <p>Data: {{ evento.data }}</p>
-    <p>Horário: {{ evento.horario }}</p>
-    <p>Valor: {{ evento.valor_host }}</p>
-    <p>Incluso para alguma restrição: {{ evento.restricao }}</p>
 
-    {% if request.user.host and evento.host.usuario == request.user %}
-    <a href="{% url 'angeline:editar_evento' evento_id=evento.id %}">Editar evento</a>
-    <a href="{% url 'angeline:excluir_evento' evento_id=evento.id %}">Excluir evento</a>
-    {% else %}
-    <a href="{% url 'angeline:agendamento' evento_id=evento.id %}">Agendar</a>
-    {% endif %}
-    <a href="{% url 'angeline:home' %}">Voltar</a> -->
 
 </body>
 
