@@ -76,8 +76,10 @@
   font-family: Outfit;
   position: absolute;
   bottom: 22px;
-  left: 16%;
+  left:50%;
+  transform: translateX(-50%); /* Adição */
   color: white;
+  white-space: nowrap;
 }
 
 
@@ -273,7 +275,7 @@
   font-size: 96px;
   font-family: Outfit;
   font-weight: 400;
-  word-wrap: break-word;
+  word-wrap: nowrap;
 }
 
 .incluso_restricao {
@@ -552,4 +554,9 @@ html {
 
 a {
   text-decoration: none;
+  color: #ffffff;
+}
+
+a:hover{
+  color:rgb(184, 184, 184)
 }

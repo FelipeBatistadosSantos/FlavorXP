@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 
@@ -95,18 +95,19 @@ body {
 
 .motivo {
     left: 89px;
-    top: 60%;
+    top: 80%;
     position: absolute;
     color: black;
     font-size: 24px;
     font-family: Outfit;
     font-weight: 200;
     word-wrap: break-word;
+    max-width: 500px;
 }
 
 .area_gastronomica {
     left: 89px;
-    top: 70%;
+    top: 60%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -139,7 +140,7 @@ body {
 
 .servicos_disponiveis {
     left: 91px;
-    top: 80%;
+    top: 70%;
     position: absolute;
     color: black;
     font-size: 24px;
@@ -235,9 +236,9 @@ body {
 }
 
 .editar_perfil {
-    left: 88%;
+    left: 87.8%;
     top: 24%;
-    position: fixed;
+    position: absolute;
     color: black;
     font-size: 20px;
     font-family: Outfit;
@@ -281,9 +282,9 @@ a{
   .imagem_usuario {
     width: 156px;
     height: 156px;
-    left: 1325px;
-    top: 19px;
-    position: fixed;
+    left: 1160px;
+    top: 14px;
+    position: absolute;
     border-radius: 9999px;
   }
 

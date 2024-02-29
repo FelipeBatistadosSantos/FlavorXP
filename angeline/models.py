@@ -91,12 +91,12 @@ class CompleteCadastro(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     cep = BRPostalCodeField()
     cpf = BRCPFField()
-    foto = models.ImageField('foto-perfil', upload_to='media/', blank=False, null=True, max_length=255)
+    foto = models.ImageField('foto-perfil', upload_to='media/', blank=True, null=True)
     cidade = models.CharField('cidade', choices=CIDADE_CHOICES, default='Blumenau', max_length=20)
     estado = models.CharField('estado', choices=ESTADO_CHOICES, default='SC',  max_length=20)
     telefone = PhoneNumberField(unique=True, null=False, blank=False)
     nascimento = models.DateField(null=True)
-    sobre = models.TextField('sobre', default='')
+    sobre = models.TextField('sobre', default='', max_length=359)
     profissao = models.CharField('profissao',max_length=50)
     hobbie = models.CharField('hobbie', max_length=50)
     idioma = models.CharField('idioma', choices=IDIOMA_CHOICES, max_length=30, default='Nenhum')
@@ -129,10 +129,10 @@ class Host(models.Model):
         ('ocasional', 'Ocasionalmente'),
     ]
 
-    foto = models.ImageField('Foto host', upload_to='media/', blank=False, null=True, max_length=255)
+    foto = models.ImageField('Foto host', upload_to='media/', blank=True, null=True, max_length=255)
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, default='')
     nome_empresa = models.CharField('Nome da Empresa/Marca/Apelido', max_length=100)
-    motivo = models.TextField('Motivo para ser um host')
+    motivo = models.TextField('Motivo para ser um host', max_length=100)
     area_gastronomia = models.CharField('Profissional da Área ou Amante da Gastronomia', max_length=20, choices=AREA_GASTRONOMIA_CHOICES, default='Amante da Gastronomia')
     servicos = models.TextField('Serviços Disponíveis')
     frequencia_servicos = models.CharField('Frequência de Disponibilização de Serviços', max_length=20, choices=FREQUENCIA_CHOICES, default='Diariamente')
@@ -141,7 +141,9 @@ class Host(models.Model):
     email_corp = models.EmailField('Email corporativo', max_length=100)
 
     def __str__(self):
-        return self.nome_empresa 
+        return self.nome_empresa
+
+        
 
 
 

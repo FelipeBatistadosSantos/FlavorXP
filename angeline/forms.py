@@ -53,7 +53,7 @@ class DateInput(forms.DateInput):
 class CompleteCadastroForm(forms.ModelForm):
     
     nascimento = forms.DateField(label=_('Data de Nascimento:'), input_formats=["%d/%m/%Y",], widget=DateInput())
-    sobre = forms.CharField(label='Fale um pouco sobre você: ', widget=forms.Textarea)
+    sobre = forms.CharField(label='Fale um pouco sobre você: ', widget=forms.Textarea, max_length=359)
     idioma = forms.ChoiceField(label='Você conhece outro idioma? ', choices=CompleteCadastro.IDIOMA_CHOICES)
     comidaf = forms.CharField(label='Comida favorita: ')
     bebida = forms.CharField(label='Bebida favorita')

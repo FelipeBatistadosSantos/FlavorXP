@@ -65,7 +65,7 @@ input {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 100%;
+    width: 95%;
 }
 
 button {
@@ -85,16 +85,22 @@ button:hover {
 
 textarea {
     height: 50px;
-    width: 100%;
+    width: 97%;
 }
 
 /* Integração Bootstrap */
-select,
 input[type="file"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 100%;
+    width: 95%;
+}
+
+select{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 98.5%;
 }
 
 select:hover,
