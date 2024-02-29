@@ -560,3 +560,11 @@ a {
 a:hover{
   color:rgb(184, 184, 184)
 }
+
+.mapa{
+  width: 1260px;
+  height: 290px;
+  left: 75px;
+  top: 2076px;
+  position: absolute;
+}
